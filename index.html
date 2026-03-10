@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NBC — Checkout</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
   :root {
     --cream: #f5f0e8;
     --brown: #2c1810;
@@ -647,3 +655,309 @@
     .summary-card { position: static; }
     .field-row { grid-template-columns: 1fr; }
   }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Nothing <span>Before</span> Coffee</div>
+  <div class="secure-badge">Secure Checkout</div>
+</header>
+
+<!-- APP DOWNLOAD BANNER -->
+<div style="max-width:980px;margin:0 auto;padding:20px 20px 0" id="appBannerWrap">
+  <div class="app-banner" id="appBanner">
+    <div class="banner-left">
+      <div class="discount-pill">10% OFF</div>
+      <div class="banner-text">
+        <div class="title">Download the NBC App & save on every order</div>
+        <div class="sub">Get an extra 10% discount on this order + exclusive app-only deals forever</div>
+      </div>
+    </div>
+    <div class="banner-btns">
+      <a class="store-btn" href="#">
+        <span class="store-icon">🍎</span>
+        <div>
+          <div style="font-size:9px;opacity:0.6;letter-spacing:0.05em">DOWNLOAD ON THE</div>
+          <div style="font-size:13px;font-weight:600">App Store</div>
+        </div>
+      </a>
+      <a class="store-btn" href="#">
+        <span class="store-icon">▶</span>
+        <div>
+          <div style="font-size:9px;opacity:0.6;letter-spacing:0.05em">GET IT ON</div>
+          <div style="font-size:13px;font-weight:600">Google Play</div>
+        </div>
+      </a>
+    </div>
+    <button class="close-banner" onclick="document.getElementById('appBannerWrap').style.display='none'">✕</button>
+  </div>
+</div>
+
+<div class="page">
+
+  <!-- LEFT: FORM -->
+  <div>
+
+    <!-- CUSTOMER DETAILS -->
+    <div class="form-card">
+      <div class="card-section">
+        <div class="section-title">
+          <span class="num">1</span>
+          Your Details
+        </div>
+
+        <!-- PICKUP NOTICE -->
+        <div style="background:rgba(200,133,58,0.1);border:1.5px solid rgba(200,133,58,0.3);border-radius:12px;padding:14px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
+          <span style="font-size:22px">🏪</span>
+          <div>
+            <div style="font-size:13px;font-weight:700;color:var(--espresso)">Self-Pickup Only</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:2px">We don't deliver. Your order will be ready at the cafe in 5–10 mins after payment.</div>
+          </div>
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label>First Name</label>
+            <input type="text" placeholder="Rahul" id="fname">
+          </div>
+          <div class="field">
+            <label>Last Name</label>
+            <input type="text" placeholder="Sharma" id="lname">
+          </div>
+        </div>
+
+        <div class="field" style="margin-bottom:0">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="+91 98765 43210" id="phone">
+        </div>
+      </div>
+
+      <!-- COUPON -->
+      <div class="card-section">
+        <div class="section-title">
+          <span class="num">2</span>
+          Offer / Coupon Code
+        </div>
+
+        <div class="coupon-wrap">
+          <input type="text" placeholder="ENTER CODE e.g. NBC10" id="couponInput" oninput="this.value=this.value.toUpperCase()">
+          <button class="apply-btn" onclick="applyCoupon()">Apply</button>
+        </div>
+        <div class="coupon-msg" id="couponMsg"></div>
+
+        <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px" id="suggestedCoupons">
+          <div style="font-size:11px;color:var(--muted);width:100%;letter-spacing:0.06em;text-transform:uppercase;font-weight:600">Available Offers</div>
+          <div class="coupon-chip" onclick="useChip('NBC10')" style="cursor:pointer;padding:6px 12px;border:1.5px dashed var(--caramel);border-radius:8px;font-size:12px;font-weight:600;color:var(--caramel);transition:all 0.2s">NBC10 — 10% off</div>
+          <div class="coupon-chip" onclick="useChip('FIRSTSIP')" style="cursor:pointer;padding:6px 12px;border:1.5px dashed var(--caramel);border-radius:8px;font-size:12px;font-weight:600;color:var(--caramel);transition:all 0.2s">FIRSTSIP — ₹30 off</div>
+          <div class="coupon-chip" onclick="useChip('NBCAPP')" style="cursor:pointer;padding:6px 12px;border:1.5px dashed #3a7d44;border-radius:8px;font-size:12px;font-weight:600;color:#3a7d44;transition:all 0.2s">NBCAPP — Extra 10% (App only)</div>
+        </div>
+      </div>
+
+      <!-- PAYMENT METHOD -->
+      <div class="card-section">
+        <div class="section-title">
+          <span class="num">3</span>
+          Payment Method
+        </div>
+
+        <div class="pay-options">
+          <div class="pay-option selected" onclick="selectPay(this)">
+            <input type="radio" name="pay" checked>
+            <div class="radio-dot"></div>
+            <div class="pay-label">
+              <div class="name">UPI / QR Code</div>
+              <div class="desc">GPay, PhonePe, Paytm, BHIM</div>
+            </div>
+            <div class="pay-icons">📱</div>
+          </div>
+
+          <div class="pay-option" onclick="selectPay(this)">
+            <input type="radio" name="pay">
+            <div class="radio-dot"></div>
+            <div class="pay-label">
+              <div class="name">Credit / Debit Card</div>
+              <div class="desc">Visa, Mastercard, RuPay</div>
+            </div>
+            <div class="pay-icons">💳</div>
+          </div>
+
+          <div class="pay-option" onclick="selectPay(this)">
+            <input type="radio" name="pay">
+            <div class="radio-dot"></div>
+            <div class="pay-label">
+              <div class="name">Cash at Counter</div>
+              <div class="desc">Pay when you pick up your order</div>
+            </div>
+            <div class="pay-icons">💵</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT: ORDER SUMMARY -->
+  <div>
+    <div class="summary-card">
+      <div class="summary-header">
+        <div class="summary-title">Your Order</div>
+
+        <div class="order-item">
+          <div class="item-icon">☕</div>
+          <div class="item-details">
+            <div class="iname">Cold Coffee</div>
+            <div class="isize">Regular · 300ml · Qty 1</div>
+          </div>
+          <div class="item-price">₹149</div>
+        </div>
+      </div>
+
+      <div class="summary-body">
+        <div class="price-row">
+          <span class="label">Subtotal</span>
+          <span class="val" id="subtotal">₹149</span>
+        </div>
+        <div class="price-row discount" id="discountRow" style="display:none">
+          <span class="label">Discount</span>
+          <span class="val" id="discountVal">—</span>
+        </div>
+        <div class="price-row total">
+          <span class="label">Total</span>
+          <span class="val" id="totalVal">₹149</span>
+        </div>
+      </div>
+
+      <div class="summary-footer">
+        <button class="pay-now-btn" onclick="placeOrder()">
+          Pay Now → ₹<span id="btnTotal">149</span>
+        </button>
+        <div class="trust-row">
+          <div class="trust-item">🔒 SSL Secured</div>
+          <div class="trust-item">🏪 Self Pickup</div>
+          <div class="trust-item">⚡ Ready in 10 mins</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="successOverlay">
+  <div class="success-box">
+    <span class="success-icon">🎉</span>
+    <h2>Order Placed!</h2>
+    <p>Your <span id="successItemName">order</span> is being prepared. Come pick it up at the cafe in 5–10 minutes. Show this order ID at the counter.</p>
+    <div class="order-id-pill" id="orderId">NBC000000</div>
+    <br>
+    <button class="done-btn" onclick="document.getElementById('successOverlay').classList.remove('show')">Track Order</button>
+  </div>
+</div>
+
+<script>
+  // ── READ URL PARAMS (from WhatsApp bot link) ──────────────────────────────
+  const params = new URLSearchParams(window.location.search);
+  const urlItem   = params.get('item');
+  const urlAmount = params.get('amount');
+  const urlId     = params.get('id');
+
+  let basePrice = urlAmount ? parseInt(urlAmount) : 149;
+  let appliedDiscount = 0;
+
+  // Fill order summary from URL
+  window.addEventListener('DOMContentLoaded', () => {
+    if (urlItem) {
+      const itemName = decodeURIComponent(urlItem);
+      // Capitalise each word
+      const pretty = itemName.replace(/\b\w/g, c => c.toUpperCase());
+      document.querySelector('.iname').textContent = pretty;
+      document.querySelector('.item-price').textContent = `₹${basePrice}`;
+      document.getElementById('subtotal').textContent  = `₹${basePrice}`;
+      document.getElementById('totalVal').textContent  = `₹${basePrice}`;
+      document.getElementById('btnTotal').textContent  =  basePrice;
+      // Update success message item name
+      document.getElementById('successItemName').textContent = pretty;
+    }
+    if (urlId) {
+      document.getElementById('orderId').textContent = urlId;
+    }
+  });
+
+  // ── COUPON LOGIC ──────────────────────────────────────────────────────────
+  const COUPONS = {
+    'NBC10':    { type: 'percent', value: 10, label: '10% off applied!' },
+    'FIRSTSIP': { type: 'flat',    value: 30, label: '₹30 off applied!' },
+    'NBCAPP':   { type: 'percent', value: 10, label: 'App discount applied! 🎉' },
+  };
+
+  function applyCoupon() {
+    const code = document.getElementById('couponInput').value.trim().toUpperCase();
+    const msg = document.getElementById('couponMsg');
+
+    if (!code) {
+      msg.className = 'coupon-msg error';
+      msg.innerHTML = '⚠️ Please enter a coupon code';
+      return;
+    }
+
+    if (COUPONS[code]) {
+      const c = COUPONS[code];
+      if (c.type === 'percent') {
+        appliedDiscount = Math.round(basePrice * c.value / 100);
+      } else {
+        appliedDiscount = c.value;
+      }
+
+      msg.className = 'coupon-msg success';
+      msg.innerHTML = `✅ ${c.label} You save ₹${appliedDiscount}`;
+      updateTotal();
+    } else {
+      appliedDiscount = 0;
+      msg.className = 'coupon-msg error';
+      msg.innerHTML = '❌ Invalid coupon code. Try NBC10 or FIRSTSIP';
+      updateTotal();
+    }
+  }
+
+  function useChip(code) {
+    document.getElementById('couponInput').value = code;
+    applyCoupon();
+  }
+
+  function updateTotal() {
+    const total = basePrice - appliedDiscount;
+    document.getElementById('totalVal').textContent = `₹${total}`;
+    document.getElementById('btnTotal').textContent = total;
+
+    if (appliedDiscount > 0) {
+      document.getElementById('discountRow').style.display = 'flex';
+      document.getElementById('discountVal').textContent = `-₹${appliedDiscount}`;
+    } else {
+      document.getElementById('discountRow').style.display = 'none';
+    }
+  }
+
+  // ── PAYMENT METHOD ────────────────────────────────────────────────────────
+  function selectPay(el) {
+    document.querySelectorAll('.pay-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+  }
+
+  // ── PLACE ORDER ───────────────────────────────────────────────────────────
+  function placeOrder() {
+    const fname = document.getElementById('fname').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+
+    if (!fname || !phone) {
+      alert('Please enter your name and phone number.');
+      return;
+    }
+
+    const orderId = 'NBC' + Date.now().toString().slice(-6);
+    document.getElementById('orderId').textContent = orderId;
+    document.getElementById('successOverlay').classList.add('show');
+  }
+</script>
+</body>
+</html>

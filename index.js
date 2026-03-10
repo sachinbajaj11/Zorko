@@ -84,7 +84,7 @@ function generatePayLink(item, price) {
   const id = Math.random().toString(36).slice(2, 8).toUpperCase();
   // Replace with real Razorpay link generation when ready:
   // const link = await razorpay.paymentLink.create({ amount: price*100, currency:"INR", ... })
-  return `https://pay.nbc.coffee/order/${id}?item=${encodeURIComponent(item)}&amount=${price}`;
+  return `https://sachintherichestperson.github.io/clone/folder/index.html/${id}?item=${encodeURIComponent(item)}&amount=${price}`;
 }
 
 // ─── CORE BOT LOGIC ────────────────────────────────────────────────────────
