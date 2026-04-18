@@ -1,10 +1,11 @@
+require("dotenv").config();
 const express = require("express");
 const axios = require("axios");
 const mongoose = require("mongoose");
 const { v4: uuidv4 } = require("uuid");
+const path = require("path");
 const app = express();
 app.use(express.json());
-require("dotenv").config();
 
 // ─── CONFIG ────────────────────────────────────────────────────────────────
 const {
@@ -12,15 +13,16 @@ const {
   WHATSAPP_TOKEN,
   PHONE_NUMBER_ID,
   MONGO_URI,
-  BASE_URL,       // e.g. https://yourdomain.com — used to build profile link
+  BASE_URL,
   PORT = 3000,
 } = process.env;
 
 // ─── MONGODB ───────────────────────────────────────────────────────────────
-mongoose.connect(MONGO_URI || "mongodb://localhost:27017/beastlife");
+mongoose.connect(MONGO_URI);
 mongoose.connection.on("connected", () => console.log("✅ MongoDB connected"));
 mongoose.connection.on("error", (err) => console.error("❌ MongoDB:", err));
 
+// ─── SCHEMAS ───────────────────────────────────────────────────────────────
 const userSchema = new mongoose.Schema({
   phone:       { type: String, required: true, unique: true },
   profileId:   { type: String, required: true, unique: true },
@@ -31,20 +33,90 @@ const userSchema = new mongoose.Schema({
   activeLevel: { type: String, enum: ["BEG", "INTER", "PRO"] },
   gymSince:    String,
   profileLink: String,
+  onboardingStep: { type: String, default: "NAME" },
+  onboardingData: { type: Object, default: {} },
+  activeChallenges: [{ type: mongoose.Schema.Types.ObjectId, ref: "UserChallenge" }],
+  pendingChallengeKey: { type: String, default: null },
   createdAt:   { type: Date, default: Date.now },
 });
 const UserProfile = mongoose.model("UserProfile", userSchema);
 
-// ─── SESSION STORE ─────────────────────────────────────────────────────────
-// step: IDLE | NAME | DOB | WEIGHT | GOAL | ACTIVE_LEVEL | GYM_SINCE | DONE
-const sessions = {};
+const userChallengeSchema = new mongoose.Schema({
+  userId:       { type: mongoose.Schema.Types.ObjectId, ref: "UserProfile", required: true },
+  phone:        { type: String, required: true },
+  challengeKey: { type: String, required: true },
+  status:       { type: String, enum: ["ACTIVE", "COMPLETED", "FAILED"], default: "ACTIVE" },
+  joinedAt:     { type: Date, default: Date.now },
+  completedAt:  Date,
+});
+const UserChallenge = mongoose.model("UserChallenge", userChallengeSchema);
 
-function getSession(phone) {
-  if (!sessions[phone]) {
-    sessions[phone] = { step: "IDLE", data: {} };
-  }
-  return sessions[phone];
-}
+// ─── CHALLENGES CATALOG ────────────────────────────────────────────────────
+const CHALLENGES = {
+  "30day-pushup": {
+    key:          "30day-pushup",
+    name:         "30-Day Push-Up Domination",
+    type:         "Strength Endurance",
+    difficulty:   "INTERMEDIATE",
+    duration:     "30 Days",
+    durationDays: 30,
+    description:  "Start at 10 push-ups/day. Add 5 every 3 days. Hit 60 by day 30.",
+    benefits: [
+      "Upper body strength through the roof",
+      "Chest, shoulder, and tricep hypertrophy",
+      "Mental discipline — showing up every single day",
+    ],
+    winningReward:       "BeastLife 'Iron Chest' digital badge + featured on leaderboard",
+    losingConsequences:  "You restart from Day 1. No shortcuts, no exceptions.",
+    proofInstructions: [
+      "Record a short video of your reps each day",
+      "Send the video to this WhatsApp number with caption: PROOF #30PUSHUP Day-[X]",
+      "Submissions accepted until 11:59 PM IST daily",
+    ],
+  },
+  "7day-cut": {
+    key:          "7day-cut",
+    name:         "7-Day Sugar & Junk Cut",
+    type:         "Nutrition",
+    difficulty:   "BEGINNER",
+    duration:     "7 Days",
+    durationDays: 7,
+    description:  "Zero sugar, zero processed food, zero alcohol for 7 days straight. Clean whole foods only.",
+    benefits: [
+      "Detox your gut and reset insulin sensitivity",
+      "Visible reduction in bloat within 3-4 days",
+      "Break addictive eating patterns for good",
+    ],
+    winningReward:       "BeastLife 'Clean Machine' digital badge + 7-day meal plan PDF",
+    losingConsequences:  "You restart the 7 days from scratch. Your word means nothing if you quit.",
+    proofInstructions: [
+      "Photo every meal — breakfast, lunch, dinner, and snacks",
+      "Send photos daily with caption: PROOF #7DAYCUT Day-[X]",
+      "No meal photo = that day doesn't count",
+    ],
+  },
+  "21day-hiit": {
+    key:          "21day-hiit",
+    name:         "21-Day HIIT Beast Mode",
+    type:         "Cardio & Fat Loss",
+    difficulty:   "ADVANCED",
+    duration:     "21 Days",
+    durationDays: 21,
+    description:  "3 HIIT sessions per week, minimum 20 minutes each. Heart rate above 75% max. No rest-day skipping.",
+    benefits: [
+      "Torch fat 3x faster than steady-state cardio",
+      "Skyrocket VO2 max and cardiovascular health",
+      "Afterburn effect — calories burned for 24hrs post-workout",
+    ],
+    winningReward:       "BeastLife 'Cardio King/Queen' badge + shoutout in community",
+    losingConsequences:  "Miss 2 sessions = challenge voided. You restart from Day 1.",
+    proofInstructions: [
+      "Screenshot your fitness tracker (heart rate + duration) after each session",
+      "Send screenshot with caption: PROOF #21HIIT Day-[X]",
+      "Manual submissions without tracker data will NOT be accepted",
+    ],
+  },
+};
 
 // ─── SEND WHATSAPP TEXT ────────────────────────────────────────────────────
 async function sendMessage(to, text) {
@@ -69,40 +141,131 @@ async function sendMessage(to, text) {
   }
 }
 
+// ─── FORMAT CHALLENGE MESSAGE ──────────────────────────────────────────────
+function formatChallengeMessage(c) {
+  return (
+    `🔥 *${c.name}*\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `📌 *Type:* ${c.type}\n` +
+    `⏳ *Duration:* ${c.duration}\n\n` +
+    `📋 *What it is:*\n${c.description}\n\n` +
+    `💪 *Benefits:*\n${c.benefits.map((b) => `• ${b}`).join("\n")}\n\n` +
+    `🏆 *Win Reward:*\n${c.winningReward}\n\n` +
+    `💀 *Lose Consequences:*\n${c.losingConsequences}\n\n` +
+    `📸 *How to Submit Proof:*\n${c.proofInstructions.map((p, i) => `${i + 1}. ${p}`).join("\n")}\n\n` +
+    `━━━━━━━━━━━━━━━━━━━━\n` +
+    `Reply *JOIN* to accept this challenge.\nReply *SKIP* to back out.`
+  );
+}
+
 // ─── CORE HANDLER ──────────────────────────────────────────────────────────
 async function handleMessage(phone, text) {
-  const session = getSession(phone);
   const input = text.trim();
 
-  switch (session.step) {
+  let user = await UserProfile.findOne({ phone });
 
-    // Any first message kicks off the flow
-    case "IDLE": {
-      // Check if user already completed onboarding
-      const existing = await UserProfile.findOne({ phone });
+  if (input.toUpperCase() === "RESTART") {
+    if (user) {
+      await UserChallenge.deleteMany({ userId: user._id });
+      await UserProfile.deleteOne({ phone });
+    }
+    await sendMessage(phone,
+      `🔄 Your data has been wiped completely.\n\nYou're a new user now. Let's start fresh.\n\nWhat's your *name*?`
+    );
+    await UserProfile.create({
+      phone,
+      profileId: uuidv4(),
+      profileLink: `${BASE_URL || "http://localhost:3000"}/profile/${uuidv4()}`,
+      onboardingStep: "NAME",
+      onboardingData: {},
+    });
+    return;
+  }
+
+  if (!user) {
+    user = await UserProfile.create({
+      phone,
+      profileId: uuidv4(),
+      profileLink: `${BASE_URL || "http://localhost:3000"}/profile/${uuidv4()}`,
+      onboardingStep: "NAME",
+      onboardingData: {},
+    });
+    await sendMessage(phone,
+      `Hey! 👋 Welcome to BeastLife.\nLet's build your fitness profile.\n\nWhat's your *name*?`
+    );
+    return;
+  }
+
+  // ── Challenge confirm flow ────────────────────────────────────────────────
+  if (user.pendingChallengeKey) {
+    const upper = input.toUpperCase();
+    const challenge = CHALLENGES[user.pendingChallengeKey];
+
+    if (upper === "JOIN") {
+      const existing = await UserChallenge.findOne({
+        userId: user._id,
+        challengeKey: challenge.key,
+        status: "ACTIVE",
+      });
+
       if (existing) {
-        await sendMessage(phone,
-          `Welcome back! 💪\nYour profile: ${existing.profileLink}`
-        );
+        await UserProfile.findByIdAndUpdate(user._id, { pendingChallengeKey: null });
+        await sendMessage(phone, `You're already running *${challenge.name}*. No double-dipping. Finish what you started. 💪`);
         return;
       }
-      session.step = "NAME";
+
+      const entry = await UserChallenge.create({
+        userId:       user._id,
+        phone,
+        challengeKey: challenge.key,
+        status:       "ACTIVE",
+      });
+
+      await UserProfile.findByIdAndUpdate(user._id, {
+        pendingChallengeKey: null,
+        $push: { activeChallenges: entry._id },
+      });
+
       await sendMessage(phone,
-        `Hey! 👋 Welcome to BeastLife.\nLet's build your fitness profile.\n\nWhat's your *name*?`
+        `✅ You're IN, ${user.name}.\n\n` +
+        `*${challenge.name}* starts NOW.\n\n` +
+        `No excuses. No days off. Submit your proof daily or you restart.\n\nLet's see if you're built different. 🔥`
       );
-      break;
+      return;
     }
 
+    if (upper === "SKIP") {
+      await UserProfile.findByIdAndUpdate(user._id, { pendingChallengeKey: null });
+      await sendMessage(phone, "Challenge skipped. Come back when you're ready to commit. 💪");
+      return;
+    }
+
+    await sendMessage(phone, "Reply *JOIN* to accept the challenge or *SKIP* to cancel.");
+    return;
+  }
+
+  // ── Onboarding flow ───────────────────────────────────────────────────────
+  const step = user.onboardingStep;
+
+  if (!step) {
+    // Onboarding complete — send profile link
+    await sendMessage(phone,
+      `Your profile is already set up! 🏆\n👉 ${user.profileLink}\n\nVisit your profile to browse and join challenges.`
+    );
+    return;
+  }
+
+  switch (step) {
     case "NAME": {
       if (input.length < 2) {
         await sendMessage(phone, "That doesn't look right. Enter your *name*:");
         return;
       }
-      session.data.name = input;
-      session.step = "DOB";
-      await sendMessage(phone,
-        `Nice, ${session.data.name}! 🔥\n\nWhat's your *Date of Birth*? (DD/MM/YYYY)`
-      );
+      await UserProfile.findByIdAndUpdate(user._id, {
+        name: input,
+        onboardingStep: "DOB",
+      });
+      await sendMessage(phone, `Nice, ${input}! 🔥\n\nWhat's your *Date of Birth*? (DD/MM/YYYY)`);
       break;
     }
 
@@ -111,8 +274,10 @@ async function handleMessage(phone, text) {
         await sendMessage(phone, "Use DD/MM/YYYY format. Example: 15/08/2000");
         return;
       }
-      session.data.dob = input;
-      session.step = "WEIGHT";
+      await UserProfile.findByIdAndUpdate(user._id, {
+        dob: input,
+        onboardingStep: "WEIGHT",
+      });
       await sendMessage(phone, `What's your current *weight*? (e.g. 72kg or 158lbs)`);
       break;
     }
@@ -122,8 +287,10 @@ async function handleMessage(phone, text) {
         await sendMessage(phone, "Enter your weight (e.g. 75kg):");
         return;
       }
-      session.data.weight = input;
-      session.step = "GOAL";
+      await UserProfile.findByIdAndUpdate(user._id, {
+        weight: input,
+        onboardingStep: "GOAL",
+      });
       await sendMessage(phone,
         `What's your *fitness goal*?\n\nExamples:\n• Fat Loss\n• Muscle Gain\n• Endurance\n• General Fitness`
       );
@@ -135,8 +302,10 @@ async function handleMessage(phone, text) {
         await sendMessage(phone, "Give a proper goal (e.g. Fat Loss, Muscle Gain):");
         return;
       }
-      session.data.goal = input;
-      session.step = "ACTIVE_LEVEL";
+      await UserProfile.findByIdAndUpdate(user._id, {
+        goal: input,
+        onboardingStep: "ACTIVE_LEVEL",
+      });
       await sendMessage(phone,
         `What's your *activity level*?\n\nReply with exactly:\n*BEG* — Beginner\n*INTER* — Intermediate\n*PRO* — Advanced`
       );
@@ -149,8 +318,10 @@ async function handleMessage(phone, text) {
         await sendMessage(phone, "Reply with *BEG*, *INTER*, or *PRO* only.");
         return;
       }
-      session.data.activeLevel = level;
-      session.step = "GYM_SINCE";
+      await UserProfile.findByIdAndUpdate(user._id, {
+        activeLevel: level,
+        onboardingStep: "GYM_SINCE",
+      });
       await sendMessage(phone,
         `Last one 💪\n\nHow long have you been going to the gym?\n(e.g. 3 months, 1 year, just starting, never)`
       );
@@ -162,44 +333,23 @@ async function handleMessage(phone, text) {
         await sendMessage(phone, "How long have you been going to the gym? (e.g. 6 months, never):");
         return;
       }
-      session.data.gymSince = input;
 
-      // ── Save to MongoDB ─────────────────────────────────────────────────
       const profileId = uuidv4();
       const profileLink = `${BASE_URL || "http://localhost:3000"}/profile/${profileId}`;
 
-      try {
-        await UserProfile.create({
-          phone,
-          profileId,
-          ...session.data,
-          profileLink,
-        });
+      await UserProfile.findByIdAndUpdate(user._id, {
+        gymSince: input,
+        profileId,
+        profileLink,
+        onboardingStep: null, // onboarding complete
+      });
 
-        session.step = "DONE";
-
-        await sendMessage(phone,
-          `✅ Profile saved, ${session.data.name}!\n\nYour BeastLife profile:\n👉 ${profileLink}\n\nNow let's get to work. 💪`
-        );
-      } catch (err) {
-        if (err.code === 11000) {
-          // Race condition — profile somehow already exists
-          const existing = await UserProfile.findOne({ phone });
-          await sendMessage(phone, `Profile already exists!\n👉 ${existing.profileLink}`);
-        } else {
-          console.error("❌ DB save error:", err);
-          await sendMessage(phone, "Something went wrong saving your profile. Try sending any message again.");
-          // Reset so they can retry
-          sessions[phone] = { step: "IDLE", data: {} };
-        }
-      }
-      break;
-    }
-
-    case "DONE": {
-      const user = await UserProfile.findOne({ phone });
+      // ── SEND PROFILE LINK — this is where user first gets their URL ──────
       await sendMessage(phone,
-        `Your profile is already set up! 🏆\n👉 ${user?.profileLink || "Check your earlier messages."}`
+        `✅ Profile saved, ${user.name}!\n\n` +
+        `Your BeastLife profile is live:\n👉 ${profileLink}\n\n` +
+        `Open the link to browse all challenges and join one. 🔥\n\n` +
+        `You'll get the full challenge brief on WhatsApp the moment you hit JOIN on the site.`
       );
       break;
     }
@@ -208,63 +358,139 @@ async function handleMessage(phone, text) {
 
 // ─── WEBHOOK VERIFICATION ──────────────────────────────────────────────────
 app.get("/webhook", (req, res) => {
-  const mode = req.query["hub.mode"];
-  const token = req.query["hub.verify_token"];
-  const challenge = req.query["hub.challenge"];
-
-  console.log("Meta sent token:", token);
-  console.log("Our token:", VERIFY_TOKEN);
-
+  const { "hub.mode": mode, "hub.verify_token": token, "hub.challenge": challenge } = req.query;
   if (mode === "subscribe" && token === VERIFY_TOKEN) {
-    console.log("✅ Webhook verified by Meta");
     res.status(200).send(challenge);
   } else {
-    console.warn("❌ Webhook verification failed");
     res.sendStatus(403);
   }
 });
 
 // ─── INCOMING MESSAGES ─────────────────────────────────────────────────────
 app.post("/webhook", async (req, res) => {
-  res.sendStatus(200); // Always ack immediately
-
+  res.sendStatus(200);
   try {
-    const entry = req.body?.entry?.[0];
-    const changes = entry?.changes?.[0];
-    const value = changes?.value;
-
+    const value = req.body?.entry?.[0]?.changes?.[0]?.value;
     if (!value?.messages) return;
 
     const msg = value.messages[0];
     if (msg.type !== "text") return;
 
-    const phone = msg.from;
-    const text = msg.text.body;
-
-    await handleMessage(phone, text);
+    await handleMessage(msg.from, msg.text.body);
   } catch (err) {
-    console.error("❌ Webhook handler error:", err);
+    console.error("❌ Webhook error:", err);
   }
 });
 
-// ─── GET PROFILE (for the link you send users) ─────────────────────────────
+// ─── GET ALL CHALLENGES (for frontend) ────────────────────────────────────
+// Returns the full catalog as an array, keyed by _id = challenge key
+app.get("/challenges", (req, res) => {
+  const list = Object.values(CHALLENGES).map((c) => ({
+    _id:                c.key,          // use key as _id so frontend can reference it
+    key:                c.key,
+    name:               c.name,
+    type:               c.type,
+    difficulty:         c.difficulty,
+    duration:           c.duration,
+    durationDays:       c.durationDays,
+    description:        c.description,
+    benefits:           c.benefits,
+    winningReward:      c.winningReward,
+    losingConsequences: c.losingConsequences,
+    proofInstructions:  c.proofInstructions,
+  }));
+  res.json(list);
+});
+
+// ─── CHALLENGE PAGE — triggers WhatsApp message if phone provided ──────────
+// Frontend calls: GET /challenge/:challengeKey?phone=PHONENUMBER
+app.get("/challenge/:challengeKey", async (req, res) => {
+  const challenge = CHALLENGES[req.params.challengeKey];
+  if (!challenge) return res.status(404).json({ error: "Challenge not found." });
+
+  const phone = req.query.phone;
+
+  if (phone) {
+    const user = await UserProfile.findOne({ phone });
+    if (user && !user.onboardingStep) {
+      // Set pendingChallengeKey so next WhatsApp reply (JOIN/SKIP) works
+      await UserProfile.findByIdAndUpdate(user._id, {
+        pendingChallengeKey: challenge.key,
+      });
+      // Send full challenge brief on WhatsApp
+      await sendMessage(phone, formatChallengeMessage(challenge));
+    } else if (!user) {
+      return res.status(404).json({ error: "User not found. Complete onboarding first." });
+    } else if (user.onboardingStep) {
+      return res.status(400).json({ error: "User has not completed onboarding." });
+    }
+  }
+
+  return res.json({
+    _id:                challenge.key,
+    key:                challenge.key,
+    name:               challenge.name,
+    type:               challenge.type,
+    difficulty:         challenge.difficulty,
+    duration:           challenge.duration,
+    durationDays:       challenge.durationDays,
+    description:        challenge.description,
+    benefits:           challenge.benefits,
+    winningReward:      challenge.winningReward,
+    losingConsequences: challenge.losingConsequences,
+    proofInstructions:  challenge.proofInstructions,
+    message: phone
+      ? "Challenge brief sent to your WhatsApp. Reply JOIN or SKIP."
+      : "Add ?phone=YOUR_WHATSAPP_NUMBER to receive this challenge on WhatsApp.",
+  });
+});
+
+// ─── PROFILE ROUTE (API — returns JSON) ───────────────────────────────────
 app.get("/profile/:profileId", async (req, res) => {
-  const user = await UserProfile.findOne({ profileId: req.params.profileId });
+  // Serve HTML page if request is from a browser (Accept: text/html)
+  const acceptsHtml = req.headers.accept?.includes("text/html");
+  if (acceptsHtml) {
+    return res.sendFile(path.join(__dirname, "public", "profile.html"));
+  }
+
+  // Otherwise return JSON for the frontend JS fetch()
+  const user = await UserProfile.findOne({ profileId: req.params.profileId })
+    .populate("activeChallenges");
   if (!user) return res.status(404).json({ error: "Profile not found." });
+
+  // Build challenges array with full catalog details merged in
+  const challenges = (user.activeChallenges || []).map((uc) => {
+    const catalogEntry = CHALLENGES[uc.challengeKey] || {};
+    return {
+      _id:         uc._id,
+      challengeId: uc._id,
+      key:         uc.challengeKey,
+      name:        catalogEntry.name        || uc.challengeKey,
+      type:        catalogEntry.type        || "",
+      difficulty:  catalogEntry.difficulty  || "",
+      duration:    catalogEntry.duration    || "",
+      status:      uc.status,
+      joinedAt:    uc.joinedAt,
+      completedAt: uc.completedAt,
+    };
+  });
 
   res.json({
     name:        user.name,
+    phone:       user.phone,
     dob:         user.dob,
     weight:      user.weight,
     goal:        user.goal,
     activeLevel: user.activeLevel,
     gymSince:    user.gymSince,
+    profileId:   user.profileId,
+    challenges,
     createdAt:   user.createdAt,
   });
 });
 
-// ─── ADMIN: VIEW SESSIONS ──────────────────────────────────────────────────
-app.get("/sessions", (req, res) => res.json(sessions));
+// ─── SERVE STATIC FILES (HTML/CSS/JS in /public) ──────────────────────────
+app.use(express.static(path.join(__dirname, "public")));
 
 // ─── START ─────────────────────────────────────────────────────────────────
-app.listen(PORT, () => console.log(`🚀 BeastLife bot running on port ${PORT}`));
+app.listen(PORT, () => console.log(`🚀 BeastLife running on port ${PORT}`));
