@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BeastLife — Proof Review</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:       #080808;
+    --surface:  #0f0f0f;
+    --surface2: #141414;
+    --surface3: #181818;
+    --border:   #1c1c1c;
+    --accent:   #ff3c00;
+    --accent2:  #ffb800;
+    --text:     #f0f0f0;
+    --muted:    #505050;
+    --muted2:   #888888;
+    --success:  #00e676;
+    --danger:   #ff1744;
+    --info:     #29b6f6;
+    --pending:  #ffb800;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+  }
+
+  /* ── TOPBAR ── */
+  .topbar {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 36px; height: 58px; gap: 16px;
+  }
+  .topbar-left { display: flex; align-items: center; gap: 16px; }
+  .back-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--muted); padding: 6px 14px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 1.5px; cursor: pointer; transition: all .2s;
+    text-decoration: none; display: flex; align-items: center; gap: 6px;
+  }
+  .back-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 20px; letter-spacing: 3px;
+    color: var(--accent);
+  }
+  .logo span { color: var(--text); }
+  .logo small {
+    font-family: 'DM Mono', monospace; font-size: 8px;
+    letter-spacing: 2px; color: var(--muted);
+    margin-left: 6px; vertical-align: middle;
+  }
+  .topbar-right { display: flex; align-items: center; gap: 10px; }
+  .icon-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--muted); width: 34px; height: 34px;
+    cursor: pointer; font-size: 14px; transition: all .2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .icon-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .icon-btn.spinning { animation: spin .6s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── CONTENT ── */
+  .content { padding: 32px 36px; max-width: 1600px; margin: 0 auto; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .stat-pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    position: relative; overflow: hidden;
+    cursor: pointer; transition: border-color .2s, transform .2s;
+  }
+  .stat-pill:hover { transform: translateY(-1px); }
+  .stat-pill::before {
+    content: ''; position: absolute;
+    top: 0; left: 0; right: 0; height: 2px;
+  }
+  .sp-all::before    { background: var(--accent); }
+  .sp-pending::before { background: var(--pending); }
+  .sp-approved::before { background: var(--success); }
+  .sp-rejected::before { background: var(--danger); }
+  .stat-pill.active { border-color: #2a2a2a; }
+  .sp-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 44px; line-height: 1; color: var(--text);
+  }
+  .sp-label {
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 2.5px; text-transform: uppercase; color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px; gap: 14px; flex-wrap: wrap;
+  }
+  .toolbar-left { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .filter-btn {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--muted); padding: 7px 16px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; transition: all .2s;
+  }
+  .filter-btn:hover { border-color: #333; color: var(--text); }
+  .filter-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255,60,0,0.06); }
+
+  .search-wrap { position: relative; }
+  .search-wrap input {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 1px; padding: 7px 12px 7px 32px;
+    outline: none; width: 200px; transition: border-color .2s;
+  }
+  .search-wrap input:focus { border-color: var(--accent); }
+  .search-icon {
+    position: absolute; left: 10px; top: 50%;
+    transform: translateY(-50%); color: var(--muted); font-size: 12px; pointer-events: none;
+  }
+
+  .challenge-filter select {
+    background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 1px; padding: 7px 32px 7px 12px; outline: none;
+    cursor: pointer; appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23555' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 10px center;
+    transition: border-color .2s; min-width: 180px;
+  }
+  .challenge-filter select:focus { border-color: var(--accent); }
+  select option { background: #141414; }
+
+  /* ── PROOF GRID ── */
+  .proof-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── PROOF CARD ── */
+  .proof-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: border-color .2s, transform .2s;
+    position: relative;
+    animation: fadeUp .3s ease forwards;
+    opacity: 0;
+  }
+  .proof-card:hover { border-color: #252525; transform: translateY(-2px); }
+  .proof-card.status-approved { border-color: rgba(0,230,118,0.2); }
+  .proof-card.status-rejected { border-color: rgba(255,23,68,0.18); }
+  .proof-card.status-pending  { border-color: rgba(255,184,0,0.15); }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── MEDIA THUMB ── */
+  .proof-thumb {
+    width: 100%; height: 180px;
+    background: var(--surface2);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .proof-thumb-icon {
+    font-size: 52px; opacity: 0.15;
+    user-select: none;
+  }
+  .proof-status-overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 3px;
+    pointer-events: none;
+  }
+  .pso-approved { background: rgba(0,230,118,0.12); color: var(--success); }
+  .pso-rejected { background: rgba(255,23,68,0.12); color: var(--danger); }
+
+  /* day indicator */
+  .day-badge {
+    position: absolute; top: 10px; left: 10px;
+    background: var(--accent); color: #fff;
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 2px;
+    padding: 3px 10px;
+    clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 100%, 6px 100%);
+  }
+
+  /* type badge */
+  .type-badge-thumb {
+    position: absolute; bottom: 10px; right: 10px;
+    background: rgba(0,0,0,0.75);
+    border: 1px solid var(--border);
+    font-family: 'DM Mono', monospace; font-size: 9px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--muted2); padding: 3px 8px;
+  }
+
+  /* ── PROOF BODY ── */
+  .proof-body { padding: 14px 16px; }
+
+  .proof-user {
+    font-weight: 700; font-size: 15px; color: var(--text);
+    margin-bottom: 2px;
+  }
+  .proof-phone {
+    font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted2);
+    margin-bottom: 10px;
+  }
+
+  /* Proof type comparison row */
+  .proof-type-row {
+    display: flex; gap: 8px; align-items: center;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 8px 12px;
+    margin-bottom: 10px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+  }
+  .pt-label { color: var(--muted); margin-right: 2px; }
+  .pt-required { color: var(--accent2); font-weight: 600; }
+  .pt-submitted { color: var(--info); font-weight: 600; }
+  .pt-match { color: var(--success); font-size: 12px; }
+  .pt-mismatch { color: var(--danger); font-size: 12px; }
+  .pt-sep { color: var(--muted); margin: 0 4px; }
+
+  /* Challenge info row */
+  .proof-challenge-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 10px; gap: 8px;
+  }
+  .proof-challenge-name {
+    font-size: 13px; font-weight: 600; color: var(--text);
+    flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+
+  /* Stats row */
+  .proof-stats-row {
+    display: grid; grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 6px; margin-bottom: 12px;
+  }
+  .ps-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 7px 6px; text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .ps-box::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  }
+  .ps-total::before  { background: var(--muted); }
+  .ps-approved::before { background: var(--success); }
+  .ps-rejected::before { background: var(--danger); }
+  .ps-pending::before  { background: var(--pending); }
+  .ps-val {
+    font-family: 'Bebas Neue', sans-serif; font-size: 22px; line-height: 1;
+  }
+  .ps-lbl {
+    font-family: 'DM Mono', monospace; font-size: 8px;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
+    margin-top: 2px;
+  }
+  .ps-total .ps-val   { color: var(--text); }
+  .ps-approved .ps-val { color: var(--success); }
+  .ps-rejected .ps-val { color: var(--danger); }
+  .ps-pending .ps-val  { color: var(--pending); }
+
+  /* Caption */
+  .proof-caption {
+    font-size: 12px; color: var(--muted2); font-style: italic;
+    margin-bottom: 10px; line-height: 1.5;
+    border-left: 2px solid var(--border); padding-left: 8px;
+    max-height: 48px; overflow: hidden;
+  }
+
+  /* Time */
+  .proof-time {
+    font-family: 'DM Mono', monospace; font-size: 9px; color: #2e2e2e;
+    margin-bottom: 12px;
+  }
+
+  /* Actions */
+  .proof-actions {
+    display: flex; gap: 0;
+    border-top: 1px solid var(--border);
+  }
+  .proof-actions button {
+    flex: 1; padding: 10px; border: none; cursor: pointer;
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px; letter-spacing: 1.5px;
+    transition: all .2s;
+  }
+  .btn-approve { background: rgba(0,230,118,0.07); color: var(--success); border-right: 1px solid var(--border); }
+  .btn-approve:hover { background: rgba(0,230,118,0.18); }
+  .btn-reject  { background: rgba(255,23,68,0.05); color: var(--danger); }
+  .btn-reject:hover  { background: rgba(255,23,68,0.14); }
+  .already-reviewed {
+    padding: 10px 12px; border-top: 1px solid var(--border);
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    color: var(--muted); letter-spacing: 1px; text-align: center;
+  }
+  .already-reviewed.approved { color: var(--success); }
+  .already-reviewed.rejected { color: var(--danger); }
+
+  /* ── EMPTY STATE ── */
+  .empty {
+    grid-column: 1/-1;
+    text-align: center; padding: 60px 20px;
+    color: var(--muted); font-family: 'DM Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  }
+  .empty .big {
+    font-family: 'Bebas Neue', sans-serif; font-size: 56px;
+    display: block; color: #161616; margin-bottom: 8px;
+  }
+
+  /* ── LOADING ── */
+  .loading-overlay {
+    grid-column: 1/-1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 60px;
+    gap: 12px;
+    font-family: 'DM Mono', monospace; font-size: 11px;
+    letter-spacing: 2px; color: var(--muted);
+  }
+  .loader {
+    width: 18px; height: 18px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+  }
+
+  /* ── REJECT MODAL ── */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.8);
+    z-index: 900; display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity .25s;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+    width: min(460px, 90vw);
+    transform: translateY(12px); transition: transform .25s;
+  }
+  .modal-overlay.open .modal { transform: translateY(0); }
+  .modal-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px; letter-spacing: 2px; margin-bottom: 6px;
+    color: var(--danger);
+  }
+  .modal-sub {
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 1.5px; color: var(--muted); margin-bottom: 18px;
+  }
+  .modal textarea {
+    width: 100%; background: var(--surface2); border: 1px solid var(--border);
+    color: var(--text); font-family: 'Barlow', sans-serif; font-size: 14px;
+    padding: 12px 14px; resize: none; height: 100px; outline: none;
+    transition: border-color .2s; line-height: 1.6; margin-bottom: 14px;
+  }
+  .modal textarea:focus { border-color: var(--danger); }
+  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
+  .btn-cancel {
+    background: transparent; border: 1px solid var(--border);
+    color: var(--muted); padding: 9px 20px;
+    font-family: 'DM Mono', monospace; font-size: 10px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    cursor: pointer; transition: all .2s;
+  }
+  .btn-cancel:hover { border-color: var(--text); color: var(--text); }
+  .btn-confirm-reject {
+    background: var(--danger); color: #fff; border: none;
+    padding: 9px 20px;
+    font-family: 'Bebas Neue', sans-serif; font-size: 16px; letter-spacing: 2px;
+    cursor: pointer; transition: background .2s;
+  }
+  .btn-confirm-reject:hover { background: #d50000; }
+
+  /* ── TOAST ── */
+  #toast {
+    position: fixed; bottom: 24px; right: 24px;
+    padding: 12px 18px;
+    font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 1px;
+    border-left: 3px solid var(--success);
+    background: #111; color: var(--text);
+    transform: translateY(60px); opacity: 0;
+    transition: all .35s cubic-bezier(.16,1,.3,1); z-index: 9999;
+    max-width: 320px;
+  }
+  #toast.show { transform: translateY(0); opacity: 1; }
+  #toast.err  { border-color: var(--danger); }
+  #toast.info { border-color: var(--info); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .content { padding: 20px 16px; }
+    .topbar { padding: 0 16px; }
+  }
+  @media (max-width: 560px) {
+    .stats-bar { grid-template-columns: 1fr 1fr; }
+    .proof-grid { grid-template-columns: 1fr; }
+    .proof-stats-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<header class="topbar">
+  <div class="topbar-left">
+    <a href="/admin/dashboard" class="back-btn">← DASHBOARD</a>
+    <div class="logo">Beast<span>Life</span><small>PROOF REVIEW</small></div>
+  </div>
+  <div class="topbar-right">
+    <button class="icon-btn" id="refreshBtn" onclick="loadAll()" title="Refresh">↻</button>
+  </div>
+</header>
+
+<div class="content">
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-pill sp-all" onclick="setFilter('all')">
+      <div class="sp-val" id="st-total">—</div>
+      <div class="sp-label">Total Proofs</div>
+    </div>
+    <div class="stat-pill sp-pending" onclick="setFilter('PENDING')">
+      <div class="sp-val" id="st-pending">—</div>
+      <div class="sp-label">Pending Review</div>
+    </div>
+    <div class="stat-pill sp-approved" onclick="setFilter('APPROVED')">
+      <div class="sp-val" id="st-approved">—</div>
+      <div class="sp-label">Approved</div>
+    </div>
+    <div class="stat-pill sp-rejected" onclick="setFilter('REJECTED')">
+      <div class="sp-val" id="st-rejected">—</div>
+      <div class="sp-label">Rejected</div>
+    </div>
+  </div>
+
+  <!-- TOOLBAR -->
+  <div class="toolbar">
+    <div class="toolbar-left">
+      <button class="filter-btn active" onclick="setFilter('all', this)">All</button>
+      <button class="filter-btn" onclick="setFilter('PENDING', this)">Pending</button>
+      <button class="filter-btn" onclick="setFilter('APPROVED', this)">Approved</button>
+      <button class="filter-btn" onclick="setFilter('REJECTED', this)">Rejected</button>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
+      <div class="challenge-filter">
+        <select id="challengeFilter" onchange="applyFilters()">
+          <option value="">All Challenges</option>
+        </select>
+      </div>
+      <div class="search-wrap">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Search user..." oninput="applyFilters()" />
+      </div>
+    </div>
+  </div>
+
+  <!-- PROOF GRID -->
+  <div class="proof-grid" id="proofGrid">
+    <div class="loading-overlay"><div class="loader"></div> Loading proofs...</div>
+  </div>
+
+</div>
+
+<!-- REJECT REASON MODAL -->
+<div class="modal-overlay" id="rejectModal">
+  <div class="modal">
+    <div class="modal-title">❌ Reject Proof</div>
+    <div class="modal-sub" id="rejectModalSub">USER — Day X — Challenge</div>
+    <textarea id="rejectReason" placeholder="Reason for rejection (optional — sent to user via WhatsApp)..."></textarea>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeRejectModal()">CANCEL</button>
+      <button class="btn-confirm-reject" onclick="confirmReject()">CONFIRM REJECT</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
+
+<script>
+// ── State ─────────────────────────────────────────────────────
+let allProofs      = [];
+let filteredProofs = [];
+let currentStatus  = 'all';
+let pendingRejectId = null;
+
+// ── Toast ─────────────────────────────────────────────────────
+function showToast(msg, type = 'ok') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = type === 'err' ? 'show err' : type === 'info' ? 'show info' : 'show';
+  clearTimeout(t._t);
+  t._t = setTimeout(() => t.className = '', 4000);
+}
+
+// ── Load ──────────────────────────────────────────────────────
+async function loadAll() {
+  const rb = document.getElementById('refreshBtn');
+  rb.classList.add('spinning');
+  document.getElementById('proofGrid').innerHTML = '<div class="loading-overlay"><div class="loader"></div> Loading proofs...</div>';
+  try {
+    const [proofsRes, statsRes] = await Promise.all([
+      fetch('/admin/api/proofs'),
+      fetch('/admin/api/proofs/stats'),
+    ]);
+    allProofs = await proofsRes.json();
+    const stats = await statsRes.json();
+
+    // Update stat pills
+    document.getElementById('st-total').textContent    = stats.total    || 0;
+    document.getElementById('st-pending').textContent  = stats.pending  || 0;
+    document.getElementById('st-approved').textContent = stats.approved || 0;
+    document.getElementById('st-rejected').textContent = stats.rejected || 0;
+
+    populateChallengeFilter();
+    applyFilters();
+  } catch(err) {
+    document.getElementById('proofGrid').innerHTML = `<div class="empty"><span class="big">ERROR</span>${err.message}</div>`;
+    showToast('Load failed: ' + err.message, 'err');
+  } finally {
+    rb.classList.remove('spinning');
+  }
+}
+
+// ── Populate challenge dropdown ────────────────────────────────
+function populateChallengeFilter() {
+  const keys = [...new Set(allProofs.map(p => p.challengeKey))];
+  const names = {};
+  allProofs.forEach(p => { names[p.challengeKey] = p.challengeName || p.challengeKey; });
+
+  const sel = document.getElementById('challengeFilter');
+  const cur = sel.value;
+  sel.innerHTML = '<option value="">All Challenges</option>' +
+    keys.map(k => `<option value="${k}" ${k===cur?'selected':''}>${names[k]}</option>`).join('');
+}
+
+// ── Filter + Search ────────────────────────────────────────────
+function setFilter(status, btn) {
+  currentStatus = status;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  // Also highlight the stat pill
+  document.querySelectorAll('.stat-pill').forEach(p => p.classList.remove('active'));
+  const pillMap = { all: 0, PENDING: 1, APPROVED: 2, REJECTED: 3 };
+  document.querySelectorAll('.stat-pill')[pillMap[status] ?? 0]?.classList.add('active');
+  applyFilters();
+}
+
+function applyFilters() {
+  const q          = (document.getElementById('searchInput').value || '').toLowerCase();
+  const challenge  = document.getElementById('challengeFilter').value;
+
+  filteredProofs = allProofs.filter(p => {
+    const matchStatus    = currentStatus === 'all' || p.status === currentStatus;
+    const matchChallenge = !challenge || p.challengeKey === challenge;
+    const matchSearch    = !q || (p.userName||'').toLowerCase().includes(q) || p.phone.includes(q);
+    return matchStatus && matchChallenge && matchSearch;
+  });
+
+  renderProofs(filteredProofs);
+}
+
+// ── Render ─────────────────────────────────────────────────────
+function renderProofs(list) {
+  if (!list.length) {
+    document.getElementById('proofGrid').innerHTML = `
+      <div class="empty"><span class="big">EMPTY</span>No proofs match your filter.</div>`;
+    return;
+  }
+
+  document.getElementById('proofGrid').innerHTML = list.map((p, i) => buildProofCard(p, i)).join('');
+}
+
+function buildProofCard(p, idx) {
+  const statusClass = p.status.toLowerCase();
+  const typeIcon = { video: '🎥', photo: '📷', audio: '🎙️', document: '📄', other: '📁' };
+  const icon = typeIcon[p.submittedProofType] || '📁';
+
+  // Check if submitted type matches required type
+  const typeMatch = checkTypeMatch(p.requiredProofType, p.submittedProofType);
+  const matchIcon = typeMatch ? '✓' : '⚠';
+  const matchClass = typeMatch ? 'pt-match' : 'pt-mismatch';
+
+  const stats = p.stats || { total: 0, approved: 0, rejected: 0, pending: 0 };
+
+  const submittedTime = p.submittedAt ? timeSince(new Date(p.submittedAt)) : '—';
+  const reviewedTime  = p.reviewedAt  ? `Reviewed ${timeSince(new Date(p.reviewedAt))}` : '';
+
+  const delay = Math.min(idx * 0.04, 0.5);
+
+  return `
+  <div class="proof-card status-${statusClass}" style="animation-delay:${delay}s">
+
+    <!-- Thumb -->
+    <div class="proof-thumb">
+      <div class="proof-thumb-icon">${icon}</div>
+      <div class="day-badge">DAY ${p.dayNumber || '?'}</div>
+      <div class="type-badge-thumb">${p.submittedProofType?.toUpperCase() || 'MEDIA'}</div>
+      ${p.status !== 'PENDING' ? `
+      <div class="proof-status-overlay pso-${statusClass}">${p.status}</div>` : ''}
+    </div>
+
+    <!-- Body -->
+    <div class="proof-body">
+
+      <!-- User -->
+      <div class="proof-user">${esc(p.userName || 'Unknown')}</div>
+      <div class="proof-phone">${p.phone}</div>
+
+      <!-- Challenge -->
+      <div class="proof-challenge-row">
+        <div class="proof-challenge-name">🔥 ${esc(p.challengeName || p.challengeKey)}</div>
+      </div>
+
+      <!-- Proof Type Comparison -->
+      <div class="proof-type-row">
+        <span class="pt-label">Required:</span>
+        <span class="pt-required">${formatProofType(p.requiredProofType)}</span>
+        <span class="pt-sep">│</span>
+        <span class="pt-label">Got:</span>
+        <span class="pt-submitted">${p.submittedProofType || '?'}</span>
+        <span class="${matchClass}">&nbsp;${matchIcon}</span>
+      </div>
+
+      <!-- Per-challenge Stats for this user -->
+      <div class="proof-stats-row">
+        <div class="ps-box ps-total">
+          <div class="ps-val">${stats.total}</div>
+          <div class="ps-lbl">Total</div>
+        </div>
+        <div class="ps-box ps-approved">
+          <div class="ps-val">${stats.approved}</div>
+          <div class="ps-lbl">Approved</div>
+        </div>
+        <div class="ps-box ps-rejected">
+          <div class="ps-val">${stats.rejected}</div>
+          <div class="ps-lbl">Rejected</div>
+        </div>
+        <div class="ps-box ps-pending">
+          <div class="ps-val">${stats.pending}</div>
+          <div class="ps-lbl">Pending</div>
+        </div>
+      </div>
+
+      ${p.caption ? `<div class="proof-caption">"${esc(p.caption)}"</div>` : ''}
+
+      <div class="proof-time">Submitted ${submittedTime}${reviewedTime ? ` · ${reviewedTime}` : ''}</div>
+      ${p.reviewNote ? `<div class="proof-caption" style="border-color:var(--danger);color:var(--danger);">Reason: ${esc(p.reviewNote)}</div>` : ''}
+
+    </div>
+
+    <!-- Actions -->
+    ${p.status === 'PENDING' ? `
+    <div class="proof-actions">
+      <button class="btn-approve" onclick="approveProof('${p._id}', '${esc(p.userName||'User')}', ${p.dayNumber})">✓ APPROVE</button>
+      <button class="btn-reject"  onclick="openRejectModal('${p._id}', '${esc(p.userName||'User')}', ${p.dayNumber}, '${esc(p.challengeName||'')}')">✕ REJECT</button>
+    </div>` : `
+    <div class="already-reviewed ${statusClass}">
+      ${p.status === 'APPROVED' ? '✓ Approved' : '✕ Rejected'}${reviewedTime ? ` · ${reviewedTime}` : ''}
+    </div>`}
+
+  </div>`;
+}
+
+// ── Approve ────────────────────────────────────────────────────
+async function approveProof(id, userName, day) {
+  try {
+    const res = await fetch(`/admin/proofs/${id}/review`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'APPROVED' }),
+    });
+    if (!res.ok) throw new Error((await res.json()).error);
+
+    // Update local state
+    const proof = allProofs.find(p => p._id === id);
+    if (proof) { proof.status = 'APPROVED'; proof.reviewedAt = new Date().toISOString(); }
+
+    showToast(`✅ Proof approved — ${userName} Day ${day}`);
+    applyFilters();
+    // refresh stats
+    loadStats();
+  } catch(err) {
+    showToast('Approve failed: ' + err.message, 'err');
+  }
+}
+
+// ── Reject Modal ───────────────────────────────────────────────
+function openRejectModal(id, userName, day, challengeName) {
+  pendingRejectId = id;
+  document.getElementById('rejectModalSub').textContent = `${userName} — Day ${day} — ${challengeName}`;
+  document.getElementById('rejectReason').value = '';
+  document.getElementById('rejectModal').classList.add('open');
+}
+function closeRejectModal() {
+  document.getElementById('rejectModal').classList.remove('open');
+  pendingRejectId = null;
+}
+
+async function confirmReject() {
+  if (!pendingRejectId) return;
+  const reason = document.getElementById('rejectReason').value.trim();
+  try {
+    const res = await fetch(`/admin/proofs/${pendingRejectId}/review`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'REJECTED', reason }),
+    });
+    if (!res.ok) throw new Error((await res.json()).error);
+
+    const proof = allProofs.find(p => p._id === pendingRejectId);
+    if (proof) {
+      proof.status = 'REJECTED';
+      proof.reviewNote = reason;
+      proof.reviewedAt = new Date().toISOString();
+    }
+
+    closeRejectModal();
+    showToast('❌ Proof rejected — user notified', 'err');
+    applyFilters();
+    loadStats();
+  } catch(err) {
+    showToast('Reject failed: ' + err.message, 'err');
+  }
+}
+
+// ── Reload just stats numbers ──────────────────────────────────
+async function loadStats() {
+  try {
+    const stats = await (await fetch('/admin/api/proofs/stats')).json();
+    document.getElementById('st-total').textContent    = stats.total    || 0;
+    document.getElementById('st-pending').textContent  = stats.pending  || 0;
+    document.getElementById('st-approved').textContent = stats.approved || 0;
+    document.getElementById('st-rejected').textContent = stats.rejected || 0;
+  } catch(_) {}
+}
+
+// ── Helpers ────────────────────────────────────────────────────
+function checkTypeMatch(required, submitted) {
+  if (required === 'video_or_photo') return submitted === 'video' || submitted === 'photo';
+  return required === submitted;
+}
+
+function formatProofType(t) {
+  const m = { video: 'video 🎥', photo: 'photo 📷', video_or_photo: 'video/photo' };
+  return m[t] || t || '—';
+}
+
+function timeSince(date) {
+  const sec = Math.floor((Date.now() - date) / 1000);
+  if (sec < 60)   return `${sec}s ago`;
+  if (sec < 3600) return `${Math.floor(sec/60)}m ago`;
+  if (sec < 86400) return `${Math.floor(sec/3600)}h ago`;
+  return `${Math.floor(sec/86400)}d ago`;
+}
+
+function esc(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;')
+    .replace(/'/g,'&#39;');
+}
+
+// ── Close modal on overlay click ──────────────────────────────
+document.getElementById('rejectModal').addEventListener('click', function(e) {
+  if (e.target === this) closeRejectModal();
+});
+
+// ── Init ──────────────────────────────────────────────────────
+loadAll();
+</script>
+</body>
+</html>
