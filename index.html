@@ -11,7 +11,7 @@
   --black:#0A0A0A;--dark:#111;
   --white:#ffffff;--off:#F7F6F3;--card:#FAFAF8;
   --border:#E8E5DF;--border2:#D4D0C8;
-  --amber:#E8920A;--amber-d:#C07800;--amber-light:#FFF4E0;
+  --amber: #3dc4e1;--amber-d:#0799b9;--amber-light:#FFF4E0;
   --text:#111111;--muted:#666;--muted2:#999;
   --green:#00A651;--blue:#1A56DB;
 }
@@ -31,7 +31,17 @@ body{background:var(--white);color:var(--text);overflow-x:hidden}
 .nav-cta:hover{background:var(--amber-d)}
 
 /* ── HERO ── */
-#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 2.5rem 0;position:relative;overflow:hidden;background:var(--off);margin-top:64px}
+#hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:0 2.5rem 0;
+  position:relative;
+  overflow:hidden;
+  background:var(--off);
+  margin-top:64px
+}
 .hero-bg-grid{display: none;position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;opacity:.6}
 .hero-content{position:relative;z-index:1;padding-bottom:3rem; padding: 10px;}
 .hero-overline{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px}
@@ -200,13 +210,18 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
   object-position: center;
   display: block;
 }
+
+.Zorko {
+  width: 120px;
+  height: auto;
+}
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">ZORKO</div>
+  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})"><img class="Zorko" src="./Zorko Logo-Photoroom.png" alt=""></div>
   <div class="nav-links">
     <a class="nav-link" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Products</a>
     <a class="nav-link" onclick="document.getElementById('usecases').scrollIntoView({behavior:'smooth'})">Solutions</a>
@@ -259,6 +274,7 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
     <button class="sn-btn" onclick="showSeries('transparent',this)">Transparent</button>
     <button class="sn-btn" onclick="showSeries('mobile',this)">Mobile Ads</button>
     <button class="sn-btn" onclick="showSeries('poster',this)">Posters</button>
+    <button class="sn-btn" onclick="showSeries('flagship',this)">FlagShip</button>
   </div>
 
   <!-- INDOOR -->
@@ -561,6 +577,91 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
 
     </div>
   </div>
+
+  <!-- FlagShip -->
+  <div class="series-panel" id="sp-flagship">
+    <div class="series-grid">
+
+      <div class="prod-card">
+        <span class="pc-env env-indoor">Indoor</span>
+        <div class="product-img-box" class="pc-img-wrap">
+          <div class="pc-img-placeholder"><img src="./DIE-CASTING Cabinet LED Display Screen.webp" alt="" class="product-img"></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-series">DIE-CASTING Cabinet LED Display Screen</div>
+          <!-- <div class="pc-name">HX-PSVP641.86 / 642 / 642.5</div> -->
+          <div class="pc-desc">All-in-one indoor LED poster. Plug-and-play. Use solo or combine multiple units into a larger display wall. Phone, computer, or tablet control. Iron cabinet build, rear service.</div>
+          <div class="pc-specs">
+            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.86 – 2.5 mm</div></div>
+            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">640×1920 mm</div></div>
+            <div class="spec-item"><div class="spec-k">Design</div><div class="spec-v">Plug & Play</div></div>
+            <div class="spec-item"><div class="spec-k">Life Span</div><div class="spec-v">100,000 hrs</div></div>
+          </div>
+          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <span class="pc-env env-outdoor">Outdoor</span>
+        <div class="product-img-box" class="pc-img-wrap">
+          <div class="pc-img-placeholder"><img src="./640x640mm Indoor Die Cast LED Cabinet.webp" alt="" class="product-img"></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-series">640x640mm Indoor Die Cast LED Cabinet</div>
+          <!-- <div class="pc-name">HX-PSSV1.38 / 1.85 / 2.5 / 3.12</div> -->
+          <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP65 rated for all-weather street advertising.</div>
+          <div class="pc-specs">
+            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">2.9 – 4.9 mm</div></div>
+            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
+            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
+            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
+          </div>
+          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <span class="pc-env env-outdoor">Outdoor</span>
+        <div class="product-img-box" class="pc-img-wrap">
+          <div class="pc-img-placeholder"><img src="./960x960 mm LED video wall Die Cast Cabinets.webp" alt="" class="product-img"></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-series">960x960 mm LED video wall Die Cast Cabinets</div>
+          <!-- <div class="pc-name">HX-PSSV1.38 / 1.85 / 2.5 / 3.12</div> -->
+          <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP65 rated for all-weather street advertising.</div>
+          <div class="pc-specs">
+            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">3 – 5 mm</div></div>
+            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
+            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
+            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
+          </div>
+          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+        </div>
+      </div>
+
+      <div class="prod-card">
+        <span class="pc-env env-outdoor">Outdoor</span>
+        <div class="product-img-box" class="pc-img-wrap">
+          <div class="pc-img-placeholder"><img src="./Outdoor Fixed Installation P4.44 4K LED Display 5500-8000nits High Brightness IP66 Waterproof 16-Bit Color Sunlight Readable.avif" alt="" class="product-img"></div>
+        </div>
+        <div class="pc-body">
+          <div class="pc-series">Outdoor P4.44 4K LED Display, 8000nits, IP66, 16-bit</div>
+          <!-- <div class="pc-name">HX-PSSV1.38 / 1.85 / 2.5 / 3.12</div> -->
+          <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP65 rated for all-weather street advertising.</div>
+          <div class="pc-specs">
+            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.38 – 3.12 mm</div></div>
+            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
+            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
+            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
+          </div>
+          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
 </section>
 
 <!-- USE CASES -->
