@@ -11,53 +11,76 @@
   --black:#0A0A0A;--dark:#111;
   --white:#ffffff;--off:#F7F6F3;--card:#FAFAF8;
   --border:#E8E5DF;--border2:#D4D0C8;
-  --amber: #3dc4e1;--amber-d:#0799b9;--amber-light:#FFF4E0;
+  --amber:#3dc4e1;--amber-d:#0799b9;--amber-light:#e0f7fc;
   --text:#111111;--muted:#666;--muted2:#999;
   --green:#00A651;--blue:#1A56DB;
 }
 html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--text);overflow-x:hidden}
+body{background:var(--white);color:var(--text);overflow-x:hidden;font-family:'Barlow',sans-serif}
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:#f0f0f0}
 ::-webkit-scrollbar-thumb{background:var(--amber)}
 
 /* ── NAV ── */
-#nav{position:fixed;top:0;left:0;right:0;z-index:999;background:rgba(255,255,255,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 2.5rem;display:flex;align-items:center;justify-content:space-between;height:64px}
-.nav-logo{font-size:1.8rem;letter-spacing:4px;color:var(--amber);cursor:pointer}
+#nav{
+  position:fixed;top:0;left:0;right:0;z-index:999;
+  background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:0 2.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.nav-logo{cursor:pointer;display:flex;align-items:center}
 .nav-links{display:flex;gap:2.5rem;align-items:center}
 .nav-link{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .15s;text-decoration:none}
 .nav-link:hover{color:var(--text)}
-.nav-cta{background:var(--amber);color:#fff;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:10px 24px;border:none;cursor:pointer;transition:background .15s}
+.nav-cta{background:var(--amber);color:#fff;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;border:none;cursor:pointer;transition:background .15s;white-space:nowrap}
 .nav-cta:hover{background:var(--amber-d)}
+
+/* Hamburger */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;cursor:pointer;gap:5px;background:none;border:none;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);transition:all .25s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile drawer */
+.nav-drawer{
+  display:none;
+  position:fixed;top:64px;left:0;right:0;z-index:998;
+  background:#fff;border-bottom:2px solid var(--amber);
+  padding:1.5rem 2rem 2rem;
+  flex-direction:column;gap:0;
+  box-shadow:0 8px 32px rgba(0,0,0,0.08);
+}
+.nav-drawer.open{display:flex}
+.nav-drawer .nav-link{font-size:14px;letter-spacing:3px;padding:14px 0;border-bottom:1px solid var(--border);color:var(--text)}
+.nav-drawer .nav-link:last-child{border-bottom:none}
+.nav-drawer .nav-cta{margin-top:1.2rem;width:100%;padding:14px;font-size:14px;text-align:center}
 
 /* ── HERO ── */
 #hero{
   min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-end;
-  padding:0 2.5rem 0;
-  position:relative;
-  overflow:hidden;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;overflow:hidden;
   background:var(--off);
-  margin-top:64px
+  margin-top:64px;
 }
-.hero-bg-grid{display: none;position:absolute;inset:0;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:64px 64px;opacity:.6}
-.hero-content{position:relative;z-index:1;padding-bottom:3rem; padding: 10px;}
-.hero-overline{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px}
-.hero-overline::before{content:'';display:block;width:28px;height:2px;background:var(--amber)}
-.hero-h1{font-size:100px;line-height:.9;letter-spacing:2px;margin-bottom:1.8rem;color:var(--black)}
+.hero-content{position:relative;z-index:1;padding:2.5rem 2.5rem 0}
+.hero-overline{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.hero-overline::before{content:'';display:block;width:28px;height:2px;background:var(--amber);flex-shrink:0}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(60px,13vw,120px);line-height:.9;letter-spacing:2px;margin-bottom:1.8rem;color:var(--black)}
 .hero-h1 .hl{color:var(--amber)}
-.hero-sub{font-size:17px;color:var(--muted);max-width:560px;line-height:1.8;font-weight:300;margin-bottom:2.5rem}
+.hero-sub{font-size:clamp(14px,2vw,17px);color:var(--muted);max-width:560px;line-height:1.8;font-weight:300;margin-bottom:2.5rem}
 .hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:3rem}
-.btn-primary{background:var(--amber);color:#fff;font-weight:700;font-size:14px;letter-spacing:3px;text-transform:uppercase;padding:16px 36px;border:none;cursor:pointer;transition:all .15s}
+.btn-primary{background:var(--amber);color:#fff;font-weight:700;font-size:14px;letter-spacing:3px;text-transform:uppercase;padding:16px 32px;border:none;cursor:pointer;transition:all .15s}
 .btn-primary:hover{background:var(--amber-d);transform:translateY(-1px)}
-.btn-ghost{background:transparent;color:var(--text);font-weight:600;font-size:14px;letter-spacing:3px;text-transform:uppercase;padding:15px 36px;border:1.5px solid var(--border2);cursor:pointer;transition:all .15s}
+.btn-ghost{background:transparent;color:var(--text);font-weight:600;font-size:14px;letter-spacing:3px;text-transform:uppercase;padding:15px 32px;border:1.5px solid var(--border2);cursor:pointer;transition:all .15s}
 .btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
 .hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--border);border-top:1px solid var(--border)}
 .hm{background:var(--white);padding:1.5rem 1.2rem;border-right:1px solid var(--border)}
 .hm:last-child{border-right:none}
-.hm-num{font-size:2.2rem;color:var(--amber);letter-spacing:2px}
+.hm-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--amber);letter-spacing:2px}
 .hm-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px}
 
 /* ── TICKER ── */
@@ -71,25 +94,26 @@ body{background:var(--white);color:var(--text);overflow-x:hidden}
 section{padding:5rem 2.5rem}
 .sec-over{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;display:flex;align-items:center;gap:10px}
 .sec-over::before{content:'';display:block;width:20px;height:2px;background:var(--amber)}
-.sec-h2{font-size:clamp(2.2rem,4vw,3.8rem);letter-spacing:2px;line-height:1;margin-bottom:.5rem;color:var(--black)}
+.sec-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.8rem);letter-spacing:2px;line-height:1;margin-bottom:.5rem;color:var(--black)}
 .sec-sub{font-size:14px;color:var(--muted);line-height:1.75;max-width:560px;font-weight:300;margin-bottom:3rem}
 
 /* ── PRODUCTS ── */
 #products{background:var(--white)}
-.series-nav{display:flex;gap:0;margin-bottom:3rem;border:1.5px solid var(--border);overflow-x:auto;width:fit-content}
-.sn-btn{background:transparent;color:var(--muted);border:none;border-right:1px solid var(--border);padding:11px 22px;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .15s}
+.series-nav{display:flex;gap:0;margin-bottom:3rem;border:1.5px solid var(--border);overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch}
+.series-nav::-webkit-scrollbar{height:2px}
+.series-nav::-webkit-scrollbar-thumb{background:var(--amber)}
+.sn-btn{background:transparent;color:var(--muted);border:none;border-right:1px solid var(--border);padding:12px 20px;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0}
 .sn-btn:last-child{border-right:none}
 .sn-btn.active,.sn-btn:hover{background:var(--amber);color:#fff}
-.series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1px;background:var(--border)}
+.series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border)}
 .prod-card{background:var(--white);overflow:hidden;cursor:pointer;transition:background .2s;position:relative}
 .prod-card:hover{background:var(--card)}
-.prod-card:hover .pc-img{transform:scale(1.04)}
-.pc-img-wrap{height:200px;overflow:hidden;background:var(--off);display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--border)}
-.pc-img{width:100%;height:100%;object-fit:contain;padding:1.5rem;transition:transform .3s}
-.pc-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;letter-spacing:3px;color:var(--muted2)}
+.prod-card:hover .product-img{transform:scale(1.04)}
+.product-img-box{width:100%;height:220px;display:flex;align-items:center;justify-content:center;background:#f7f6f3;overflow:hidden;padding:12px;border-bottom:1px solid var(--border)}
+.product-img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;transition:transform .3s}
 .pc-body{padding:1.4rem}
 .pc-series{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem}
-.pc-name{font-weight:700;font-size:1.15rem;letter-spacing:1px;margin-bottom:.5rem;color:var(--black)}
+.pc-name{font-weight:700;font-size:1.1rem;letter-spacing:1px;margin-bottom:.5rem;color:var(--black)}
 .pc-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:1rem}
 .pc-specs{display:grid;grid-template-columns:1fr 1fr;gap:6px}
 .spec-item{background:var(--off);padding:7px 10px;border:1px solid var(--border)}
@@ -98,7 +122,7 @@ section{padding:5rem 2.5rem}
 .pc-env{position:absolute;top:10px;right:10px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px}
 .env-indoor{color:var(--blue);background:rgba(26,86,219,.08);border:1px solid rgba(26,86,219,.2)}
 .env-outdoor{color:var(--green);background:rgba(0,166,81,.08);border:1px solid rgba(0,166,81,.2)}
-.env-both{color:var(--amber);background:var(--amber-light);border:1px solid rgba(232,146,10,.25)}
+.env-both{color:var(--amber);background:var(--amber-light);border:1px solid rgba(61,196,225,.3)}
 .pc-cta{width:100%;background:transparent;border:1.5px solid var(--border2);color:var(--muted);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:11px;margin-top:1rem;cursor:pointer;transition:all .15s}
 .pc-cta:hover{background:var(--amber);color:#fff;border-color:var(--amber)}
 .series-panel{display:none}
@@ -106,7 +130,7 @@ section{padding:5rem 2.5rem}
 
 /* ── USE CASES ── */
 #usecases{background:var(--off)}
-.uc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:var(--border)}
+.uc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border)}
 .uc-item{background:var(--white);padding:2rem;transition:background .2s}
 .uc-item:hover{background:var(--card)}
 .uc-icon{font-size:2rem;margin-bottom:1rem;display:block}
@@ -120,7 +144,7 @@ section{padding:5rem 2.5rem}
 .step::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:transparent;transition:background .2s}
 .step:hover::before{background:var(--amber)}
 .step:hover{background:var(--off)}
-.step-num{font-size:4rem;color:var(--border);line-height:1;margin-bottom:.5rem}
+.step-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--border);line-height:1;margin-bottom:.5rem}
 .step-title{font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;color:var(--black)}
 .step-desc{font-size:12px;color:var(--muted);line-height:1.65}
 
@@ -129,7 +153,7 @@ section{padding:5rem 2.5rem}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:3rem}
 .why-item{background:var(--white);padding:2rem;display:flex;gap:1rem;align-items:flex-start;transition:background .2s}
 .why-item:hover{background:var(--card)}
-.why-icon-box{width:40px;height:40px;background:var(--amber-light);border:1px solid rgba(232,146,10,.25);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.why-icon-box{width:40px;height:40px;background:var(--amber-light);border:1px solid rgba(61,196,225,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
 .why-text h4{font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem;color:var(--black)}
 .why-text p{font-size:12px;color:var(--muted);line-height:1.65}
 
@@ -137,7 +161,7 @@ section{padding:5rem 2.5rem}
 #rental{background:var(--black);padding:4rem 2.5rem}
 .rental-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
 .rental-badge{display:inline-block;background:var(--amber);color:#fff;font-size:.9rem;letter-spacing:3px;padding:4px 14px;margin-bottom:1rem}
-.rental-h{font-size:clamp(2rem,4vw,3.2rem);letter-spacing:2px;margin-bottom:.5rem;color:var(--white)}
+.rental-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:2px;margin-bottom:.5rem;color:var(--white)}
 .rental-sub{font-size:14px;color:#888;line-height:1.75;max-width:520px}
 .rental-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.2rem}
 .r-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #333;padding:5px 12px;color:#888}
@@ -154,23 +178,23 @@ section{padding:5rem 2.5rem}
 .trust-text p{font-size:12px;color:var(--muted);line-height:1.55}
 .ff{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
 .ff label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:600}
-.ff input,.ff select,.ff textarea{background:var(--white);border:1.5px solid var(--border);color:var(--text);padding:12px 14px;font-size:14px;outline:none;transition:border-color .2s;border-radius:0;-webkit-appearance:none;width:100%}
+.ff input,.ff select,.ff textarea{background:var(--white);border:1.5px solid var(--border);color:var(--text);padding:12px 14px;font-size:14px;outline:none;transition:border-color .2s;border-radius:0;-webkit-appearance:none;width:100%;font-family:'Barlow',sans-serif}
 .ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--amber)}
-.ff select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.ff select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
 .ff textarea{height:110px;resize:none}
 .ff-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.submit-btn{background:var(--amber);color:#fff;font-size:1.4rem;letter-spacing:4px;border:none;padding:18px;cursor:pointer;width:100%;transition:all .15s;margin-top:4px}
+.submit-btn{background:var(--amber);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:4px;border:none;padding:18px;cursor:pointer;width:100%;transition:all .15s;margin-top:4px}
 .submit-btn:hover{background:var(--amber-d)}
 .form-note{font-size:11px;color:var(--muted2);text-align:center;margin-top:8px;letter-spacing:.5px}
 .form-success{display:none;background:#f0fdf4;border:1.5px solid rgba(0,166,81,.2);padding:2.5rem;text-align:center}
 .form-success.show{display:block}
 .fs-icon{font-size:2.5rem;margin-bottom:.5rem}
-.fs-title{font-size:2.2rem;letter-spacing:3px;color:var(--green)}
+.fs-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:3px;color:var(--green)}
 .fs-sub{font-size:13px;color:var(--muted);margin-top:.5rem;line-height:1.6}
 
 /* ── FOOTER ── */
 footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid #1a1a1a}
-.f-logo{font-size:1.6rem;letter-spacing:4px;color:var(--amber)}
+.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:4px;color:var(--amber)}
 .f-tagline{font-size:10px;color:#555;letter-spacing:3px;text-transform:uppercase;margin-top:4px}
 .f-copy{font-size:11px;color:#555;letter-spacing:1px;text-align:right}
 
@@ -179,41 +203,109 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
 .live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 1.5s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
-/* divider */
-.divider{height:1px;background:var(--border);margin:0}
+.Zorko{width:110px;height:auto;display:block}
 
-@media(max-width:768px){
-  .hero-metrics{grid-template-columns:repeat(2,1fr)}
-  .why-grid{grid-template-columns:1fr}
-  .form-layout{grid-template-columns:1fr}
-  .rental-inner{grid-template-columns:1fr}
+/* ================================================================
+   RESPONSIVE BREAKPOINTS
+   ================================================================ */
+
+/* --- Tablet: ≤ 900px --- */
+@media(max-width:900px){
   .nav-links{display:none}
+  .nav-hamburger{display:flex}
   #nav{padding:0 1.5rem}
-  section{padding:3.5rem 1.5rem}
+
+  .hero-content{padding:2rem 1.5rem 0}
+  .hero-actions .btn-ghost{display:none}
+
+  .hero-metrics{grid-template-columns:repeat(2,1fr)}
+  .hm:nth-child(2){border-right:none}
+  .hm:nth-child(3){border-top:1px solid var(--border)}
+  .hm:nth-child(4){border-top:1px solid var(--border)}
+
+  .form-layout{grid-template-columns:1fr;gap:3rem}
+  .rental-inner{grid-template-columns:1fr;gap:2rem}
+  .why-grid{grid-template-columns:1fr}
+  section{padding:4rem 1.5rem}
+  #rental{padding:3.5rem 1.5rem}
 }
 
-.product-img-box {
-  width: 100%;
-  height: 220px; /* fixed height = uniform cards */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f7f6f3;
-  overflow: hidden;
-  padding: 12px;
+/* --- Mobile: ≤ 600px --- */
+@media(max-width:600px){
+  #nav{height:58px;padding:0 1.2rem}
+  .nav-cta{font-size:11px;padding:8px 14px;letter-spacing:1px}
+  .Zorko{width:90px}
+  .nav-drawer{top:58px;padding:1.2rem 1.5rem 1.8rem}
+
+  #hero{margin-top:58px;min-height:100svh}
+  .hero-content{padding:1.5rem 1.2rem 0}
+  .hero-overline{font-size:9px;letter-spacing:3px;gap:8px}
+  .hero-h1{font-size:clamp(52px,16vw,80px);line-height:.92;margin-bottom:1.2rem}
+  .hero-sub{font-size:14px;margin-bottom:2rem}
+  .hero-actions{gap:10px}
+  .btn-primary,.btn-ghost{font-size:12px;letter-spacing:2px;padding:14px 22px}
+  .hero-metrics{grid-template-columns:repeat(2,1fr)}
+  .hm{padding:1.1rem 1rem}
+  .hm-num{font-size:1.8rem}
+  .hm-label{font-size:9px}
+
+  section{padding:3.5rem 1.2rem}
+  .sec-h2{font-size:clamp(1.8rem,8vw,3rem)}
+  .sec-sub{font-size:13px;margin-bottom:2rem}
+
+  /* Products */
+  .series-nav{margin-bottom:2rem}
+  .sn-btn{font-size:11px;padding:10px 14px;letter-spacing:1px}
+  .series-grid{grid-template-columns:1fr}
+  .product-img-box{height:200px}
+  .pc-specs{grid-template-columns:1fr 1fr}
+
+  /* Use cases */
+  .uc-grid{grid-template-columns:1fr 1fr}
+  .uc-item{padding:1.4rem 1.2rem}
+  .uc-title{font-size:.85rem;letter-spacing:1.5px}
+  .uc-desc{font-size:11px}
+
+  /* Steps */
+  .steps{grid-template-columns:1fr 1fr}
+  .step{padding:1.5rem 1.2rem}
+  .step-num{font-size:3rem}
+  .step-title{font-size:.85rem;letter-spacing:1.5px}
+  .step-desc{font-size:11px}
+
+  /* Why */
+  .why-grid{grid-template-columns:1fr}
+  .why-item{padding:1.4rem 1.2rem}
+
+  /* Rental */
+  #rental{padding:3rem 1.2rem}
+  .rental-h{font-size:clamp(1.8rem,8vw,2.8rem)}
+  .rental-sub{font-size:13px}
+  .btn-primary-dark{width:100%;text-align:center;padding:15px 20px;font-size:13px;letter-spacing:2px}
+  .rental-list{gap:6px}
+  .r-tag{font-size:9px;padding:4px 10px}
+
+  /* Contact */
+  .ff-row{grid-template-columns:1fr}
+  .ff input,.ff select,.ff textarea{font-size:16px} /* prevent iOS zoom */
+  .submit-btn{font-size:1.1rem;letter-spacing:2px;padding:16px}
+  .trust-item{padding:12px}
+  .trust-text strong{font-size:12px}
+  .trust-text p{font-size:11px}
+
+  /* Footer */
+  footer{flex-direction:column;text-align:center;padding:2rem 1.2rem;gap:.8rem}
+  .f-copy{text-align:center}
+  .f-logo{font-size:1.4rem}
 }
 
-.product-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain; /* prevents zoom/crop issues */
-  object-position: center;
-  display: block;
-}
-
-.Zorko {
-  width: 120px;
-  height: auto;
+/* --- Very small: ≤ 380px --- */
+@media(max-width:380px){
+  .uc-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr}
+  .hero-h1{font-size:clamp(44px,18vw,70px)}
+  .hm-num{font-size:1.5rem}
+  .sn-btn{font-size:10px;padding:9px 12px}
 }
 </style>
 </head>
@@ -221,19 +313,34 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
 
 <!-- NAV -->
 <nav id="nav">
-  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})"><img class="Zorko" src="./Zorko Logo-Photoroom.png" alt=""></div>
-  <div class="nav-links">
-    <a class="nav-link" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Products</a>
-    <a class="nav-link" onclick="document.getElementById('usecases').scrollIntoView({behavior:'smooth'})">Solutions</a>
-    <a class="nav-link" onclick="document.getElementById('rental').scrollIntoView({behavior:'smooth'})">Rental</a>
-    <a class="nav-link" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Contact</a>
+  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <img class="Zorko" src="./Zorko Logo-Photoroom.png" alt="Zorko Technologies">
   </div>
-  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get a Quote</button>
+  <div class="nav-links">
+    <a class="nav-link" onclick="scrollTo('products')">Products</a>
+    <a class="nav-link" onclick="scrollTo('usecases')">Solutions</a>
+    <a class="nav-link" onclick="scrollTo('rental')">Rental</a>
+    <a class="nav-link" onclick="scrollTo('contact')">Contact</a>
+  </div>
+  <div style="display:flex;align-items:center;gap:12px">
+    <button class="nav-cta" onclick="scrollTo('contact')">Get a Quote</button>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </nav>
+
+<!-- MOBILE DRAWER -->
+<div class="nav-drawer" id="nav-drawer">
+  <a class="nav-link" onclick="scrollTo('products');closeDrawer()">Products</a>
+  <a class="nav-link" onclick="scrollTo('usecases');closeDrawer()">Solutions</a>
+  <a class="nav-link" onclick="scrollTo('rental');closeDrawer()">Rental</a>
+  <a class="nav-link" onclick="scrollTo('contact');closeDrawer()">Contact</a>
+  <button class="nav-cta" onclick="scrollTo('contact');closeDrawer()">Get a Quote →</button>
+</div>
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-bg-grid"></div>
   <div class="hero-content">
     <div class="hero-overline">
       <span class="live"><span class="live-dot"></span>Displays Live</span>
@@ -242,8 +349,8 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
     <h1 class="hero-h1">YOUR BRAND<br>DESERVES<br>EVERY <span class="hl">SCREEN.</span></h1>
     <p class="hero-sub">We manufacture, deploy & rent LED display systems across India. From fine-pitch indoor panels to world-first delivery bag displays — built in-house, zero middlemen, 100,000-hour lifespan guaranteed.</p>
     <div class="hero-actions">
-      <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get Free Quote →</button>
-      <button class="btn-ghost" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Browse All Products</button>
+      <button class="btn-primary" onclick="scrollTo('contact')">Get Free Quote →</button>
+      <button class="btn-ghost" onclick="scrollTo('products')">Browse All Products</button>
     </div>
   </div>
   <div class="hero-metrics">
@@ -280,11 +387,10 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
   <!-- INDOOR -->
   <div class="series-panel active" id="sp-indoor">
     <div class="series-grid">
-
       <div class="prod-card">
         <span class="pc-env env-indoor">Indoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./MAXPANEL SERIES.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./MAXPANEL SERIES.png" alt="MaxPanel Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">MaxPanel Series</div>
@@ -296,14 +402,13 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥800 nits</div></div>
             <div class="spec-item"><div class="spec-k">Life Span</div><div class="spec-v">100,000 hrs</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-both">Indoor / Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./LATTICESTRIP.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./LATTICESTRIP.png" alt="LatticeStrip Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">LatticeStrip Series</div>
@@ -315,14 +420,13 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥2000–4500</div></div>
             <div class="spec-item"><div class="spec-k">Cabinet</div><div class="spec-v">1000×1000 mm</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-indoor">Indoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./VersaPoster 640 & 600.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./VersaPoster 640 & 600.png" alt="VersaPoster" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">VersaPoster 640 & 600</div>
@@ -334,21 +438,19 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥600 nits</div></div>
             <div class="spec-item"><div class="spec-k">Control</div><div class="spec-v">Phone / PC / Tablet</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
     </div>
   </div>
 
   <!-- OUTDOOR -->
   <div class="series-panel" id="sp-outdoor">
     <div class="series-grid">
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./DuraPanel.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./DuraPanel.png" alt="DuraPanel Pro 960" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">DuraPanel Pro 960 Series</div>
@@ -360,14 +462,13 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP66</div></div>
             <div class="spec-item"><div class="spec-k">Cabinet</div><div class="spec-v">960×960×83 mm</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./DuraMini Series.png" alt="DuraMini Series" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./DuraMini Series.png" alt="DuraMini Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">DuraMini Series</div>
@@ -379,14 +480,13 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
             <div class="spec-item"><div class="spec-k">LED Type</div><div class="spec-v">Flip Chip</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./StreetView.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./StreetView.png" alt="StreetView Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">StreetView Series</div>
@@ -398,21 +498,19 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
             <div class="spec-item"><div class="spec-k">Display Size</div><div class="spec-v">800×1500 mm</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
     </div>
   </div>
 
   <!-- TRANSPARENT -->
   <div class="series-panel" id="sp-transparent">
     <div class="series-grid">
-
       <div class="prod-card">
         <span class="pc-env env-both">Indoor / Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./CrystalFilm Series.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./CrystalFilm Series.png" alt="CrystalFilm Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">CrystalFilm Series</div>
@@ -424,14 +522,13 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Refresh Rate</div><div class="spec-v">≥3840 Hz</div></div>
             <div class="spec-item"><div class="spec-k">LED Type</div><div class="spec-v">Flip Chip RGB</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-both">Indoor / Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./HoloMesh Series.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./HoloMesh Series.png" alt="HoloMesh Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">HoloMesh Series</div>
@@ -443,14 +540,13 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥7000 nits</div></div>
             <div class="spec-item"><div class="spec-k">Effect</div><div class="spec-v">3D Visual</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-both">Indoor / Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./Glassview.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./Glassview.png" alt="GlassView Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">GlassView Series</div>
@@ -462,21 +558,19 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Display Size</div><div class="spec-v">750×1175 mm</div></div>
             <div class="spec-item"><div class="spec-k">Storage</div><div class="spec-v">8GB + 4G</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
     </div>
   </div>
 
   <!-- MOBILE -->
   <div class="series-panel" id="sp-mobile">
     <div class="series-grid">
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./AdPack.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./AdPack.png" alt="AdPack Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">AdPack Series</div>
@@ -488,14 +582,13 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Network</div><div class="spec-v">4G GPS + BT</div></div>
             <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./AdBox.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./AdBox.png" alt="AdBox Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">AdBox Series</div>
@@ -507,14 +600,13 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Network</div><div class="spec-v">4G GPS</div></div>
             <div class="spec-item"><div class="spec-k">Contrast</div><div class="spec-v">≥5000:1</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./T-X Car Top Series.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./T-X Car Top Series.png" alt="T-X Car Top Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">T-X Car Top Series</div>
@@ -526,21 +618,19 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Network</div><div class="spec-v">WiFi + USB + 4G</div></div>
             <div class="spec-item"><div class="spec-k">View Angle</div><div class="spec-v">170° wide</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
     </div>
   </div>
 
   <!-- POSTER -->
   <div class="series-panel" id="sp-poster">
     <div class="series-grid">
-
       <div class="prod-card">
         <span class="pc-env env-indoor">Indoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./VersaPoster 640 & 600.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./VersaPoster 640 & 600.png" alt="VersaPoster 640 & 600" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">VersaPoster 640 & 600</div>
@@ -552,14 +642,13 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Design</div><div class="spec-v">Plug & Play</div></div>
             <div class="spec-item"><div class="spec-k">Life Span</div><div class="spec-v">100,000 hrs</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./StreetView.png" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./StreetView.png" alt="StreetView Series" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">StreetView Series</div>
@@ -571,25 +660,22 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
             <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- FlagShip -->
+  <!-- FLAGSHIP -->
   <div class="series-panel" id="sp-flagship">
     <div class="series-grid">
-
       <div class="prod-card">
         <span class="pc-env env-indoor">Indoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./DIE-CASTING Cabinet LED Display Screen.webp" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./DIE-CASTING Cabinet LED Display Screen.webp" alt="DIE-CASTING Cabinet LED Display Screen" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">DIE-CASTING Cabinet LED Display Screen</div>
-          <!-- <div class="pc-name">HX-PSVP641.86 / 642 / 642.5</div> -->
           <div class="pc-desc">All-in-one indoor LED poster. Plug-and-play. Use solo or combine multiple units into a larger display wall. Phone, computer, or tablet control. Iron cabinet build, rear service.</div>
           <div class="pc-specs">
             <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.86 – 2.5 mm</div></div>
@@ -597,18 +683,16 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">Design</div><div class="spec-v">Plug & Play</div></div>
             <div class="spec-item"><div class="spec-k">Life Span</div><div class="spec-v">100,000 hrs</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./640x640mm Indoor Die Cast LED Cabinet.webp" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./640x640mm Indoor Die Cast LED Cabinet.webp" alt="640x640mm Indoor Die Cast LED Cabinet" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">640x640mm Indoor Die Cast LED Cabinet</div>
-          <!-- <div class="pc-name">HX-PSSV1.38 / 1.85 / 2.5 / 3.12</div> -->
           <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP65 rated for all-weather street advertising.</div>
           <div class="pc-specs">
             <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">2.9 – 4.9 mm</div></div>
@@ -616,18 +700,16 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
             <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./960x960 mm LED video wall Die Cast Cabinets.webp" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./960x960 mm LED video wall Die Cast Cabinets.webp" alt="960x960 mm LED video wall Die Cast Cabinets" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">960x960 mm LED video wall Die Cast Cabinets</div>
-          <!-- <div class="pc-name">HX-PSSV1.38 / 1.85 / 2.5 / 3.12</div> -->
           <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP65 rated for all-weather street advertising.</div>
           <div class="pc-specs">
             <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">3 – 5 mm</div></div>
@@ -635,33 +717,28 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
             <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
             <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
       <div class="prod-card">
         <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box" class="pc-img-wrap">
-          <div class="pc-img-placeholder"><img src="./Outdoor Fixed Installation P4.44 4K LED Display 5500-8000nits High Brightness IP66 Waterproof 16-Bit Color Sunlight Readable.avif" alt="" class="product-img"></div>
+        <div class="product-img-box">
+          <img src="./Outdoor Fixed Installation P4.44 4K LED Display 5500-8000nits High Brightness IP66 Waterproof 16-Bit Color Sunlight Readable.avif" alt="Outdoor P4.44 4K LED Display" class="product-img">
         </div>
         <div class="pc-body">
           <div class="pc-series">Outdoor P4.44 4K LED Display, 8000nits, IP66, 16-bit</div>
-          <!-- <div class="pc-name">HX-PSSV1.38 / 1.85 / 2.5 / 3.12</div> -->
-          <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP65 rated for all-weather street advertising.</div>
+          <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP66 rated for all-weather street advertising.</div>
           <div class="pc-specs">
             <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.38 – 3.12 mm</div></div>
             <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
             <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
             <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
           </div>
-          <button class="pc-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Enquire Now</button>
+          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
         </div>
       </div>
-
     </div>
   </div>
-
-
 </section>
 
 <!-- USE CASES -->
@@ -726,7 +803,7 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
         <span class="r-tag">Weddings & Social</span>
       </div>
     </div>
-    <button class="btn-primary-dark" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'});setTimeout(()=>{document.getElementById('f-interest').value='LED Screen Rental'},400)">Enquire About Rental →</button>
+    <button class="btn-primary-dark" onclick="scrollTo('contact');setTimeout(()=>{var el=document.getElementById('f-interest');if(el)el.value='LED Screen Rental'},400)">Enquire About Rental →</button>
   </div>
 </section>
 
@@ -761,12 +838,12 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
       <div id="form-container">
         <div id="zorko-form">
           <div class="ff-row">
-            <div class="ff"><label>Full Name *</label><input type="text" id="f-name" placeholder="Rahul Sharma"></div>
-            <div class="ff"><label>Company / Brand</label><input type="text" id="f-company" placeholder="Your Company"></div>
+            <div class="ff"><label>Full Name *</label><input type="text" id="f-name" placeholder="Rahul Sharma" autocomplete="name"></div>
+            <div class="ff"><label>Company / Brand</label><input type="text" id="f-company" placeholder="Your Company" autocomplete="organization"></div>
           </div>
           <div class="ff-row">
-            <div class="ff"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 98765 43210"></div>
-            <div class="ff"><label>Email Address</label><input type="email" id="f-email" placeholder="you@company.com"></div>
+            <div class="ff"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 98765 43210" autocomplete="tel"></div>
+            <div class="ff"><label>Email Address</label><input type="email" id="f-email" placeholder="you@company.com" autocomplete="email"></div>
           </div>
           <div class="ff">
             <label>I'm Interested In *</label>
@@ -827,7 +904,6 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
           <button class="submit-btn" onclick="submitZorko()">SUBMIT ENQUIRY — WE'LL CONTACT YOU</button>
           <div class="form-note">No spam. No cold calls. A Zorko specialist will reach out personally within 24 hours.</div>
         </div>
-
         <div class="form-success" id="form-success">
           <div class="fs-icon">✅</div>
           <div class="fs-title">ENQUIRY RECEIVED.</div>
@@ -851,21 +927,53 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
 </footer>
 
 <script>
-function showSeries(id, btn) {
-  document.querySelectorAll('.series-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.sn-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('sp-' + id).classList.add('active');
+function scrollTo(id){
+  var el=document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+
+function showSeries(id,btn){
+  document.querySelectorAll('.series-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.sn-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sp-'+id).classList.add('active');
   btn.classList.add('active');
 }
 
-function submitZorko() {
-  var name = document.getElementById('f-name').value.trim();
-  var phone = document.getElementById('f-phone').value.trim();
-  var interest = document.getElementById('f-interest').value;
-  if (!name) { alert('Please enter your name.'); return; }
-  if (!phone) { alert('Please enter your phone number so we can reach you.'); return; }
-  if (!interest) { alert('Please select what you\'re interested in.'); return; }
-  document.getElementById('zorko-form').style.display = 'none';
+function toggleDrawer(){
+  var drawer=document.getElementById('nav-drawer');
+  var burger=document.getElementById('hamburger');
+  var isOpen=drawer.classList.contains('open');
+  if(isOpen){
+    drawer.classList.remove('open');
+    burger.classList.remove('open');
+  } else {
+    drawer.classList.add('open');
+    burger.classList.add('open');
+  }
+}
+
+function closeDrawer(){
+  document.getElementById('nav-drawer').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+}
+
+// Close drawer on outside click
+document.addEventListener('click',function(e){
+  var drawer=document.getElementById('nav-drawer');
+  var burger=document.getElementById('hamburger');
+  if(drawer.classList.contains('open') && !drawer.contains(e.target) && !burger.contains(e.target)){
+    closeDrawer();
+  }
+});
+
+function submitZorko(){
+  var name=document.getElementById('f-name').value.trim();
+  var phone=document.getElementById('f-phone').value.trim();
+  var interest=document.getElementById('f-interest').value;
+  if(!name){alert('Please enter your name.');return;}
+  if(!phone){alert('Please enter your phone number so we can reach you.');return;}
+  if(!interest){alert("Please select what you're interested in.");return;}
+  document.getElementById('zorko-form').style.display='none';
   document.getElementById('form-success').classList.add('show');
 }
 </script>
