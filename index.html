@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Zorko Technologies — LED Display Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Zorko Technologies — LED Display Solutions | Premium LED Manufacturer</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -36,15 +36,11 @@ body{background:var(--white);color:var(--text);overflow-x:hidden;font-family:'Ba
 .nav-link:hover{color:var(--text)}
 .nav-cta{background:var(--amber);color:#fff;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;border:none;cursor:pointer;transition:background .15s;white-space:nowrap}
 .nav-cta:hover{background:var(--amber-d)}
-
-/* Hamburger */
 .nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;cursor:pointer;gap:5px;background:none;border:none;padding:4px}
 .nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);transition:all .25s}
 .nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-
-/* Mobile drawer */
 .nav-drawer{
   display:none;
   position:fixed;top:64px;left:0;right:0;z-index:998;
@@ -57,8 +53,7 @@ body{background:var(--white);color:var(--text);overflow-x:hidden;font-family:'Ba
 .nav-drawer .nav-link{font-size:14px;letter-spacing:3px;padding:14px 0;border-bottom:1px solid var(--border);color:var(--text)}
 .nav-drawer .nav-link:last-child{border-bottom:none}
 .nav-drawer .nav-cta{margin-top:1.2rem;width:100%;padding:14px;font-size:14px;text-align:center}
-
-/* ── HERO ── */
+/* HERO with background image */
 #hero{
   min-height:100vh;
   display:flex;flex-direction:column;justify-content:flex-end;
@@ -66,6 +61,13 @@ body{background:var(--white);color:var(--text);overflow-x:hidden;font-family:'Ba
   background:var(--off);
   margin-top:64px;
 }
+.hero-bg{
+  position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;
+  background-image:url('https://images.pexels.com/photos/2873486/pexels-photo-2873486.jpeg?auto=compress&cs=tinysrgb&w=1600');
+  background-size:cover;background-position:center;background-repeat:no-repeat;
+  opacity:0.2;pointer-events:none;
+}
+@media(max-width:768px){.hero-bg{opacity:0.15;background-position:40% center;}}
 .hero-content{position:relative;z-index:1;padding:2.5rem 2.5rem 0}
 .hero-overline{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .hero-overline::before{content:'';display:block;width:28px;height:2px;background:var(--amber);flex-shrink:0}
@@ -82,35 +84,37 @@ body{background:var(--white);color:var(--text);overflow-x:hidden;font-family:'Ba
 .hm:last-child{border-right:none}
 .hm-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--amber);letter-spacing:2px}
 .hm-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px}
-
-/* ── TICKER ── */
 .ticker-wrap{overflow:hidden;background:var(--black);padding:11px 0;white-space:nowrap}
 .ticker-inner{display:inline-block;animation:tick 28s linear infinite}
 .ticker-inner span{font-size:.95rem;letter-spacing:4px;color:var(--amber);padding:0 2rem}
 .ticker-inner span::after{content:'·';margin-left:2rem;color:#444}
 @keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-/* ── SECTIONS ── */
 section{padding:5rem 2.5rem}
 .sec-over{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;display:flex;align-items:center;gap:10px}
 .sec-over::before{content:'';display:block;width:20px;height:2px;background:var(--amber)}
 .sec-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.8rem);letter-spacing:2px;line-height:1;margin-bottom:.5rem;color:var(--black)}
 .sec-sub{font-size:14px;color:var(--muted);line-height:1.75;max-width:560px;font-weight:300;margin-bottom:3rem}
-
-/* ── PRODUCTS ── */
+/* PRODUCTS with gallery carousel */
 #products{background:var(--white)}
 .series-nav{display:flex;gap:0;margin-bottom:3rem;border:1.5px solid var(--border);overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch}
 .series-nav::-webkit-scrollbar{height:2px}
-.series-nav::-webkit-scrollbar-thumb{background:var(--amber)}
 .sn-btn{background:transparent;color:var(--muted);border:none;border-right:1px solid var(--border);padding:12px 20px;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0}
 .sn-btn:last-child{border-right:none}
 .sn-btn.active,.sn-btn:hover{background:var(--amber);color:#fff}
-.series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1px;background:var(--border)}
-.prod-card{background:var(--white);overflow:hidden;cursor:pointer;transition:background .2s;position:relative}
+.series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--border)}
+.prod-card{background:var(--white);overflow:hidden;cursor:default;transition:background .2s;position:relative}
 .prod-card:hover{background:var(--card)}
-.prod-card:hover .product-img{transform:scale(1.04)}
-.product-img-box{width:100%;height:220px;display:flex;align-items:center;justify-content:center;background:#f7f6f3;overflow:hidden;padding:12px;border-bottom:1px solid var(--border)}
-.product-img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;transition:transform .3s}
+/* GALLERY STYLES */
+.product-gallery{position:relative;width:100%;height:240px;background:#f7f6f3;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--border)}
+.gallery-main{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.gallery-main-img{width:100%;height:100%;object-fit:contain;object-position:center;transition:transform .2s}
+.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.55);color:white;border:none;width:32px;height:32px;border-radius:50%;font-size:18px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all .2s;backdrop-filter:blur(3px)}
+.gallery-arrow:hover{background:var(--amber);color:#fff;transform:translateY(-50%) scale(1.05)}
+.arrow-left{left:10px}
+.arrow-right{right:10px}
+.gallery-dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:10}
+.gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,0.5);border:none;cursor:pointer;transition:all .2s;padding:0}
+.gallery-dot.active{background:var(--amber);transform:scale(1.3);box-shadow:0 0 0 1px white}
 .pc-body{padding:1.4rem}
 .pc-series{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem}
 .pc-name{font-weight:700;font-size:1.1rem;letter-spacing:1px;margin-bottom:.5rem;color:var(--black)}
@@ -119,56 +123,45 @@ section{padding:5rem 2.5rem}
 .spec-item{background:var(--off);padding:7px 10px;border:1px solid var(--border)}
 .spec-k{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2)}
 .spec-v{font-size:12px;font-weight:600;color:var(--text);margin-top:2px}
-.pc-env{position:absolute;top:10px;right:10px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:3px 8px}
-.env-indoor{color:var(--blue);background:rgba(26,86,219,.08);border:1px solid rgba(26,86,219,.2)}
-.env-outdoor{color:var(--green);background:rgba(0,166,81,.08);border:1px solid rgba(0,166,81,.2)}
-.env-both{color:var(--amber);background:var(--amber-light);border:1px solid rgba(61,196,225,.3)}
+.pc-env{position:absolute;top:12px;right:12px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;z-index:12;border-radius:20px;font-weight:600}
+.env-indoor{color:var(--blue);background:rgba(26,86,219,.12);border:1px solid rgba(26,86,219,.3)}
+.env-outdoor{color:var(--green);background:rgba(0,166,81,.12);border:1px solid rgba(0,166,81,.3)}
+.env-both{color:var(--amber);background:var(--amber-light);border:1px solid rgba(61,196,225,.4)}
 .pc-cta{width:100%;background:transparent;border:1.5px solid var(--border2);color:var(--muted);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:11px;margin-top:1rem;cursor:pointer;transition:all .15s}
 .pc-cta:hover{background:var(--amber);color:#fff;border-color:var(--amber)}
 .series-panel{display:none}
 .series-panel.active{display:block}
-
-/* ── USE CASES ── */
+/* other sections */
 #usecases{background:var(--off)}
 .uc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border)}
 .uc-item{background:var(--white);padding:2rem;transition:background .2s}
 .uc-item:hover{background:var(--card)}
 .uc-icon{font-size:2rem;margin-bottom:1rem;display:block}
-.uc-title{font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;color:var(--black)}
+.uc-title{font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
 .uc-desc{font-size:12px;color:var(--muted);line-height:1.65}
-
-/* ── HOW IT WORKS ── */
 #how{background:var(--white)}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);margin-top:3rem}
-.step{background:var(--white);padding:2rem 1.5rem;position:relative;overflow:hidden}
+.step{background:var(--white);padding:2rem 1.5rem;position:relative}
 .step::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:transparent;transition:background .2s}
 .step:hover::before{background:var(--amber)}
-.step:hover{background:var(--off)}
 .step-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--border);line-height:1;margin-bottom:.5rem}
-.step-title{font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem;color:var(--black)}
+.step-title{font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
 .step-desc{font-size:12px;color:var(--muted);line-height:1.65}
-
-/* ── WHY ZORKO ── */
 #why{background:var(--off)}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:3rem}
-.why-item{background:var(--white);padding:2rem;display:flex;gap:1rem;align-items:flex-start;transition:background .2s}
-.why-item:hover{background:var(--card)}
+.why-item{background:var(--white);padding:2rem;display:flex;gap:1rem;align-items:flex-start}
 .why-icon-box{width:40px;height:40px;background:var(--amber-light);border:1px solid rgba(61,196,225,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.why-text h4{font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem;color:var(--black)}
+.why-text h4{font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem}
 .why-text p{font-size:12px;color:var(--muted);line-height:1.65}
-
-/* ── RENTAL BANNER ── */
 #rental{background:var(--black);padding:4rem 2.5rem}
 .rental-inner{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center}
 .rental-badge{display:inline-block;background:var(--amber);color:#fff;font-size:.9rem;letter-spacing:3px;padding:4px 14px;margin-bottom:1rem}
 .rental-h{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.2rem);letter-spacing:2px;margin-bottom:.5rem;color:var(--white)}
-.rental-sub{font-size:14px;color:#888;line-height:1.75;max-width:520px}
+.rental-sub{font-size:14px;color:#aaa;line-height:1.75;max-width:520px}
 .rental-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.2rem}
 .r-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;border:1px solid #333;padding:5px 12px;color:#888}
 .btn-primary-dark{background:var(--amber);color:#fff;font-weight:700;font-size:14px;letter-spacing:3px;text-transform:uppercase;padding:16px 32px;border:none;cursor:pointer;transition:all .15s;white-space:nowrap}
 .btn-primary-dark:hover{background:var(--amber-d)}
-
-/* ── FORM ── */
 #contact{background:var(--white)}
 .form-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:start}
 .trust-items{margin-top:2.5rem;display:flex;flex-direction:column;gap:12px}
@@ -178,804 +171,206 @@ section{padding:5rem 2.5rem}
 .trust-text p{font-size:12px;color:var(--muted);line-height:1.55}
 .ff{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
 .ff label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:600}
-.ff input,.ff select,.ff textarea{background:var(--white);border:1.5px solid var(--border);color:var(--text);padding:12px 14px;font-size:14px;outline:none;transition:border-color .2s;border-radius:0;-webkit-appearance:none;width:100%;font-family:'Barlow',sans-serif}
+.ff input,.ff select,.ff textarea{background:var(--white);border:1.5px solid var(--border);color:var(--text);padding:12px 14px;font-size:14px;outline:none;transition:border-color .2s;border-radius:0;width:100%;font-family:'Barlow',sans-serif}
 .ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--amber)}
-.ff select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
 .ff textarea{height:110px;resize:none}
 .ff-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .submit-btn{background:var(--amber);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:4px;border:none;padding:18px;cursor:pointer;width:100%;transition:all .15s;margin-top:4px}
 .submit-btn:hover{background:var(--amber-d)}
-.form-note{font-size:11px;color:var(--muted2);text-align:center;margin-top:8px;letter-spacing:.5px}
 .form-success{display:none;background:#f0fdf4;border:1.5px solid rgba(0,166,81,.2);padding:2.5rem;text-align:center}
 .form-success.show{display:block}
-.fs-icon{font-size:2.5rem;margin-bottom:.5rem}
-.fs-title{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;letter-spacing:3px;color:var(--green)}
-.fs-sub{font-size:13px;color:var(--muted);margin-top:.5rem;line-height:1.6}
-
-/* ── FOOTER ── */
 footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid #1a1a1a}
 .f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:4px;color:var(--amber)}
 .f-tagline{font-size:10px;color:#555;letter-spacing:3px;text-transform:uppercase;margin-top:4px}
 .f-copy{font-size:11px;color:#555;letter-spacing:1px;text-align:right}
-
-/* live badge */
 .live{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:2px;color:var(--green);text-transform:uppercase}
 .live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 1.5s infinite}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-
 .Zorko{width:110px;height:auto;display:block}
-
-/* ================================================================
-   RESPONSIVE BREAKPOINTS
-   ================================================================ */
-
-/* --- Tablet: ≤ 900px --- */
 @media(max-width:900px){
   .nav-links{display:none}
   .nav-hamburger{display:flex}
   #nav{padding:0 1.5rem}
-
   .hero-content{padding:2rem 1.5rem 0}
   .hero-actions .btn-ghost{display:none}
-
   .hero-metrics{grid-template-columns:repeat(2,1fr)}
-  .hm:nth-child(2){border-right:none}
-  .hm:nth-child(3){border-top:1px solid var(--border)}
-  .hm:nth-child(4){border-top:1px solid var(--border)}
-
   .form-layout{grid-template-columns:1fr;gap:3rem}
   .rental-inner{grid-template-columns:1fr;gap:2rem}
   .why-grid{grid-template-columns:1fr}
   section{padding:4rem 1.5rem}
-  #rental{padding:3.5rem 1.5rem}
 }
-
-/* --- Mobile: ≤ 600px --- */
 @media(max-width:600px){
-  #nav{height:58px;padding:0 1.2rem}
-  .nav-cta{font-size:11px;padding:8px 14px;letter-spacing:1px}
+  #nav{height:58px}
   .Zorko{width:90px}
-  .nav-drawer{top:58px;padding:1.2rem 1.5rem 1.8rem}
-
-  #hero{margin-top:58px;min-height:100svh}
-  .hero-content{padding:1.5rem 1.2rem 0}
-  .hero-overline{font-size:9px;letter-spacing:3px;gap:8px}
-  .hero-h1{font-size:clamp(52px,16vw,80px);line-height:.92;margin-bottom:1.2rem}
-  .hero-sub{font-size:14px;margin-bottom:2rem}
-  .hero-actions{gap:10px}
-  .btn-primary,.btn-ghost{font-size:12px;letter-spacing:2px;padding:14px 22px}
-  .hero-metrics{grid-template-columns:repeat(2,1fr)}
-  .hm{padding:1.1rem 1rem}
-  .hm-num{font-size:1.8rem}
-  .hm-label{font-size:9px}
-
-  section{padding:3.5rem 1.2rem}
-  .sec-h2{font-size:clamp(1.8rem,8vw,3rem)}
-  .sec-sub{font-size:13px;margin-bottom:2rem}
-
-  /* Products */
-  .series-nav{margin-bottom:2rem}
-  .sn-btn{font-size:11px;padding:10px 14px;letter-spacing:1px}
+  .nav-drawer{top:58px}
   .series-grid{grid-template-columns:1fr}
-  .product-img-box{height:200px}
-  .pc-specs{grid-template-columns:1fr 1fr}
-
-  /* Use cases */
-  .uc-grid{grid-template-columns:1fr 1fr}
-  .uc-item{padding:1.4rem 1.2rem}
-  .uc-title{font-size:.85rem;letter-spacing:1.5px}
-  .uc-desc{font-size:11px}
-
-  /* Steps */
-  .steps{grid-template-columns:1fr 1fr}
-  .step{padding:1.5rem 1.2rem}
-  .step-num{font-size:3rem}
-  .step-title{font-size:.85rem;letter-spacing:1.5px}
-  .step-desc{font-size:11px}
-
-  /* Why */
-  .why-grid{grid-template-columns:1fr}
-  .why-item{padding:1.4rem 1.2rem}
-
-  /* Rental */
-  #rental{padding:3rem 1.2rem}
-  .rental-h{font-size:clamp(1.8rem,8vw,2.8rem)}
-  .rental-sub{font-size:13px}
-  .btn-primary-dark{width:100%;text-align:center;padding:15px 20px;font-size:13px;letter-spacing:2px}
-  .rental-list{gap:6px}
-  .r-tag{font-size:9px;padding:4px 10px}
-
-  /* Contact */
+  .product-gallery{height:200px}
   .ff-row{grid-template-columns:1fr}
-  .ff input,.ff select,.ff textarea{font-size:16px} /* prevent iOS zoom */
-  .submit-btn{font-size:1.1rem;letter-spacing:2px;padding:16px}
-  .trust-item{padding:12px}
-  .trust-text strong{font-size:12px}
-  .trust-text p{font-size:11px}
-
-  /* Footer */
-  footer{flex-direction:column;text-align:center;padding:2rem 1.2rem;gap:.8rem}
-  .f-copy{text-align:center}
-  .f-logo{font-size:1.4rem}
-}
-
-/* --- Very small: ≤ 380px --- */
-@media(max-width:380px){
-  .uc-grid{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .hero-h1{font-size:clamp(44px,18vw,70px)}
-  .hm-num{font-size:1.5rem}
-  .sn-btn{font-size:10px;padding:9px 12px}
+  .gallery-arrow{width:28px;height:28px;font-size:16px}
 }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <img class="Zorko" src="./Zorko Logo-Photoroom.png" alt="Zorko Technologies">
-  </div>
-  <div class="nav-links">
-    <a class="nav-link" onclick="scrollTo('products')">Products</a>
-    <a class="nav-link" onclick="scrollTo('usecases')">Solutions</a>
-    <a class="nav-link" onclick="scrollTo('rental')">Rental</a>
-    <a class="nav-link" onclick="scrollTo('contact')">Contact</a>
-  </div>
-  <div style="display:flex;align-items:center;gap:12px">
-    <button class="nav-cta" onclick="scrollTo('contact')">Get a Quote</button>
-    <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</nav>
-
-<!-- MOBILE DRAWER -->
-<div class="nav-drawer" id="nav-drawer">
-  <a class="nav-link" onclick="scrollTo('products');closeDrawer()">Products</a>
-  <a class="nav-link" onclick="scrollTo('usecases');closeDrawer()">Solutions</a>
-  <a class="nav-link" onclick="scrollTo('rental');closeDrawer()">Rental</a>
-  <a class="nav-link" onclick="scrollTo('contact');closeDrawer()">Contact</a>
-  <button class="nav-cta" onclick="scrollTo('contact');closeDrawer()">Get a Quote →</button>
-</div>
-
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-content">
-    <div class="hero-overline">
-      <span class="live"><span class="live-dot"></span>Displays Live</span>
-      &nbsp;·&nbsp; India's Full-Stack LED Manufacturer
-    </div>
-    <h1 class="hero-h1">YOUR BRAND<br>DESERVES<br>EVERY <span class="hl">SCREEN.</span></h1>
-    <p class="hero-sub">We manufacture, deploy & rent LED display systems across India. From fine-pitch indoor panels to world-first delivery bag displays — built in-house, zero middlemen, 100,000-hour lifespan guaranteed.</p>
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="scrollTo('contact')">Get Free Quote →</button>
-      <button class="btn-ghost" onclick="scrollTo('products')">Browse All Products</button>
-    </div>
-  </div>
-  <div class="hero-metrics">
-    <div class="hm"><div class="hm-num">8+</div><div class="hm-label">Product Series</div></div>
-    <div class="hm"><div class="hm-num">100K</div><div class="hm-label">Hour Lifespan</div></div>
-    <div class="hm"><div class="hm-num">281T</div><div class="hm-label">Color Range</div></div>
-    <div class="hm"><div class="hm-num">360°</div><div class="hm-label">LED Solutions</div></div>
-  </div>
+<nav id="nav"><div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})"><img class="Zorko" src="./Zorko Logo-Photoroom.png" alt="Zorko Technologies"></div>
+<div class="nav-links"><a class="nav-link" onclick="scrollTo('products')">Products</a><a class="nav-link" onclick="scrollTo('usecases')">Solutions</a><a class="nav-link" onclick="scrollTo('rental')">Rental</a><a class="nav-link" onclick="scrollTo('contact')">Contact</a></div>
+<div style="display:flex;align-items:center;gap:12px"><button class="nav-cta" onclick="scrollTo('contact')">Get a Quote</button><button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button></div></nav>
+<div class="nav-drawer" id="nav-drawer"><a class="nav-link" onclick="scrollTo('products');closeDrawer()">Products</a><a class="nav-link" onclick="scrollTo('usecases');closeDrawer()">Solutions</a><a class="nav-link" onclick="scrollTo('rental');closeDrawer()">Rental</a><a class="nav-link" onclick="scrollTo('contact');closeDrawer()">Contact</a><button class="nav-cta" onclick="scrollTo('contact');closeDrawer()">Get a Quote →</button></div>
+<section id="hero"><div class="hero-bg"></div><div class="hero-content"><div class="hero-overline"><span class="live"><span class="live-dot"></span>Displays Live</span>&nbsp;·&nbsp; India's Full-Stack LED Manufacturer</div><h1 class="hero-h1">YOUR BRAND<br>DESERVES<br>EVERY <span class="hl">SCREEN.</span></h1><p class="hero-sub">We manufacture, deploy & rent LED display systems across India. From fine-pitch indoor panels to world-first delivery bag displays — built in-house, zero middlemen, 100,000-hour lifespan guaranteed.</p><div class="hero-actions"><button class="btn-primary" onclick="scrollTo('contact')">Get Free Quote →</button><button class="btn-ghost" onclick="scrollTo('products')">Browse All Products</button></div></div><div class="hero-metrics"><div class="hm"><div class="hm-num">8+</div><div class="hm-label">Product Series</div></div><div class="hm"><div class="hm-num">100K</div><div class="hm-label">Hour Lifespan</div></div><div class="hm"><div class="hm-num">281T</div><div class="hm-label">Color Range</div></div><div class="hm"><div class="hm-num">360°</div><div class="hm-label">LED Solutions</div></div></div></section>
+<div class="ticker-wrap"><div class="ticker-inner"><span>MaxPanel Series</span><span>DuraPanel Pro 960</span><span>DuraMini Series</span><span>LatticeStrip</span><span>CrystalFilm</span><span>HoloMesh</span><span>AdBox</span><span>AdPack</span><span>T-X Car Top</span><span>GlassView</span><span>VersaPoster 640</span><span>StreetView</span><span>MaxPanel Series</span><span>DuraPanel Pro 960</span><span>DuraMini Series</span><span>LatticeStrip</span><span>CrystalFilm</span><span>HoloMesh</span><span>AdBox</span><span>AdPack</span><span>T-X Car Top</span><span>GlassView</span><span>VersaPoster 640</span><span>StreetView</span></div></div>
+<section id="products"><div class="sec-over">Product Catalog</div><h2 class="sec-h2">FLAGSHIP & INNOVATION</h2><p class="sec-sub">Explore our complete range including flagship die-cast cabinets, indoor/outdoor solutions, and mobile advertising displays — each with multiple image views.</p>
+<div class="series-nav"><button class="sn-btn active" onclick="showSeries('flagship',this)">⭐ FlagShip</button><button class="sn-btn" onclick="showSeries('indoor',this)">Indoor</button><button class="sn-btn" onclick="showSeries('outdoor',this)">Outdoor</button><button class="sn-btn" onclick="showSeries('transparent',this)">Transparent</button><button class="sn-btn" onclick="showSeries('mobile',this)">Mobile Ads</button><button class="sn-btn" onclick="showSeries('poster',this)">Posters</button></div>
+<div class="series-panel active" id="sp-flagship"><div class="series-grid" id="flagshipGrid"></div></div>
+<div class="series-panel" id="sp-indoor"><div class="series-grid" id="indoorGrid"></div></div>
+<div class="series-panel" id="sp-outdoor"><div class="series-grid" id="outdoorGrid"></div></div>
+<div class="series-panel" id="sp-transparent"><div class="series-grid" id="transparentGrid"></div></div>
+<div class="series-panel" id="sp-mobile"><div class="series-grid" id="mobileGrid"></div></div>
+<div class="series-panel" id="sp-poster"><div class="series-grid" id="posterGrid"></div></div>
 </section>
-
-<!-- TICKER -->
-<div class="ticker-wrap">
-  <div class="ticker-inner">
-    <span>MaxPanel Series</span><span>DuraPanel Pro 960</span><span>DuraMini Series</span><span>LatticeStrip</span><span>CrystalFilm</span><span>HoloMesh</span><span>AdBox</span><span>AdPack</span><span>T-X Car Top</span><span>GlassView</span><span>VersaPoster 640</span><span>StreetView</span>
-    <span>MaxPanel Series</span><span>DuraPanel Pro 960</span><span>DuraMini Series</span><span>LatticeStrip</span><span>CrystalFilm</span><span>HoloMesh</span><span>AdBox</span><span>AdPack</span><span>T-X Car Top</span><span>GlassView</span><span>VersaPoster 640</span><span>StreetView</span>
-  </div>
-</div>
-
-<!-- PRODUCTS -->
-<section id="products">
-  <div class="sec-over">Product Catalog</div>
-  <h2 class="sec-h2">8 SERIES. EVERY SURFACE.</h2>
-  <p class="sec-sub">From fine-pitch indoor panels to the world's first delivery bag LED display. Every product is in-house engineered for maximum impact and minimum downtime.</p>
-
-  <div class="series-nav">
-    <button class="sn-btn active" onclick="showSeries('indoor',this)">Indoor</button>
-    <button class="sn-btn" onclick="showSeries('outdoor',this)">Outdoor</button>
-    <button class="sn-btn" onclick="showSeries('transparent',this)">Transparent</button>
-    <button class="sn-btn" onclick="showSeries('mobile',this)">Mobile Ads</button>
-    <button class="sn-btn" onclick="showSeries('poster',this)">Posters</button>
-    <button class="sn-btn" onclick="showSeries('flagship',this)">FlagShip</button>
-  </div>
-
-  <!-- INDOOR -->
-  <div class="series-panel active" id="sp-indoor">
-    <div class="series-grid">
-      <div class="prod-card">
-        <span class="pc-env env-indoor">Indoor</span>
-        <div class="product-img-box">
-          <img src="./MAXPANEL SERIES.png" alt="MaxPanel Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">MaxPanel Series</div>
-          <div class="pc-name">HX-IFMP2.66 / 3.2 / 4</div>
-          <div class="pc-desc">Ideal for large-size indoor screens. Die-cast aluminum cabinet with rear service accessibility. Built for showrooms, offices, conference halls, and large venues requiring crystal-clear visuals.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">2.66 – 4 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Refresh Rate</div><div class="spec-v">≥3840 Hz</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥800 nits</div></div>
-            <div class="spec-item"><div class="spec-k">Life Span</div><div class="spec-v">100,000 hrs</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-both">Indoor / Outdoor</span>
-        <div class="product-img-box">
-          <img src="./LATTICESTRIP.png" alt="LatticeStrip Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">LatticeStrip Series</div>
-          <div class="pc-name">HX-TPLS3.91-H / L</div>
-          <div class="pc-desc">Cost-effective transparent strip display using SMD1921 LEDs. Suitable for hanging or floor installation. Metal frame required. Perfect for retail facades and semi-outdoor environments.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">3.91 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Refresh Rate</div><div class="spec-v">≥1920 Hz</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥2000–4500</div></div>
-            <div class="spec-item"><div class="spec-k">Cabinet</div><div class="spec-v">1000×1000 mm</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-indoor">Indoor</span>
-        <div class="product-img-box">
-          <img src="./VersaPoster 640 & 600.png" alt="VersaPoster" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">VersaPoster 640 & 600</div>
-          <div class="pc-name">HX-PSVP641.86 / 2 / 2.5</div>
-          <div class="pc-desc">All-in-one plug-and-play indoor LED poster. Can be used individually or combined to create larger displays. Controlled from phone, computer, or tablet. Zero setup complexity.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.86 – 2.5 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Display Size</div><div class="spec-v">640×1920 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥600 nits</div></div>
-            <div class="spec-item"><div class="spec-k">Control</div><div class="spec-v">Phone / PC / Tablet</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- OUTDOOR -->
-  <div class="series-panel" id="sp-outdoor">
-    <div class="series-grid">
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./DuraPanel.png" alt="DuraPanel Pro 960" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">DuraPanel Pro 960 Series</div>
-          <div class="pc-name">HX-OFDP5 Pro to HX-OFDP10 Pro</div>
-          <div class="pc-desc">Premium fan-less outdoor display with front & rear maintenance. IP66 rated. 5500+ nits cuts through direct sunlight. Built for billboards, stadiums, building facades, and road signage.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">5 – 10 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥5500 nits</div></div>
-            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP66</div></div>
-            <div class="spec-item"><div class="spec-k">Cabinet</div><div class="spec-v">960×960×83 mm</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./DuraMini Series.png" alt="DuraMini Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">DuraMini Series</div>
-          <div class="pc-name">HX-OFDMN1.2 / 1.6 / 1.9</div>
-          <div class="pc-desc">Ultra-fine pitch outdoor display using Flip Chip LED technology. 160° wide viewing angle. Up to 640,000 dots/m² at 1.25mm pitch — the sharpest outdoor resolution available anywhere.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.25 – 1.92 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥3000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
-            <div class="spec-item"><div class="spec-k">LED Type</div><div class="spec-v">Flip Chip</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./StreetView.png" alt="StreetView Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">StreetView Series</div>
-          <div class="pc-name">HX-PSSV1.38 / 1.85 / 2.5 / 3.12</div>
-          <div class="pc-desc">Outdoor fine-pitch LED poster. Destroys traditional LCD in brightness, color accuracy, and lifespan. IP65 rated. The standard for high-footfall street and retail advertising.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.38 – 3.12 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
-            <div class="spec-item"><div class="spec-k">Display Size</div><div class="spec-v">800×1500 mm</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TRANSPARENT -->
-  <div class="series-panel" id="sp-transparent">
-    <div class="series-grid">
-      <div class="prod-card">
-        <span class="pc-env env-both">Indoor / Outdoor</span>
-        <div class="product-img-box">
-          <img src="./CrystalFilm Series.png" alt="CrystalFilm Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">CrystalFilm Series</div>
-          <div class="pc-name">HX-TPCF3.75 / 5 / 6.25 / 10</div>
-          <div class="pc-desc">Applied directly onto glass surfaces. Chip-on-board technology for high stability. Ultra-low power at ≤45W/m². Transforms any glass into a dynamic LED display without blocking natural light.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">3.75 – 10 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Avg Power</div><div class="spec-v">≤45 W/m²</div></div>
-            <div class="spec-item"><div class="spec-k">Refresh Rate</div><div class="spec-v">≥3840 Hz</div></div>
-            <div class="spec-item"><div class="spec-k">LED Type</div><div class="spec-v">Flip Chip RGB</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-both">Indoor / Outdoor</span>
-        <div class="product-img-box">
-          <img src="./HoloMesh Series.png" alt="HoloMesh Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">HoloMesh Series</div>
-          <div class="pc-name">HX-TPHM3.91 / 6.25 / 10</div>
-          <div class="pc-desc">Best display quality with stunning 3D visual effects. Up to 95%+ transparency at 10mm pitch. 7000+ nits brightness. Built for architectural facades, luxury retail, and premium events.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">3.91 – 10 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Transparency</div><div class="spec-v">&gt;80% – 95%</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥7000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">Effect</div><div class="spec-v">3D Visual</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-both">Indoor / Outdoor</span>
-        <div class="product-img-box">
-          <img src="./Glassview.png" alt="GlassView Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">GlassView Series</div>
-          <div class="pc-name">HX-PSGV3.91 / 6.25</div>
-          <div class="pc-desc">Transparent glass screen with stunning visual appeal. Suitable for hanging or floor installation. Built-in 8GB storage with optional 4G connectivity. Control content from any device.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">3.91 – 6.25 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">Display Size</div><div class="spec-v">750×1175 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Storage</div><div class="spec-v">8GB + 4G</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MOBILE -->
-  <div class="series-panel" id="sp-mobile">
-    <div class="series-grid">
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./AdPack.png" alt="AdPack Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">AdPack Series</div>
-          <div class="pc-name">HX-MVAP4.17 / 3.12 / 2.5</div>
-          <div class="pc-desc">World's first full-color high-brightness delivery bag LED display. 4G GPS + Bluetooth enabled. Runs on Android/Linux/Debian. Delivery riders become moving billboards for your brand.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">2.5 – 4.17 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">&gt;6000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">Network</div><div class="spec-v">4G GPS + BT</div></div>
-            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./AdBox.png" alt="AdBox Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">AdBox Series</div>
-          <div class="pc-name">HX-MVAB4.17 / 3.12 / 2.5</div>
-          <div class="pc-desc">3-sided delivery box LED display. 4G GPS connected for remote content management. 6000+ nit max brightness. Turns every delivery vehicle into a three-sided moving advertising platform.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">2.5 – 4.17 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">&gt;6000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">Network</div><div class="spec-v">4G GPS</div></div>
-            <div class="spec-item"><div class="spec-k">Contrast</div><div class="spec-v">≥5000:1</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./T-X Car Top Series.png" alt="T-X Car Top Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">T-X Car Top Series</div>
-          <div class="pc-name">HX-MVCTTX1.8 / 2.5 / 3.07</div>
-          <div class="pc-desc">World's first fine-pitch car top LED display. Double-sided with 170° wide viewing angle. WiFi + USB + 4G connectivity. IP65 rated. Taxi advertising that actually looks premium.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.81 – 3.07 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">Network</div><div class="spec-v">WiFi + USB + 4G</div></div>
-            <div class="spec-item"><div class="spec-k">View Angle</div><div class="spec-v">170° wide</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- POSTER -->
-  <div class="series-panel" id="sp-poster">
-    <div class="series-grid">
-      <div class="prod-card">
-        <span class="pc-env env-indoor">Indoor</span>
-        <div class="product-img-box">
-          <img src="./VersaPoster 640 & 600.png" alt="VersaPoster 640 & 600" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">VersaPoster 640 & 600</div>
-          <div class="pc-name">HX-PSVP641.86 / 642 / 642.5</div>
-          <div class="pc-desc">All-in-one indoor LED poster. Plug-and-play. Use solo or combine multiple units into a larger display wall. Phone, computer, or tablet control. Iron cabinet build, rear service.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.86 – 2.5 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">640×1920 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Design</div><div class="spec-v">Plug & Play</div></div>
-            <div class="spec-item"><div class="spec-k">Life Span</div><div class="spec-v">100,000 hrs</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./StreetView.png" alt="StreetView Series" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">StreetView Series</div>
-          <div class="pc-name">HX-PSSV1.38 / 1.85 / 2.5 / 3.12</div>
-          <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP65 rated for all-weather street advertising.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.38 – 3.12 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
-            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FLAGSHIP -->
-  <div class="series-panel" id="sp-flagship">
-    <div class="series-grid">
-      <div class="prod-card">
-        <span class="pc-env env-indoor">Indoor</span>
-        <div class="product-img-box">
-          <img src="./DIE-CASTING Cabinet LED Display Screen.webp" alt="DIE-CASTING Cabinet LED Display Screen" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">DIE-CASTING Cabinet LED Display Screen</div>
-          <div class="pc-desc">All-in-one indoor LED poster. Plug-and-play. Use solo or combine multiple units into a larger display wall. Phone, computer, or tablet control. Iron cabinet build, rear service.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.86 – 2.5 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">640×1920 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Design</div><div class="spec-v">Plug & Play</div></div>
-            <div class="spec-item"><div class="spec-k">Life Span</div><div class="spec-v">100,000 hrs</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./640x640mm Indoor Die Cast LED Cabinet.webp" alt="640x640mm Indoor Die Cast LED Cabinet" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">640x640mm Indoor Die Cast LED Cabinet</div>
-          <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP65 rated for all-weather street advertising.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">2.9 – 4.9 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
-            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./960x960 mm LED video wall Die Cast Cabinets.webp" alt="960x960 mm LED video wall Die Cast Cabinets" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">960x960 mm LED video wall Die Cast Cabinets</div>
-          <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP65 rated for all-weather street advertising.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">3 – 5 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
-            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-      <div class="prod-card">
-        <span class="pc-env env-outdoor">Outdoor</span>
-        <div class="product-img-box">
-          <img src="./Outdoor Fixed Installation P4.44 4K LED Display 5500-8000nits High Brightness IP66 Waterproof 16-Bit Color Sunlight Readable.avif" alt="Outdoor P4.44 4K LED Display" class="product-img">
-        </div>
-        <div class="pc-body">
-          <div class="pc-series">Outdoor P4.44 4K LED Display, 8000nits, IP66, 16-bit</div>
-          <div class="pc-desc">Outdoor fine-pitch LED poster. Superior to LCD in every measurable spec — brightness, color gamut, viewing angle, and lifespan. IP66 rated for all-weather street advertising.</div>
-          <div class="pc-specs">
-            <div class="spec-item"><div class="spec-k">Pixel Pitch</div><div class="spec-v">1.38 – 3.12 mm</div></div>
-            <div class="spec-item"><div class="spec-k">Brightness</div><div class="spec-v">≥4000 nits</div></div>
-            <div class="spec-item"><div class="spec-k">IP Rating</div><div class="spec-v">IP65</div></div>
-            <div class="spec-item"><div class="spec-k">Display</div><div class="spec-v">800×1500 mm</div></div>
-          </div>
-          <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- USE CASES -->
-<section id="usecases">
-  <div class="sec-over">Solutions</div>
-  <h2 class="sec-h2">WHERE ZORKO SCREENS LIVE</h2>
-  <p class="sec-sub">Every industry. Every surface. Every environment. If it needs to be seen, we have a display for it.</p>
-  <div class="uc-grid">
-    <div class="uc-item"><span class="uc-icon">🏟️</span><div class="uc-title">Stadiums & Arenas</div><div class="uc-desc">Scoreboards, perimeter displays, giant screens. DuraPanel Pro handles 5500+ nits in direct sunlight without flinching.</div></div>
-    <div class="uc-item"><span class="uc-icon">🏢</span><div class="uc-title">Corporate Offices</div><div class="uc-desc">Lobbies, boardrooms, reception areas. MaxPanel indoor series with 3840Hz refresh — flicker-free for video recording.</div></div>
-    <div class="uc-item"><span class="uc-icon">🛍️</span><div class="uc-title">Retail & Malls</div><div class="uc-desc">GlassView and CrystalFilm for storefront glass displays. VersaPoster for in-store product spotlights and promotions.</div></div>
-    <div class="uc-item"><span class="uc-icon">🎪</span><div class="uc-title">Events & Concerts</div><div class="uc-desc">Rental fleet available. Stage backdrops, photo walls, sponsor screens. Deployed and operational within hours.</div></div>
-    <div class="uc-item"><span class="uc-icon">🏗️</span><div class="uc-title">Building Facades</div><div class="uc-desc">HoloMesh transparent displays for architectural LED installations. 95% transparency with full 3D visual effects capability.</div></div>
-    <div class="uc-item"><span class="uc-icon">🚗</span><div class="uc-title">Mobile Advertising</div><div class="uc-desc">AdPack, AdBox, T-X Car Top. Your ad moves with the city. GPS-tracked, remotely managed from anywhere.</div></div>
-    <div class="uc-item"><span class="uc-icon">🛣️</span><div class="uc-title">Roads & Highways</div><div class="uc-desc">StreetView outdoor posters and DuraMini fine-pitch panels for roadside advertising. IP65-rated for all weather.</div></div>
-    <div class="uc-item"><span class="uc-icon">🎬</span><div class="uc-title">Brand Activations</div><div class="uc-desc">Short-term rental for pop-ups and campaigns. Turn up anywhere with maximum visual impact. Pack up and repeat.</div></div>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="sec-over">Process</div>
-  <h2 class="sec-h2">FROM ENQUIRY TO INSTALLATION</h2>
-  <p class="sec-sub">We run the entire project. You don't manage multiple vendors — you talk to one team.</p>
-  <div class="steps">
-    <div class="step"><div class="step-num">01</div><div class="step-title">Consultation</div><div class="step-desc">Tell us location, size, budget, and purpose. We recommend the exact right screen — not the most expensive one.</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">Custom Design</div><div class="step-desc">We engineer to your exact dimensions. In-house manufacturing means any spec and any custom size is achievable.</div></div>
-    <div class="step"><div class="step-num">03</div><div class="step-title">Manufacturing</div><div class="step-desc">Built in-house. No third-party suppliers. Full quality control. Every unit tested before it leaves our facility.</div></div>
-    <div class="step"><div class="step-num">04</div><div class="step-title">Installation</div><div class="step-desc">Our team deploys on-site. Structural mounting, electrical setup, software configuration — all fully handled.</div></div>
-    <div class="step"><div class="step-num">05</div><div class="step-title">After-Sales</div><div class="step-desc">We don't disappear after install. Ongoing support, maintenance, content help, and upgrade paths available.</div></div>
-  </div>
-</section>
-
-<!-- WHY ZORKO -->
-<section id="why">
-  <div class="sec-over">Why Us</div>
-  <h2 class="sec-h2">NO MIDDLEMEN. NO EXCUSES.</h2>
-  <p class="sec-sub">We manufacture, we deploy, we support. The whole chain under one roof.</p>
-  <div class="why-grid">
-    <div class="why-item"><div class="why-icon-box">🏭</div><div class="why-text"><h4>In-House Manufacturing</h4><p>We build every screen ourselves. No reselling. No white-labeling. Direct control over quality, specs, and cost.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">🎯</div><div class="why-text"><h4>Custom Any Size</h4><p>Standard dimensions or fully custom. If you can specify it, we can build it. No off-the-shelf limitations.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">⚡</div><div class="why-text"><h4>Zero Middlemen</h4><p>You talk directly to the manufacturer. Competitive pricing, faster delivery, and honest realistic timelines.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">🔧</div><div class="why-text"><h4>End-to-End Service</h4><p>Consultation → Design → Manufacturing → Installation → Support. One company. No handoffs. No blame-passing.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">📡</div><div class="why-text"><h4>Remote Management</h4><p>4G GPS enabled mobile units. Update content from your phone anywhere. Track display status in real-time.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">⏱️</div><div class="why-text"><h4>100,000-Hour Lifespan</h4><p>That's 11+ years of continuous operation. Our screens outlast the competition — and the warranties they hide behind.</p></div></div>
-  </div>
-</section>
-
-<!-- RENTAL BANNER -->
-<section id="rental">
-  <div class="rental-inner">
-    <div>
-      <div class="rental-badge">RENTAL AVAILABLE</div>
-      <h2 class="rental-h">NEED IT FOR<br>AN EVENT?</h2>
-      <p class="rental-sub">Rent Zorko LED screens for brand activations, events, and temporary campaigns. Fast setup, full technical support, transparent daily rates. No long-term commitment required.</p>
-      <div class="rental-list">
-        <span class="r-tag">Corporate Events</span>
-        <span class="r-tag">Concerts & Festivals</span>
-        <span class="r-tag">Brand Activations</span>
-        <span class="r-tag">Product Launches</span>
-        <span class="r-tag">Exhibitions</span>
-        <span class="r-tag">Weddings & Social</span>
-      </div>
-    </div>
-    <button class="btn-primary-dark" onclick="scrollTo('contact');setTimeout(()=>{var el=document.getElementById('f-interest');if(el)el.value='LED Screen Rental'},400)">Enquire About Rental →</button>
-  </div>
-</section>
-
-<!-- CONTACT FORM -->
-<section id="contact">
-  <div class="form-layout">
-    <div class="form-left">
-      <div class="sec-over">Contact</div>
-      <h2 class="sec-h2">LET'S TALK<br><span style="color:var(--amber)">SCREENS.</span></h2>
-      <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-top:.5rem;font-weight:300">Tell us your requirement. A Zorko specialist responds within 24 hours with the right solution and a transparent quote — no fluff, no upsell.</p>
-      <div class="trust-items">
-        <div class="trust-item">
-          <div class="trust-dot"></div>
-          <div class="trust-text"><strong>Free Consultation</strong><p>No obligation. We assess your need and suggest the right product honestly — not the priciest one.</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-dot"></div>
-          <div class="trust-text"><strong>Direct Manufacturer Pricing</strong><p>No broker markups. You negotiate directly with the people who built the product.</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-dot"></div>
-          <div class="trust-text"><strong>Response Within 24 Hours</strong><p>A real human will contact you. We don't let enquiries die in an inbox.</p></div>
-        </div>
-        <div class="trust-item">
-          <div class="trust-dot"></div>
-          <div class="trust-text"><strong>Custom Sizing Available</strong><p>Any dimension. Any environment. Budget range discussed upfront with full transparency.</p></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="form-right">
-      <div id="form-container">
-        <div id="zorko-form">
-          <div class="ff-row">
-            <div class="ff"><label>Full Name *</label><input type="text" id="f-name" placeholder="Rahul Sharma" autocomplete="name"></div>
-            <div class="ff"><label>Company / Brand</label><input type="text" id="f-company" placeholder="Your Company" autocomplete="organization"></div>
-          </div>
-          <div class="ff-row">
-            <div class="ff"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 98765 43210" autocomplete="tel"></div>
-            <div class="ff"><label>Email Address</label><input type="email" id="f-email" placeholder="you@company.com" autocomplete="email"></div>
-          </div>
-          <div class="ff">
-            <label>I'm Interested In *</label>
-            <select id="f-interest">
-              <option value="">Select a product or service...</option>
-              <optgroup label="── Indoor Displays">
-                <option>MaxPanel Series (Indoor Large Screens)</option>
-                <option>VersaPoster 640 (Indoor LED Poster)</option>
-                <option>LatticeStrip Series (Indoor Transparent)</option>
-              </optgroup>
-              <optgroup label="── Outdoor Displays">
-                <option>DuraPanel Pro 960 (Outdoor Billboard)</option>
-                <option>DuraMini Series (Ultra Fine Pitch Outdoor)</option>
-                <option>StreetView (Outdoor LED Poster)</option>
-              </optgroup>
-              <optgroup label="── Transparent Displays">
-                <option>CrystalFilm (Glass Film Display)</option>
-                <option>HoloMesh (Transparent Mesh + 3D)</option>
-                <option>GlassView (Transparent Glass Screen)</option>
-              </optgroup>
-              <optgroup label="── Mobile Advertising">
-                <option>AdPack (Delivery Bag LED Display)</option>
-                <option>AdBox (Vehicle 3-Sided Box Display)</option>
-                <option>T-X Car Top (Taxi-Top LED Display)</option>
-              </optgroup>
-              <option value="LED Screen Rental">LED Screen Rental</option>
-              <option>Custom / Not Sure – Need Consultation</option>
-            </select>
-          </div>
-          <div class="ff-row">
-            <div class="ff">
-              <label>Approximate Budget</label>
-              <select id="f-budget">
-                <option value="">Select a range...</option>
-                <option>Below ₹1 Lakh</option>
-                <option>₹1 – 5 Lakh</option>
-                <option>₹5 – 20 Lakh</option>
-                <option>₹20 – 50 Lakh</option>
-                <option>Above ₹50 Lakh</option>
-                <option>Rental – Daily / Weekly Rate</option>
-              </select>
-            </div>
-            <div class="ff">
-              <label>Timeline</label>
-              <select id="f-timeline">
-                <option value="">When do you need it?</option>
-                <option>Within 2 weeks</option>
-                <option>Within 1 month</option>
-                <option>1 – 3 months</option>
-                <option>3+ months / Still planning</option>
-              </select>
-            </div>
-          </div>
-          <div class="ff">
-            <label>Additional Details (optional)</label>
-            <textarea id="f-msg" placeholder="Screen size needed, installation location, content type, event date, or anything else that helps us prepare a better proposal..."></textarea>
-          </div>
-          <button class="submit-btn" onclick="submitZorko()">SUBMIT ENQUIRY — WE'LL CONTACT YOU</button>
-          <div class="form-note">No spam. No cold calls. A Zorko specialist will reach out personally within 24 hours.</div>
-        </div>
-        <div class="form-success" id="form-success">
-          <div class="fs-icon">✅</div>
-          <div class="fs-title">ENQUIRY RECEIVED.</div>
-          <div class="fs-sub">A Zorko specialist will contact you within 24 hours.<br>We don't let good enquiries go cold.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div>
-    <div class="f-logo">ZORKO TECHNOLOGIES</div>
-    <div class="f-tagline">Attention Infrastructure for Brands</div>
-  </div>
-  <div class="f-copy">
-    <div>© 2025 Zorko Technologies. All rights reserved.</div>
-    <div style="margin-top:4px">Manufacturing · Rental · End-to-End LED Solutions</div>
-  </div>
-</footer>
-
+<section id="usecases"><div class="sec-over">Solutions</div><h2 class="sec-h2">WHERE ZORKO SCREENS LIVE</h2><p class="sec-sub">Every industry. Every surface. Every environment. If it needs to be seen, we have a display for it.</p><div class="uc-grid"><div class="uc-item"><span class="uc-icon">🏟️</span><div class="uc-title">Stadiums & Arenas</div><div class="uc-desc">Scoreboards, perimeter displays, giant screens. DuraPanel Pro handles 5500+ nits.</div></div><div class="uc-item"><span class="uc-icon">🏢</span><div class="uc-title">Corporate Offices</div><div class="uc-desc">Lobbies, boardrooms, reception areas. MaxPanel indoor series with 3840Hz refresh.</div></div><div class="uc-item"><span class="uc-icon">🛍️</span><div class="uc-title">Retail & Malls</div><div class="uc-desc">GlassView and CrystalFilm for storefront glass displays.</div></div><div class="uc-item"><span class="uc-icon">🎪</span><div class="uc-title">Events & Concerts</div><div class="uc-desc">Rental fleet available. Stage backdrops, sponsor screens.</div></div><div class="uc-item"><span class="uc-icon">🏗️</span><div class="uc-title">Building Facades</div><div class="uc-desc">HoloMesh transparent displays for architectural LED installations.</div></div><div class="uc-item"><span class="uc-icon">🚗</span><div class="uc-title">Mobile Advertising</div><div class="uc-desc">AdPack, AdBox, T-X Car Top. Your ad moves with the city.</div></div><div class="uc-item"><span class="uc-icon">🛣️</span><div class="uc-title">Roads & Highways</div><div class="uc-desc">StreetView outdoor posters and DuraMini fine-pitch panels.</div></div><div class="uc-item"><span class="uc-icon">🎬</span><div class="uc-title">Brand Activations</div><div class="uc-desc">Short-term rental for pop-ups and campaigns.</div></div></div></section>
+<section id="how"><div class="sec-over">Process</div><h2 class="sec-h2">FROM ENQUIRY TO INSTALLATION</h2><p class="sec-sub">We run the entire project. You don't manage multiple vendors — you talk to one team.</p><div class="steps"><div class="step"><div class="step-num">01</div><div class="step-title">Consultation</div><div class="step-desc">Tell us location, size, budget, and purpose.</div></div><div class="step"><div class="step-num">02</div><div class="step-title">Custom Design</div><div class="step-desc">We engineer to your exact dimensions.</div></div><div class="step"><div class="step-num">03</div><div class="step-title">Manufacturing</div><div class="step-desc">Built in-house. No third-party suppliers.</div></div><div class="step"><div class="step-num">04</div><div class="step-title">Installation</div><div class="step-desc">Our team deploys on-site.</div></div><div class="step"><div class="step-num">05</div><div class="step-title">After-Sales</div><div class="step-desc">Ongoing support, maintenance, content help.</div></div></div></section>
+<section id="why"><div class="sec-over">Why Us</div><h2 class="sec-h2">NO MIDDLEMEN. NO EXCUSES.</h2><p class="sec-sub">We manufacture, we deploy, we support. The whole chain under one roof.</p><div class="why-grid"><div class="why-item"><div class="why-icon-box">🏭</div><div class="why-text"><h4>In-House Manufacturing</h4><p>We build every screen ourselves. Direct control over quality.</p></div></div><div class="why-item"><div class="why-icon-box">🎯</div><div class="why-text"><h4>Custom Any Size</h4><p>Standard dimensions or fully custom. No off-the-shelf limitations.</p></div></div><div class="why-item"><div class="why-icon-box">⚡</div><div class="why-text"><h4>Zero Middlemen</h4><p>You talk directly to the manufacturer. Competitive pricing.</p></div></div><div class="why-item"><div class="why-icon-box">🔧</div><div class="why-text"><h4>End-to-End Service</h4><p>Consultation → Design → Manufacturing → Installation → Support.</p></div></div><div class="why-item"><div class="why-icon-box">📡</div><div class="why-text"><h4>Remote Management</h4><p>4G GPS enabled mobile units. Update content from anywhere.</p></div></div><div class="why-item"><div class="why-icon-box">⏱️</div><div class="why-text"><h4>100,000-Hour Lifespan</h4><p>11+ years of continuous operation.</p></div></div></div></section>
+<section id="rental"><div class="rental-inner"><div><div class="rental-badge">RENTAL AVAILABLE</div><h2 class="rental-h">NEED IT FOR<br>AN EVENT?</h2><p class="rental-sub">Rent Zorko LED screens for brand activations, events, and temporary campaigns. Fast setup, full technical support.</p><div class="rental-list"><span class="r-tag">Corporate Events</span><span class="r-tag">Concerts & Festivals</span><span class="r-tag">Brand Activations</span><span class="r-tag">Product Launches</span><span class="r-tag">Exhibitions</span><span class="r-tag">Weddings & Social</span></div></div><button class="btn-primary-dark" onclick="scrollTo('contact');setTimeout(()=>{var el=document.getElementById('f-interest');if(el)el.value='LED Screen Rental'},400)">Enquire About Rental →</button></div></section>
+<section id="contact"><div class="form-layout"><div class="form-left"><div class="sec-over">Contact</div><h2 class="sec-h2">LET'S TALK<br><span style="color:var(--amber)">SCREENS.</span></h2><p style="font-size:14px;color:var(--muted);line-height:1.8;margin-top:.5rem">Tell us your requirement. A Zorko specialist responds within 24 hours with a transparent quote.</p><div class="trust-items"><div class="trust-item"><div class="trust-dot"></div><div class="trust-text"><strong>Free Consultation</strong><p>No obligation. We suggest the right product honestly.</p></div></div><div class="trust-item"><div class="trust-dot"></div><div class="trust-text"><strong>Direct Manufacturer Pricing</strong><p>No broker markups. Negotiate directly with the people who built the product.</p></div></div><div class="trust-item"><div class="trust-dot"></div><div class="trust-text"><strong>Response Within 24 Hours</strong><p>A real human will contact you.</p></div></div><div class="trust-item"><div class="trust-dot"></div><div class="trust-text"><strong>Custom Sizing Available</strong><p>Any dimension. Any environment.</p></div></div></div></div><div class="form-right"><div id="form-container"><div id="zorko-form"><div class="ff-row"><div class="ff"><label>Full Name *</label><input type="text" id="f-name" placeholder="Rahul Sharma"></div><div class="ff"><label>Company / Brand</label><input type="text" id="f-company" placeholder="Your Company"></div></div><div class="ff-row"><div class="ff"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 98765 43210"></div><div class="ff"><label>Email Address</label><input type="email" id="f-email" placeholder="you@company.com"></div></div><div class="ff"><label>I'm Interested In *</label><select id="f-interest"><option value="">Select a product or service...</option><option>FlagShip Die-Cast Series</option><option>Indoor MaxPanel / VersaPoster</option><option>Outdoor DuraPanel / StreetView</option><option>Transparent CrystalFilm / HoloMesh</option><option>Mobile Ads (AdPack, AdBox, Car Top)</option><option>LED Screen Rental</option><option>Custom Consultation</option></select></div><div class="ff-row"><div class="ff"><label>Budget Range</label><select id="f-budget"><option value="">Select a range...</option><option>Below ₹1 Lakh</option><option>₹1 – 5 Lakh</option><option>₹5 – 20 Lakh</option><option>₹20 – 50 Lakh</option><option>Above ₹50 Lakh</option></select></div><div class="ff"><label>Timeline</label><select id="f-timeline"><option value="">When do you need it?</option><option>Within 2 weeks</option><option>Within 1 month</option><option>1 – 3 months</option><option>3+ months</option></select></div></div><div class="ff"><label>Message / Screen Size</label><textarea id="f-msg" placeholder="Tell us about your project, required dimensions, location..."></textarea></div><button class="submit-btn" onclick="submitZorko()">SUBMIT ENQUIRY →</button><div class="form-note">No spam. A Zorko specialist will reach out within 24 hours.</div></div><div class="form-success" id="form-success"><div class="fs-icon">✅</div><div class="fs-title">ENQUIRY RECEIVED.</div><div class="fs-sub">A Zorko specialist will contact you within 24 hours.</div></div></div></div></div></section>
+<footer><div><div class="f-logo">ZORKO TECHNOLOGIES</div><div class="f-tagline">Attention Infrastructure for Brands</div></div><div class="f-copy"><div>© 2025 Zorko Technologies. All rights reserved.</div><div>Manufacturing · Rental · End-to-End LED Solutions</div></div></footer>
 <script>
-function scrollTo(id){
-  var el=document.getElementById(id);
-  if(el) el.scrollIntoView({behavior:'smooth'});
+// Product database with multiple images for each product (image carousel)
+const productDB = {
+  flagship: [
+    { name:"DIE-CASTING Cabinet LED Display Screen", series:"FLAGSHIP DIE-CAST", desc:"All-in-one indoor LED poster with die-cast aluminum cabinet. Plug-and-play, rear service, ultra-slim bezel.", env:"indoor", images:["./DIE-CASTING Cabinet LED Display Screen.webp", "./640x640mm Indoor Die Cast LED Cabinet.webp"], specs:[["Pixel Pitch","1.86 – 2.5 mm"],["Display","640×1920 mm"],["Design","Plug & Play"],["Life Span","100,000 hrs"]] },
+    { name:"640x640mm Indoor Die Cast Cabinet", series:"FLAGSHIP DIE-CAST", desc:"Premium die-cast cabinet for seamless indoor video walls. Ultra-high refresh rate, flicker-free performance.", env:"indoor", images:["./640x640mm Indoor Die Cast LED Cabinet.webp", "./DIE-CASTING Cabinet LED Display Screen.webp"], specs:[["Pixel Pitch","2.9 – 4.9 mm"],["Brightness","≥1200 nits"],["Cabinet","640×640 mm"],["Service","Rear/Front"]] },
+    { name:"960x960 mm Outdoor Die Cast Cabinet", series:"FLAGSHIP OUTDOOR", desc:"Rugged outdoor die-cast cabinet, IP65 rated. Exceptional heat dissipation and all-weather reliability.", env:"outdoor", images:["./960x960 mm LED video wall Die Cast Cabinets.webp", "./Outdoor Fixed Installation P4.44 4K LED Display 5500-8000nits High Brightness IP66 Waterproof 16-Bit Color Sunlight Readable.avif"], specs:[["Pixel Pitch","3 – 5 mm"],["Brightness","≥5500 nits"],["IP Rating","IP65"],["Cabinet","960×960 mm"]] },
+    { name:"Outdoor P4.44 4K LED Display", series:"ULTRA BRIGHT", desc:"8000 nits, IP66, 16-bit color depth. Sunlight readable, perfect for high-impact outdoor advertising.", env:"outdoor", images:["./Outdoor Fixed Installation P4.44 4K LED Display 5500-8000nits High Brightness IP66 Waterproof 16-Bit Color Sunlight Readable.avif", "./960x960 mm LED video wall Die Cast Cabinets.webp"], specs:[["Pixel Pitch","4.44 mm"],["Brightness","≥8000 nits"],["IP Rating","IP66"],["Color","16-bit"]] }
+  ],
+  indoor: [
+    { name:"MaxPanel Series", series:"HX-IFMP", desc:"Ideal for large indoor screens. Die-cast aluminum cabinet, rear service, 3840Hz refresh.", env:"indoor", images:["./MAXPANEL SERIES.png", "./MAXPANEL SERIES.png"], specs:[["Pixel Pitch","2.66 – 4 mm"],["Refresh","≥3840 Hz"],["Brightness","≥800 nits"],["Life","100K hrs"]] },
+    { name:"LatticeStrip Series", series:"HX-TPLS", desc:"Cost-effective transparent strip display. Perfect for retail facades.", env:"both", images:["./LATTICESTRIP.png", "./LATTICESTRIP.png"], specs:[["Pixel Pitch","3.91 mm"],["Brightness","2000-4500"],["Cabinet","1000×1000 mm"],["Refresh","1920 Hz"]] },
+    { name:"VersaPoster 640", series:"ALL-IN-ONE", desc:"Plug-and-play indoor LED poster. Control via phone/PC, solo or video wall.", env:"indoor", images:["./VersaPoster 640 & 600.png", "./VersaPoster 640 & 600.png"], specs:[["Pixel Pitch","1.86 – 2.5 mm"],["Display","640×1920 mm"],["Brightness","≥600 nits"],["Control","Wireless"]] }
+  ],
+  outdoor: [
+    { name:"DuraPanel Pro 960", series:"HX-OFDP", desc:"Premium fan-less outdoor display, IP66, 5500+ nits. Built for billboards & stadiums.", env:"outdoor", images:["./DuraPanel.png", "./DuraPanel.png"], specs:[["Pixel Pitch","5 – 10 mm"],["Brightness","≥5500 nits"],["IP","IP66"],["Cabinet","960×960 mm"]] },
+    { name:"DuraMini Series", series:"FLIP CHIP", desc:"Ultra-fine pitch outdoor display using Flip Chip LED technology. 160° viewing angle.", env:"outdoor", images:["./DuraMini Series.png", "./DuraMini Series.png"], specs:[["Pixel Pitch","1.25 – 1.92 mm"],["Brightness","≥3000 nits"],["IP","IP65"],["LED","Flip Chip"]] },
+    { name:"StreetView Series", series:"OUTDOOR POSTER", desc:"Fine-pitch outdoor LED poster. Superior to LCD in brightness & color.", env:"outdoor", images:["./StreetView.png", "./StreetView.png"], specs:[["Pixel Pitch","1.38 – 3.12 mm"],["Brightness","≥4000 nits"],["IP","IP65"],["Size","800×1500 mm"]] }
+  ],
+  transparent: [
+    { name:"CrystalFilm Series", series:"GLASS FILM", desc:"Applied directly onto glass. Chip-on-board, ultra-low power ≤45W/m².", env:"both", images:["./CrystalFilm Series.png", "./CrystalFilm Series.png"], specs:[["Pitch","3.75 – 10 mm"],["Power","≤45 W/m²"],["Refresh","3840 Hz"],["LED","Flip Chip"]] },
+    { name:"HoloMesh Series", series:"3D TRANSPARENT", desc:"95% transparency, stunning 3D visual effects. 7000+ nits brightness.", env:"both", images:["./HoloMesh Series.png", "./HoloMesh Series.png"], specs:[["Pitch","3.91 – 10 mm"],["Transparency",">95%"],["Brightness","≥7000 nits"],["Effect","3D Visual"]] },
+    { name:"GlassView Series", series:"GLASS SCREEN", desc:"Transparent glass screen with 8GB storage + 4G connectivity.", env:"both", images:["./Glassview.png", "./Glassview.png"], specs:[["Pitch","3.91 – 6.25 mm"],["Brightness","≥4000 nits"],["Storage","8GB + 4G"],["Size","750×1175 mm"]] }
+  ],
+  mobile: [
+    { name:"AdPack Series", series:"DELIVERY BAG", desc:"World's first full-color delivery bag LED display. 4G GPS + Bluetooth.", env:"outdoor", images:["./AdPack.png", "./AdPack.png"], specs:[["Pitch","2.5 – 4.17 mm"],["Brightness",">6000 nits"],["Network","4G GPS"],["IP","IP65"]] },
+    { name:"AdBox Series", series:"3-SIDED BOX", desc:"Three-sided delivery box display. Remote content management.", env:"outdoor", images:["./AdBox.png", "./AdBox.png"], specs:[["Pitch","2.5 – 4.17 mm"],["Brightness",">6000 nits"],["Network","4G GPS"],["Contrast","5000:1"]] },
+    { name:"T-X Car Top Series", series:"CAR TOP", desc:"World's first fine-pitch car top LED display. Double-sided, 170° view.", env:"outdoor", images:["./T-X Car Top Series.png", "./T-X Car Top Series.png"], specs:[["Pitch","1.81 – 3.07 mm"],["Brightness","≥4000 nits"],["Connectivity","WiFi+4G"],["View","170°"]] }
+  ],
+  poster: [
+    { name:"VersaPoster 640", series:"INDOOR POSTER", desc:"Plug-and-play LED poster, iron cabinet, rear service.", env:"indoor", images:["./VersaPoster 640 & 600.png", "./VersaPoster 640 & 600.png"], specs:[["Pitch","1.86 – 2.5 mm"],["Display","640×1920 mm"],["Design","Plug & Play"],["Life","100K hrs"]] },
+    { name:"StreetView Series", series:"OUTDOOR POSTER", desc:"All-weather outdoor LED poster, IP65 rated, 4000 nits.", env:"outdoor", images:["./StreetView.png", "./StreetView.png"], specs:[["Pitch","1.38 – 3.12 mm"],["Brightness","≥4000 nits"],["IP","IP65"],["Size","800×1500 mm"]] }
+  ]
+};
+
+// Helper: build card with image gallery carousel
+function buildGalleryCard(product, idx, categoryId) {
+  const envClass = product.env === 'indoor' ? 'env-indoor' : (product.env === 'outdoor' ? 'env-outdoor' : 'env-both');
+  const envLabel = product.env === 'indoor' ? 'Indoor' : (product.env === 'outdoor' ? 'Outdoor' : 'Indoor / Outdoor');
+  const images = product.images || ["./MAXPANEL SERIES.png"];
+  let specsHtml = '';
+  product.specs.forEach(s => { specsHtml += `<div class="spec-item"><div class="spec-k">${s[0]}</div><div class="spec-v">${s[1]}</div></div>`; });
+  const cardId = `prod_${categoryId}_${idx}`;
+  // Preload dots and arrows script will attach dynamically after render
+  return `<div class="prod-card" data-cardid="${cardId}">
+    <span class="pc-env ${envClass}">${envLabel}</span>
+    <div class="product-gallery" id="gallery-${cardId}">
+      <button class="gallery-arrow arrow-left" data-gallery="${cardId}">‹</button>
+      <div class="gallery-main"><img class="gallery-main-img" src="${images[0]}" alt="${product.name}"></div>
+      <button class="gallery-arrow arrow-right" data-gallery="${cardId}">›</button>
+      <div class="gallery-dots" id="dots-${cardId}"></div>
+    </div>
+    <div class="pc-body">
+      <div class="pc-series">${product.series}</div>
+      <div class="pc-name">${product.name}</div>
+      <div class="pc-desc">${product.desc}</div>
+      <div class="pc-specs">${specsHtml}</div>
+      <button class="pc-cta" onclick="scrollTo('contact')">Enquire Now</button>
+    </div>
+  </div>`;
 }
 
+function renderCategory(containerId, productsArray, categoryId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  let html = '';
+  productsArray.forEach((prod, idx) => { html += buildGalleryCard(prod, idx, categoryId); });
+  container.innerHTML = html;
+  // Attach gallery behavior after DOM update
+  productsArray.forEach((prod, idx) => {
+    const cardId = `prod_${categoryId}_${idx}`;
+    const images = prod.images || [];
+    if (images.length <= 1) return;
+    const galleryDiv = document.getElementById(`gallery-${cardId}`);
+    if (!galleryDiv) return;
+    const mainImg = galleryDiv.querySelector('.gallery-main-img');
+    const leftBtn = galleryDiv.querySelector('.arrow-left');
+    const rightBtn = galleryDiv.querySelector('.arrow-right');
+    const dotsContainer = document.getElementById(`dots-${cardId}`);
+    if (!mainImg || !leftBtn || !rightBtn) return;
+    let currentIndex = 0;
+    // create dots
+    if (dotsContainer) {
+      dotsContainer.innerHTML = '';
+      for (let i = 0; i < images.length; i++) {
+        const dot = document.createElement('button');
+        dot.classList.add('gallery-dot');
+        if (i === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => {
+          currentIndex = i;
+          mainImg.src = images[currentIndex];
+          updateDotsActive(dotsContainer, currentIndex);
+        });
+        dotsContainer.appendChild(dot);
+      }
+    }
+    const updateDotsActive = (containerDots, activeIdx) => {
+      const dots = containerDots.querySelectorAll('.gallery-dot');
+      dots.forEach((dot, i) => {
+        if (i === activeIdx) dot.classList.add('active');
+        else dot.classList.remove('active');
+      });
+    };
+    leftBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex - 1 + images.length) % images.length;
+      mainImg.src = images[currentIndex];
+      if (dotsContainer) updateDotsActive(dotsContainer, currentIndex);
+    });
+    rightBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = (currentIndex + 1) % images.length;
+      mainImg.src = images[currentIndex];
+      if (dotsContainer) updateDotsActive(dotsContainer, currentIndex);
+    });
+  });
+}
+
+function initAllProducts() {
+  renderCategory('flagshipGrid', productDB.flagship, 'flagship');
+  renderCategory('indoorGrid', productDB.indoor, 'indoor');
+  renderCategory('outdoorGrid', productDB.outdoor, 'outdoor');
+  renderCategory('transparentGrid', productDB.transparent, 'transparent');
+  renderCategory('mobileGrid', productDB.mobile, 'mobile');
+  renderCategory('posterGrid', productDB.poster, 'poster');
+}
+
+function scrollTo(id){ const el=document.getElementById(id); if(el) el.scrollIntoView({behavior:'smooth'}); }
 function showSeries(id,btn){
   document.querySelectorAll('.series-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.sn-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('sp-'+id).classList.add('active');
   btn.classList.add('active');
 }
-
-function toggleDrawer(){
-  var drawer=document.getElementById('nav-drawer');
-  var burger=document.getElementById('hamburger');
-  var isOpen=drawer.classList.contains('open');
-  if(isOpen){
-    drawer.classList.remove('open');
-    burger.classList.remove('open');
-  } else {
-    drawer.classList.add('open');
-    burger.classList.add('open');
-  }
-}
-
-function closeDrawer(){
-  document.getElementById('nav-drawer').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
-}
-
-// Close drawer on outside click
-document.addEventListener('click',function(e){
-  var drawer=document.getElementById('nav-drawer');
-  var burger=document.getElementById('hamburger');
-  if(drawer.classList.contains('open') && !drawer.contains(e.target) && !burger.contains(e.target)){
-    closeDrawer();
-  }
-});
-
-function submitZorko(){
-  var name=document.getElementById('f-name').value.trim();
-  var phone=document.getElementById('f-phone').value.trim();
-  var interest=document.getElementById('f-interest').value;
-  if(!name){alert('Please enter your name.');return;}
-  if(!phone){alert('Please enter your phone number so we can reach you.');return;}
-  if(!interest){alert("Please select what you're interested in.");return;}
-  document.getElementById('zorko-form').style.display='none';
-  document.getElementById('form-success').classList.add('show');
-}
+function toggleDrawer(){ const d=document.getElementById('nav-drawer'); const b=document.getElementById('hamburger'); d.classList.toggle('open'); b.classList.toggle('open'); }
+function closeDrawer(){ document.getElementById('nav-drawer').classList.remove('open'); document.getElementById('hamburger').classList.remove('open'); }
+document.addEventListener('click',function(e){ const drawer=document.getElementById('nav-drawer'); const burger=document.getElementById('hamburger'); if(drawer.classList.contains('open') && !drawer.contains(e.target) && !burger.contains(e.target)) closeDrawer(); });
+function submitZorko(){ let name=document.getElementById('f-name').value.trim(); let phone=document.getElementById('f-phone').value.trim(); let interest=document.getElementById('f-interest').value; if(!name){alert('Please enter your name.');return;} if(!phone){alert('Please enter your phone number.');return;} if(!interest){alert("Please select what you're interested in.");return;} document.getElementById('zorko-form').style.display='none'; document.getElementById('form-success').classList.add('show'); }
+window.addEventListener('DOMContentLoaded', initAllProducts);
 </script>
 </body>
 </html>
