@@ -694,8 +694,30 @@ const productDB = {
   flagship:[
     {name:"DIE-CASTING Cabinet LED Display Screen",series:"FLAGSHIP DIE-CAST",desc:"All-in-one indoor LED poster with die-cast aluminum cabinet. Plug-and-play, rear service, ultra-slim bezel.",env:"indoor",images:["./DIE-CASTING Cabinet LED Display Screen.webp","https://res.cloudinary.com/deb6oiddj/image/upload/v1778486940/ChatGPT_Image_May_11_2026_01_38_49_PM_vk2ubv.png"],specs:[["Pixel Pitch","3.8 – 4.8 mm"],["Display","576×576 mm"],["Design","Plug & Play"],["Life Span","100,000 hrs"]]},
     {name:"640x640mm Indoor Die Cast Cabinet",series:"FLAGSHIP DIE-CAST",desc:"Premium die-cast cabinet for seamless indoor video walls. Ultra-high refresh rate, flicker-free performance.",env:"indoor",images:["./640x640mm Indoor Die Cast LED Cabinet.webp","https://5.imimg.com/data5/YZ/MA/VM/SELLER-72742084/p3-91-p3-p4-10ft-x-12ft-500x500.jpg"],specs:[["Pixel Pitch","2.5 – 6 mm"],["Brightness","5500"],["Cabinet","640×640 mm"],["Service","Rear/Front"]]},
-    {name:"960x960 mm Outdoor Die Cast Cabinet",series:"FLAGSHIP OUTDOOR",desc:"Rugged outdoor die-cast cabinet, IP65 rated. Exceptional heat dissipation and all-weather reliability.",env:"outdoor",images:["./960x960 mm LED video wall Die Cast Cabinets.webp","https://s.alicdn.com/@sc04/kf/H2c41a16ce2a54f359dd749434cd1938aa/Factory-Wholesale-Price-of-Die-cast-Magnesium-Alloy-960-960-Led-Display-Cabinet-for-P1.8-P2-P2.5-P3-P4-P5-P6-P8-P10-Led-Module.jpg_300x300.jpg"],specs:[["Pixel Pitch","2.5 – 6 mm"],["Brightness","≥5500 nits"],["IP Rating","IP65"],["Cabinet","960×960 mm"]]},
-    {name:"Outdoor P4.44 4K LED Display",series:"ULTRA BRIGHT",desc:"8000 nits, IP67, 16-bit color depth. Sunlight readable, perfect for high-impact outdoor advertising.",env:"outdoor",images:["./Outdoor Fixed Installation P4.44 4K LED Display 5500-8000nits High Brightness IP66 Waterproof 16-Bit Color Sunlight Readable.avif","https://tiimg.tistatic.com/fp/1/002/451/outdoor-p6-25-led-display-screen-die-casting-cabinet-879.jpg"],specs:[["Pixel Pitch","4.4 - 6.6 mm"],["Brightness","≥7000 nits"],["IP Rating","IP67"],["Color","16-bit"]]}
+    {name:"960x960 mm Outdoor Die Cast Cabinet",series:"FLAGSHIP OUTDOOR",desc:"Rugged outdoor die-cast cabinet, IP65 rated. Exceptional heat dissipation and all-weather reliability.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1779340986/image-Photoroom_tab77a.png","./960x960 mm LED video wall Die Cast Cabinets.webp"],specs:[["Pixel Pitch","2.5 – 6 mm"],["Brightness","≥5500 nits"],["IP Rating","IP65"],["Cabinet","960×960 mm"]]},
+    {name:"Outdoor P4.44 4K LED Display",
+    series:"ULTRA BRIGHT",
+    desc:"8000 nits, IP67, 16-bit color depth. Sunlight readable, perfect for high-impact outdoor advertising.",
+    env:"outdoor",
+    images:["./Outdoor Fixed Installation P4.44 4K LED Display 5500-8000nits High Brightness IP66 Waterproof 16-Bit Color Sunlight Readable.avif",
+    "https://tiimg.tistatic.com/fp/1/002/451/outdoor-p6-25-led-display-screen-die-casting-cabinet-879.jpg"],
+    specs:[["Pixel Pitch","4.4 - 6.6 mm"],
+    ["Brightness","≥7000 nits"],
+    ["IP Rating","IP67"],
+    ["Color","16-bit"]]
+    },
+
+    {name:"960x960 mm Iron Cabinet",
+    series:"FLAGSHIP OUTDOOR",
+    desc:"8000 nits, IP67, 16-bit color depth. Sunlight readable, perfect for high-impact outdoor advertising.",
+    env:"outdoor",
+    images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1779340158/Iron_Cabinet_zsjulo.webp",
+    "https://res.cloudinary.com/deb6oiddj/image/upload/v1779340462/Irno-2_wxaxop.webp"],
+    specs:[["Pixel Pitch","2.4 - 6 mm"],
+    ["Brightness","≥5500 nits"],
+    ["IP Rating","IP65"],
+    ["Cabinet","960×960 mm"]]
+    }
   ],
   indoor:[
     {name:"MaxPanel Series",series:"HX-IFMP",desc:"Ideal for large indoor screens. Die-cast aluminum cabinet, rear service, 3840Hz refresh.",env:"indoor",images:["./MAXPANEL SERIES.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778485784/ChatGPT_Image_May_11_2026_01_19_33_PM_nwagbl.png"],specs:[["Pixel Pitch","2.66 – 4 mm"],["Refresh","≥3840 Hz"],["Brightness","≥800 nits"],["Life","100K hrs"]]},
@@ -918,6 +940,105 @@ window.addEventListener('DOMContentLoaded',()=>{
   initAllProducts();
   buildGalleryGrid('all');
 });
+</script>
+<script>
+(function() {
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSKXydfCh4Svy3nOulLv8rynBwlGoWJZOb5AygvOx9IH0lwtJHRPs9DIeWLJEPIR-X/exec"
+
+    window.submitZorko = async function() {
+        // Get form field values
+        const name = document.getElementById('f-name')?.value.trim() || '';
+        const company = document.getElementById('f-company')?.value.trim() || '';
+        const phone = document.getElementById('f-phone')?.value.trim() || '';
+        const email = document.getElementById('f-email')?.value.trim() || '';
+        const interest = document.getElementById('f-interest')?.value || '';
+        const budget = document.getElementById('f-budget')?.value || '';
+        const timeline = document.getElementById('f-timeline')?.value || '';
+        const message = document.getElementById('f-msg')?.value.trim() || '';
+        
+        // Validation
+        if (!name) {
+            alert('Please enter your name.');
+            return false;
+        }
+        if (!phone) {
+            alert('Please enter your phone number.');
+            return false;
+        }
+        if (!interest || interest === '') {
+            alert("Please select what you're interested in.");
+            return false;
+        }
+        
+        // Prepare data object
+        const formData = {
+            timestamp: new Date().toISOString(),
+            name: name,
+            company: company,
+            phone: phone,
+            email: email,
+            interest: interest,
+            budget: budget,
+            timeline: timeline,
+            message: message,
+            source: 'Zorko Website Contact Form',
+            status: 'New Enquiry'
+        };
+        
+        // Show loading state
+        const submitBtn = document.querySelector('.submit-btn');
+        const originalBtnText = submitBtn?.innerHTML || 'SUBMIT ENQUIRY →';
+        if (submitBtn) {
+            submitBtn.innerHTML = 'SUBMITTING...';
+            submitBtn.disabled = true;
+        }
+        
+        // Send data to Google Sheets using JSONP-style fetch with timeout
+        try {
+            // Use fetch with timeout to prevent hanging
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
+            
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+                signal: controller.signal
+            });
+            
+            clearTimeout(timeoutId);
+            
+            if (response.ok) {
+                console.log('Form submitted successfully to Google Sheets');
+            } else {
+                throw new Error('Server responded with error');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            // Still show success to user even if background save fails
+            // Data is already in the form, you can email it manually
+        }
+        
+        // Show success message immediately (don't wait for server)
+        const zorkoForm = document.getElementById('zorko-form');
+        const successDiv = document.getElementById('form-success');
+        
+        if (zorkoForm) zorkoForm.style.display = 'none';
+        if (successDiv) successDiv.classList.add('show');
+        
+        // Reset button state
+        if (submitBtn) {
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+        }
+        
+        return true;
+    };
+    
+    console.log('Form handler loaded. Ready to submit to Google Sheets.');
+})();
 </script>
 </body>
 </html>
