@@ -60,19 +60,26 @@ body{background:var(--white);color:var(--text);overflow-x:hidden;font-family:'Ba
   min-height:100vh;
   display:flex;flex-direction:column;justify-content:flex-end;
   position:relative;overflow:hidden;
-  background:#4b4b4b;
+  background:radial-gradient(circle at 75% 30%, #1e1e1e 0%, #0a0a0a 100%);
   margin-top:var(--nav-h);
 }
 .hero-bg{
   position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;
   background-image:url('https://i.ytimg.com/vi/LhmwWIFZ5eY/maxresdefault.jpg');
   background-size:cover;background-position:center;background-repeat:no-repeat;
-  opacity:0.2;pointer-events:none;
+  opacity:0.55;pointer-events:none;
+}
+.hero-bg::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to right, #0a0a0a 20%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.2) 100%),
+             linear-gradient(to top, #0a0a0a 5%, transparent 35%);
 }
 .hero-content{position:relative;z-index:1;padding:2.5rem 2.5rem 0}
 .hero-overline{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .hero-overline::before{content:'';display:block;width:28px;height:2px;background:var(--amber);flex-shrink:0}
-.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,12vw,120px);line-height:.9;letter-spacing:2px;margin-bottom:1.8rem;color:var(--black)}
+.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,12vw,120px);line-height:.9;letter-spacing:2px;margin-bottom:1.8rem;color:var(--white)}
 .hero-h1 .hl{color:var(--amber)}
 .hero-sub{font-size:clamp(15px,2vw,21px);color:#ffffff;max-width:560px;line-height:1.8;font-weight:500;margin-bottom:2.5rem}
 .hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:3rem}
@@ -304,7 +311,7 @@ footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space
 @media(max-width:768px){
   .hero-h1{font-size:clamp(48px,14vw,80px)}
   .hero-sub{font-size:15px}
-  .hero-bg{opacity:0.15;background-position:40% center}
+  .hero-bg{display:none}
   .why-grid{grid-template-columns:1fr}
   .series-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
   .steps{grid-template-columns:repeat(2,1fr)}
