@@ -1,1051 +1,2690 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Zorko Technologies — LED Display Solutions | Premium LED Manufacturer</title>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --black:#0A0A0A;--dark:#111;
-  --white:#ffffff;--off:#F7F6F3;--card:#FAFAF8;
-  --border:#E8E5DF;--border2:#D4D0C8;
-  --amber:#3dc4e1;--amber-d:#0799b9;--amber-light:#e0f7fc;
-  --text:#111111;--muted:#666;--muted2:#999;
-  --green:#00A651;--blue:#1A56DB;
-  --nav-h:64px;
-}
-html{scroll-behavior:smooth}
-body{background:var(--white);color:var(--text);overflow-x:hidden;font-family:'Barlow',sans-serif}
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:#f0f0f0}
-::-webkit-scrollbar-thumb{background:var(--amber)}
+  <link rel="icon" href="./public/images/favicon.ico">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-/* ── NAV ── */
-#nav{
-  position:fixed;top:0;left:0;right:0;z-index:999;
-  background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);
-  border-bottom:1px solid var(--border);
-  padding:0 2.5rem;
-  display:flex;align-items:center;justify-content:space-between;
-  height:var(--nav-h);
-}
-.nav-logo{cursor:pointer;display:flex;align-items:center}
-.nav-links{display:flex;gap:2.5rem;align-items:center}
-.nav-link{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:color .15s;text-decoration:none;background:none;border:none;font-family:'Barlow',sans-serif;font-weight:500;padding:0}
-.nav-link:hover{color:var(--text)}
-.nav-cta{background:var(--amber);color:#fff;font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;border:none;cursor:pointer;transition:background .15s;white-space:nowrap;font-family:'Barlow',sans-serif}
-.nav-cta:hover{background:var(--amber-d)}
-.nav-hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;width:40px;height:40px;cursor:pointer;gap:5px;background:none;border:none;padding:4px}
-.nav-hamburger span{display:block;width:22px;height:2px;background:var(--text);transition:all .25s}
-.nav-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-.nav-hamburger.open span:nth-child(2){opacity:0}
-.nav-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-.nav-drawer{
-  display:none;
-  position:fixed;top:var(--nav-h);left:0;right:0;z-index:998;
-  background:#fff;border-bottom:2px solid var(--amber);
-  padding:1.5rem 2rem 2rem;
-  flex-direction:column;gap:0;
-  box-shadow:0 8px 32px rgba(0,0,0,0.08);
-}
-.nav-drawer.open{display:flex}
-.nav-drawer .nav-link{font-size:14px;letter-spacing:3px;padding:14px 0;border-bottom:1px solid var(--border);color:var(--text);background:none;text-align:left;width:100%;cursor:pointer}
-.nav-drawer .nav-link:last-child{border-bottom:none}
-.nav-drawer .nav-cta{margin-top:1.2rem;width:100%;padding:14px;font-size:14px;text-align:center}
+  <title>LED Display Manufacturer India | Zorko Technologies</title>
 
-/* ── HERO ── */
-#hero{
-  min-height:100vh;
-  display:flex;flex-direction:column;justify-content:flex-end;
-  position:relative;overflow:hidden;
-  background:radial-gradient(circle at 75% 30%, #1e1e1e 0%, #0a0a0a 100%);
-  margin-top:var(--nav-h);
-}
-.hero-bg{
-  position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;
-  background-image:url('https://i.ytimg.com/vi/LhmwWIFZ5eY/maxresdefault.jpg');
-  background-size:cover;background-position:center;background-repeat:no-repeat;
-  opacity:0.55;pointer-events:none;
-}
-.hero-bg::after{
-  content:'';
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to right, #0a0a0a 20%, rgba(10,10,10,0.85) 45%, rgba(10,10,10,0.2) 100%),
-             linear-gradient(to top, #0a0a0a 5%, transparent 35%);
-}
-.hero-content{position:relative;z-index:1;padding:2.5rem 2.5rem 0}
-.hero-overline{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:1.2rem;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.hero-overline::before{content:'';display:block;width:28px;height:2px;background:var(--amber);flex-shrink:0}
-.hero-h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(52px,12vw,120px);line-height:.9;letter-spacing:2px;margin-bottom:1.8rem;color:var(--white)}
-.hero-h1 .hl{color:var(--amber)}
-.hero-sub{font-size:clamp(15px,2vw,21px);color:#ffffff;max-width:560px;line-height:1.8;font-weight:500;margin-bottom:2.5rem}
-.hero-actions{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin-bottom:3rem}
-.btn-primary{background:var(--amber);color:#fff;font-weight:700;font-size:14px;letter-spacing:3px;text-transform:uppercase;padding:16px 32px;border:none;cursor:pointer;transition:all .15s}
-.btn-primary:hover{background:var(--amber-d);transform:translateY(-1px)}
-.btn-ghost{background:transparent;color:#ffffff;font-weight:600;font-size:14px;letter-spacing:3px;text-transform:uppercase;padding:15px 32px;border:1.5px solid var(--border2);cursor:pointer;transition:all .15s}
-.btn-ghost:hover{border-color:var(--amber);color:var(--amber)}
-.hero-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--border);border-top:1px solid var(--border)}
-.hm{background:var(--white);padding:1.5rem 1.2rem;border-right:1px solid var(--border)}
-.hm:last-child{border-right:none}
-.hm-num{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:var(--amber);letter-spacing:2px}
-.hm-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:3px}
+  <meta name="description"
+    content="India's direct LED display manufacturer. Indoor panels, outdoor screens, transparent LED, mobile ads & rental cabinets. No middlemen. Free quote in 24hrs.">
 
-/* ── TICKER ── */
-.ticker-wrap{overflow:hidden;background:var(--black);padding:11px 0;white-space:nowrap}
-.ticker-inner{display:inline-block;animation:tick 28s linear infinite}
-.ticker-inner span{font-size:.95rem;letter-spacing:4px;color:var(--amber);padding:0 2rem}
-.ticker-inner span::after{content:'·';margin-left:2rem;color:#444}
-@keyframes tick{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+  <meta name="keywords"
+    content="LED display manufacturer India, LED screen manufacturer India, indoor LED display panel, outdoor LED screen India, transparent LED film, fine pitch LED display, mobile LED advertising van, LED billboard manufacturer, LED video wall supplier India, buy LED screen India, LED display price India, LED rental cabinet manufacturer India, buy LED rental cabinet India, LED stage rental cabinet">
 
-/* ── SECTIONS ── */
-section{padding:5rem 2.5rem}
-.sec-over{font-size:10px;letter-spacing:5px;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;display:flex;align-items:center;gap:10px}
-.sec-over::before{content:'';display:block;width:20px;height:2px;background:var(--amber)}
-.sec-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,5vw,3.8rem);letter-spacing:2px;line-height:1;margin-bottom:.5rem;color:var(--black)}
-.sec-sub{font-size:14px;color:var(--muted);line-height:1.75;max-width:560px;font-weight:300;margin-bottom:3rem}
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
 
-/* ── PRODUCTS ── */
-#products{background:var(--white)}
-.series-nav{display:flex;gap:0;margin-bottom:3rem;border:1.5px solid var(--border);overflow-x:auto;width:100%;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
-.series-nav::-webkit-scrollbar{height:3px}
-.series-nav::-webkit-scrollbar-thumb{background:var(--amber)}
-.sn-btn{background:transparent;color:var(--muted);border:none;border-right:1px solid var(--border);padding:12px 20px;font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0;font-family:'Barlow',sans-serif}
-.sn-btn:last-child{border-right:none}
-.sn-btn.active,.sn-btn:hover{background:var(--amber);color:#fff}
-.series-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--border)}
-.prod-card{background:var(--white);overflow:hidden;cursor:default;transition:background .2s;position:relative}
-.prod-card:hover{background:var(--card)}
-.product-gallery{position:relative;width:100%;height:240px;background:#f7f6f3;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom:1px solid var(--border)}
-.gallery-main{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
-.gallery-main-img{width:100%;height:100%;object-fit:contain;object-position:center;transition:transform .2s}
-.gallery-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.55);color:white;border:none;width:32px;height:32px;border-radius:50%;font-size:18px;font-weight:bold;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:all .2s;backdrop-filter:blur(3px)}
-.gallery-arrow:hover{background:var(--amber);color:#fff;transform:translateY(-50%) scale(1.05)}
-.arrow-left{left:10px}
-.arrow-right{right:10px}
-.gallery-dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:10}
-.gallery-dot{width:7px;height:7px;border-radius:50%;background:rgba(0,0,0,0.5);border:none;cursor:pointer;transition:all .2s;padding:0}
-.gallery-dot.active{background:var(--amber);transform:scale(1.3);box-shadow:0 0 0 1px white}
-.pc-body{padding:1.4rem}
-.pc-series{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:.4rem}
-.pc-name{font-weight:700;font-size:1.1rem;letter-spacing:1px;margin-bottom:.5rem;color:var(--black)}
-.pc-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:1rem}
-.pc-specs{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.spec-item{background:var(--off);padding:7px 10px;border:1px solid var(--border)}
-.spec-k{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted2)}
-.spec-v{font-size:12px;font-weight:600;color:var(--text);margin-top:2px}
-.pc-env{position:absolute;top:12px;right:12px;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;z-index:12;border-radius:20px;font-weight:600}
-.env-indoor{color:var(--blue);background:rgba(26,86,219,.12);border:1px solid rgba(26,86,219,.3)}
-.env-outdoor{color:var(--green);background:rgba(0,166,81,.12);border:1px solid rgba(0,166,81,.3)}
-.env-both{color:var(--amber);background:var(--amber-light);border:1px solid rgba(61,196,225,.4)}
-.pc-cta{width:100%;background:transparent;border:1.5px solid var(--border2);color:var(--muted);font-weight:700;font-size:12px;letter-spacing:2px;text-transform:uppercase;padding:11px;margin-top:1rem;cursor:pointer;transition:all .15s;font-family:'Barlow',sans-serif}
-.pc-cta:hover{background:var(--amber);color:#fff;border-color:var(--amber)}
-.series-panel{display:none}
-.series-panel.active{display:block}
+  <link rel="canonical" href="https://www.zorkotechnologies.com/">
 
-/* ── USE CASES ── */
-#usecases{background:var(--off)}
-.uc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--border)}
-.uc-item{background:var(--white);padding:2rem;transition:background .2s}
-.uc-item:hover{background:var(--card)}
-.uc-icon{font-size:2rem;margin-bottom:1rem;display:block}
-.uc-title{font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
-.uc-desc{font-size:12px;color:var(--muted);line-height:1.65}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600&family=Barlow+Condensed:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <!-- <link rel="stylesheet" href="Zorko.css"> -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box
+    }
 
-/* ── HOW ── */
-#how{background:var(--white)}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--border);margin-top:3rem}
-.step{background:var(--white);padding:2rem 1.5rem;position:relative}
-.step::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:transparent;transition:background .2s}
-.step:hover::before{background:var(--amber)}
-.step-num{font-family:'Bebas Neue',sans-serif;font-size:4rem;color:var(--border);line-height:1;margin-bottom:.5rem}
-.step-title{font-weight:700;font-size:1rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.5rem}
-.step-desc{font-size:12px;color:var(--muted);line-height:1.65}
+    :root {
+      --black: #0A0A0A;
+      --dark: #111111;
+      --white: #ffffff;
+      --off: #F7F6F3;
+      --card: #FAFAF8;
+      --border: #E8E5DF;
+      --border2: #D4D0C8;
+      --amber: #3dc4e1;
+      --amber-d: #0799b9;
+      --amber-light: rgba(61, 196, 225, 0.1);
+      --text: #111111;
+      --muted: #666666;
+      --muted2: #999999;
+      --green: #00A651;
+      --blue: #1A56DB;
+      --nav-h: 64px;
+      --bg: var(--white);
+      --hero-bg: #4b4b4b;
+      --inv-text: #ffffff;
+    }
 
-/* ── WHY ── */
-#why{background:var(--off)}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin-top:3rem}
-.why-item{background:var(--white);padding:2rem;display:flex;gap:1rem;align-items:flex-start}
-.why-icon-box{width:40px;height:40px;min-width:40px;background:var(--amber-light);border:1px solid rgba(61,196,225,.3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
-.why-text h4{font-weight:700;font-size:14px;letter-spacing:2px;text-transform:uppercase;margin-bottom:.4rem}
-.why-text p{font-size:12px;color:var(--muted);line-height:1.65}
+    [data-theme="dark"] {
+      --black: #ffffff;
+      --dark: #f0f0f0;
+      --white: #0a0a0a;
+      --off: #121212;
+      --card: #181818;
+      --border: #2a2a2a;
+      --border2: #404040;
+      --text: #eeeeee;
+      --muted: #aaaaaa;
+      --muted2: #777777;
+      --bg: var(--white);
+      --hero-bg: #050505;
+      --inv-text: #0a0a0a;
+    }
 
-/* ── GALLERY ── */
-#gallery{background:var(--black);padding:5rem 2.5rem}
-#gallery .sec-over{color:var(--amber)}
-#gallery .sec-h2{color:var(--white)}
-#gallery .sec-sub{color:#aaa}
-.gallery-filter-bar{display:flex;gap:0;margin-bottom:2.5rem;border:1px solid #222;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
-.gallery-filter-bar::-webkit-scrollbar{height:3px}
-.gallery-filter-bar::-webkit-scrollbar-thumb{background:var(--amber)}
-.gf-btn{background:transparent;color:#666;border:none;border-right:1px solid #222;padding:10px 18px;font-weight:700;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:all .15s;flex-shrink:0;font-family:'Barlow',sans-serif}
-.gf-btn:last-child{border-right:none}
-.gf-btn.active,.gf-btn:hover{background:var(--amber);color:#fff}
-.zorko-gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px}
-.zg-item{position:relative;overflow:hidden;cursor:pointer;background:#111;aspect-ratio:1/1}
-.zg-item.wide{grid-column:span 2}
-.zg-item.tall{grid-row:span 2}
-.zg-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease,filter .4s ease;filter:brightness(0.85)}
-.zg-item:hover img{transform:scale(1.06);filter:brightness(1)}
-.zg-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.75) 0%,transparent 55%);display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;opacity:0;transition:opacity .3s}
-.zg-item:hover .zg-overlay{opacity:1}
-.zg-label{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--amber);margin-bottom:3px}
-.zg-name{font-weight:700;font-size:13px;color:#fff;letter-spacing:1px}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* ── LIGHTBOX ── */
-.lightbox{display:none;position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.93);align-items:center;justify-content:center}
-.lightbox.open{display:flex}
-.lb-inner{position:relative;max-width:90vw;max-height:90vh}
-.lb-inner img{max-width:90vw;max-height:85vh;object-fit:contain;display:block}
-.lb-close{position:fixed;top:20px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;z-index:10000;line-height:1;opacity:.7;transition:opacity .2s}
-.lb-close:hover{opacity:1}
-.lb-nav{position:fixed;top:50%;transform:translateY(-50%);background:rgba(255,255,255,0.1);border:none;color:#fff;font-size:2rem;width:48px;height:48px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s;z-index:10000;backdrop-filter:blur(4px)}
-.lb-nav:hover{background:var(--amber)}
-.lb-prev{left:16px}
-.lb-next{right:16px}
-.lb-caption{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);color:#ccc;font-size:12px;letter-spacing:2px;text-transform:uppercase;text-align:center;white-space:nowrap}
+    body {
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      font-family: 'Barlow', sans-serif;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
 
-/* ── TESTIMONIALS ── */
-#testimonials{background:var(--white);padding:5rem 2.5rem}
-.testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1px;background:var(--border);margin-top:3rem}
-.testi-card{background:var(--white);padding:2.5rem 2rem;position:relative;transition:background .2s}
-.testi-card:hover{background:var(--off)}
-.testi-quote-mark{font-family:'Bebas Neue',sans-serif;font-size:5rem;line-height:.8;color:var(--amber-light);position:absolute;top:1.2rem;left:1.5rem;user-select:none;pointer-events:none}
-.testi-stars{display:flex;gap:3px;margin-bottom:1rem;margin-top:.3rem}
-.testi-star{color:var(--amber);font-size:14px}
-.testi-text{font-size:14px;color:var(--muted);line-height:1.85;margin-bottom:1.8rem;font-style:italic;position:relative;z-index:1}
-.testi-author{display:flex;align-items:center;gap:12px}
-.testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--amber-light);border:2px solid var(--amber);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:var(--amber);flex-shrink:0;font-family:'Bebas Neue',sans-serif;letter-spacing:1px;overflow:hidden}
-.testi-avatar img{border-radius:50%;width:100%;height:100%;object-fit:cover}
-.testi-info strong{display:block;font-size:13px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--black)}
-.testi-info span{font-size:11px;color:var(--muted2);letter-spacing:1px;text-transform:uppercase}
-.testi-tag{display:inline-block;margin-top:1rem;font-size:9px;letter-spacing:2px;text-transform:uppercase;padding:4px 10px;border:1px solid var(--border2);color:var(--muted2)}
+    ::-webkit-scrollbar {
+      width: 4px
+    }
 
-/* ── CONTACT ── */
-#contact{background:var(--white)}
-.form-layout{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:start}
-.trust-items{margin-top:2.5rem;display:flex;flex-direction:column;gap:12px}
-.trust-item{display:flex;align-items:flex-start;gap:12px;padding:14px;border:1px solid var(--border);background:var(--off)}
-.trust-dot{width:6px;height:6px;min-width:6px;background:var(--amber);border-radius:50%;flex-shrink:0;margin-top:6px}
-.trust-text strong{color:var(--black);display:block;font-size:13px;font-weight:600;margin-bottom:2px}
-.trust-text p{font-size:12px;color:var(--muted);line-height:1.55}
-.ff{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
-.ff label{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);font-weight:600}
-.ff input,.ff select,.ff textarea{background:var(--white);border:1.5px solid var(--border);color:var(--text);padding:12px 14px;font-size:14px;outline:none;transition:border-color .2s;border-radius:0;width:100%;font-family:'Barlow',sans-serif;-webkit-appearance:none;appearance:none}
-.ff select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
-.ff input:focus,.ff select:focus,.ff textarea:focus{border-color:var(--amber)}
-.ff textarea{height:110px;resize:none}
-.ff-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.submit-btn{background:var(--amber);color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:4px;border:none;padding:18px;cursor:pointer;width:100%;transition:all .15s;margin-top:4px}
-.submit-btn:hover{background:var(--amber-d)}
-.form-success{display:none;background:#f0fdf4;border:1.5px solid rgba(0,166,81,.2);padding:2.5rem;text-align:center}
-.form-success.show{display:block}
+    ::-webkit-scrollbar-track {
+      background: var(--off)
+    }
 
-/* ── FOOTER ── */
-footer{background:var(--black);padding:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;border-top:1px solid #1a1a1a}
-.f-logo{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:4px;color:var(--amber)}
-.f-tagline{font-size:10px;color:#555;letter-spacing:3px;text-transform:uppercase;margin-top:4px}
-.f-copy{font-size:11px;color:#555;letter-spacing:1px;text-align:right}
-.live{display:inline-flex;align-items:center;gap:6px;font-size:10px;letter-spacing:2px;color:var(--green);text-transform:uppercase}
-.live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 1.5s infinite}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
-.Zorko{width:110px;height:auto;display:block}
+    ::-webkit-scrollbar-thumb {
+      background: var(--amber)
+    }
 
-/* ═══════════════════════════════════════
-   RESPONSIVE BREAKPOINTS
-═══════════════════════════════════════ */
+    /* ── NAV ── */
+    #nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+      transition: background 0.3s ease;
+    }
 
-/* ── Wide screens (1400px+) ── */
-@media(min-width:1400px){
-  #nav{padding:0 4rem}
-  section{padding:6rem 4rem}
-  #gallery{padding:6rem 4rem}
-  #testimonials{padding:6rem 4rem}
-  #contact{padding:6rem 4rem}
-  .hero-content{padding:3rem 4rem 0}
-  footer{padding:2.5rem 4rem}
-  .series-grid{grid-template-columns:repeat(3,1fr)}
-  .zorko-gallery-grid{grid-template-columns:repeat(4,1fr)}
-  .testi-grid{grid-template-columns:repeat(4,1fr)}
-}
+    .nav-logo {
+      cursor: pointer;
+      display: flex;
+      align-items: center
+    }
 
-/* ── Large desktop (1200px+) ── */
-@media(min-width:1200px) and (max-width:1399px){
-  .series-grid{grid-template-columns:repeat(3,1fr)}
-  .testi-grid{grid-template-columns:repeat(2,1fr)}
-}
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      align-items: center
+    }
 
-/* ── Tablet landscape (1024px) ── */
-@media(max-width:1024px){
-  .nav-links{gap:1.5rem}
-  .zorko-gallery-grid{grid-template-columns:repeat(3,1fr)}
-  .zg-item.tall{grid-row:span 1}
-}
+    .nav-link {
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      cursor: pointer;
+      transition: color .15s;
+      text-decoration: none;
+      background: none;
+      border: none;
+      font-family: 'Barlow', sans-serif;
+      font-weight: 500;
+      padding: 0
+    }
 
-/* ── Tablet portrait (900px) ── */
-@media(max-width:900px){
-  :root{--nav-h:64px}
-  .nav-links{display:none}
-  .nav-hamburger{display:flex}
-  #nav{padding:0 1.5rem}
-  .hero-content{padding:2rem 1.5rem 0}
-  .hero-actions .btn-ghost{display:none}
-  .hero-metrics{grid-template-columns:repeat(2,1fr)}
-  .form-layout{grid-template-columns:1fr;gap:3rem}
-  .why-grid{grid-template-columns:1fr}
-  section{padding:4rem 1.5rem}
-  #gallery{padding:4rem 1.5rem}
-  #testimonials{padding:4rem 1.5rem}
-  #contact{padding:4rem 1.5rem}
-  .zorko-gallery-grid{grid-template-columns:repeat(2,1fr)}
-  .zg-item.wide{grid-column:span 2}
-  .zg-item.tall{grid-row:span 1}
-  .testi-grid{grid-template-columns:1fr}
-  .steps{grid-template-columns:repeat(3,1fr)}
-  .uc-grid{grid-template-columns:repeat(2,1fr)}
-}
+    .nav-link:hover {
+      color: var(--text)
+    }
 
-/* ── Small tablet / large mobile (768px) ── */
-@media(max-width:768px){
-  .hero-h1{font-size:clamp(48px,14vw,80px)}
-  .hero-sub{font-size:15px}
-  .hero-bg{display:none}
-  .why-grid{grid-template-columns:1fr}
-  .series-grid{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-  .steps{grid-template-columns:repeat(2,1fr)}
-  .ff-row{grid-template-columns:1fr 1fr}
-  .testi-grid{grid-template-columns:1fr}
-  footer{flex-direction:column;align-items:flex-start;gap:1.5rem}
-  .f-copy{text-align:left}
-}
+    .nav-cta {
+      background: var(--amber);
+      color: #fff;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 10px 22px;
+      border: none;
+      cursor: pointer;
+      transition: background .15s;
+      white-space: nowrap;
+      font-family: 'Barlow', sans-serif;
+      border-radius: 2px;
+    }
 
-/* ── Mobile (600px) ── */
-@media(max-width:600px){
-  :root{--nav-h:58px}
-  #nav{height:var(--nav-h);padding:0 1.2rem}
-  .nav-drawer{top:var(--nav-h)}
-  .Zorko{width:90px}
-  .nav-cta{padding:8px 14px;font-size:12px;letter-spacing:1px}
+    .nav-cta:hover {
+      background: var(--amber-d)
+    }
 
-  .hero-content{padding:1.5rem 1.2rem 0}
-  .hero-h1{font-size:clamp(44px,15vw,72px);line-height:.92}
-  .hero-sub{font-size:14px;line-height:1.7}
-  .hero-actions{gap:10px;margin-bottom:2rem}
-  .btn-primary{font-size:13px;letter-spacing:2px;padding:14px 24px}
-  .hero-metrics{grid-template-columns:repeat(2,1fr)}
-  .hm{padding:1.2rem 1rem}
-  .hm-num{font-size:1.8rem}
-  .hm-label{font-size:9px}
+    .theme-toggle {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
 
-  section{padding:3rem 1.2rem}
-  #gallery{padding:3rem 1.2rem}
-  #testimonials{padding:3rem 1.2rem}
-  #contact{padding:3rem 1.2rem}
-  .sec-h2{font-size:clamp(1.8rem,9vw,2.5rem)}
-  .sec-sub{font-size:13px}
+    .theme-toggle:hover {
+      background: var(--off);
+      border-color: var(--amber);
+    }
 
-  .series-nav{margin-bottom:2rem}
-  .sn-btn{padding:10px 14px;font-size:11px}
-  .series-grid{grid-template-columns:1fr}
-  .product-gallery{height:200px}
-  .gallery-arrow{width:28px;height:28px;font-size:15px}
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      gap: 5px;
+      background: none;
+      border: none;
+      padding: 4px
+    }
 
-  .uc-grid{grid-template-columns:1fr}
-  .uc-item{padding:1.5rem}
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--text);
+      transition: all .25s
+    }
 
-  .steps{grid-template-columns:1fr 1fr}
-  .step{padding:1.5rem 1.2rem}
+    .nav-hamburger.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg)
+    }
 
-  .why-grid{grid-template-columns:1fr}
-  .why-item{padding:1.5rem}
+    .nav-hamburger.open span:nth-child(2) {
+      opacity: 0
+    }
 
-  .zorko-gallery-grid{grid-template-columns:1fr 1fr;gap:2px}
-  .zg-item.wide{grid-column:span 2}
-  .zg-item.tall{grid-row:span 1}
-  .lb-nav{display:none}
-  .lb-caption{font-size:10px;bottom:14px;width:90%;white-space:normal;text-align:center}
+    .nav-hamburger.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg)
+    }
 
-  .testi-grid{grid-template-columns:1fr}
-  .testi-card{padding:2rem 1.5rem}
-  .testi-text{font-size:13px}
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      top: var(--nav-h);
+      left: 0;
+      right: 0;
+      z-index: 998;
+      background: var(--white);
+      border-bottom: 2px solid var(--amber);
+      padding: 1.5rem 2rem 2rem;
+      flex-direction: column;
+      gap: 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    }
 
-  .form-layout{grid-template-columns:1fr;gap:2.5rem}
-  .ff-row{grid-template-columns:1fr}
-  .submit-btn{font-size:1.2rem;letter-spacing:3px;padding:16px}
+    .nav-drawer.open {
+      display: flex
+    }
 
-  footer{padding:2rem 1.2rem;flex-direction:column;align-items:flex-start;gap:1.2rem}
-  .f-copy{text-align:left}
-}
+    .nav-drawer .nav-link {
+      font-size: 14px;
+      letter-spacing: 3px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text);
+      background: none;
+      text-align: left;
+      width: 100%;
+      cursor: pointer
+    }
 
-/* ── Extra small mobile (380px) ── */
-@media(max-width:380px){
-  .hero-overline{display: none;}
-  .hero-h1{font-size:21px}
-  .nav-cta{padding:7px 12px;font-size:11px}
-  .steps{grid-template-columns:1fr}
-  .zorko-gallery-grid{grid-template-columns:1fr}
-  .zg-item.wide{grid-column:span 1}
-  .hm{padding:1rem .8rem}
-  .series-grid{grid-template-columns:1fr}
-  .hero-sub{margin-bottom: .5rem}
-}
+    .nav-drawer .nav-link:last-child {
+      border-bottom: none
+    }
 
-/* ── Touch-screen improvements ── */
-@media(hover:none){
-  .zg-overlay{opacity:1;background:linear-gradient(to top,rgba(0,0,0,0.6) 0%,transparent 60%)}
-  .prod-card:hover{background:var(--white)}
-  .uc-item:hover{background:var(--white)}
-}
-</style>
+    .nav-drawer .nav-cta {
+      margin-top: 1.2rem;
+      width: 100%;
+      padding: 14px;
+      font-size: 14px;
+      text-align: center
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      background: var(--hero-bg);
+      margin-top: var(--nav-h);
+      transition: background 0.3s ease;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background-image: url('https://res.cloudinary.com/deb6oiddj/video/upload/v1783153563/ux8h6ajciv5vjwx22ii4.mp4');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.2;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      padding: 2.5rem 2.5rem 0
+    }
+
+    .hero-overline {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap
+    }
+
+    .hero-overline::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--amber);
+      flex-shrink: 0
+    }
+
+    .hero-h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 52px;
+      line-height: .9;
+      letter-spacing: 2px;
+      margin-bottom: 1.8rem;
+      color: var(--black)
+    }
+
+    .hero-h1 .hl {
+      color: var(--amber)
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 21px);
+      color: var(--black);
+      max-width: 560px;
+      line-height: 1.8;
+      font-weight: 500;
+      margin-bottom: 2.5rem;
+      text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+
+    [data-theme="dark"] .hero-sub {
+      color: #fff;
+      text-shadow: none;
+    }
+
+    [data-theme="light"] .hero-sub {
+      color: #fff;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 3rem
+    }
+
+    .btn-primary {
+      background: var(--amber);
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      border: none;
+      cursor: pointer;
+      transition: all .15s;
+      border-radius: 2px;
+    }
+
+    .btn-primary:hover {
+      background: var(--amber-d);
+      transform: translateY(-1px)
+    }
+
+    .btn-ghost {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 15px 32px;
+      border: 1.5px solid rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: all .15s;
+      border-radius: 2px;
+      backdrop-filter: blur(5px);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--amber);
+      color: var(--amber);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: var(--border);
+      border-top: 1px solid var(--border)
+    }
+
+    .hm {
+      background: var(--white);
+      padding: 1.5rem 1.2rem;
+      border-right: 1px solid var(--border)
+    }
+
+    .hm:last-child {
+      border-right: none
+    }
+
+    .hm-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.2rem;
+      color: var(--amber);
+      letter-spacing: 2px
+    }
+
+    .hm-label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 3px
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      overflow: hidden;
+      background: #050505;
+      padding: 11px 0;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .ticker-inner {
+      display: inline-block;
+      animation: tick 28s linear infinite
+    }
+
+    .ticker-inner span {
+      font-size: .95rem;
+      letter-spacing: 4px;
+      color: var(--amber);
+      padding: 0 2rem
+    }
+
+    .ticker-inner span::after {
+      content: '·';
+      margin-left: 2rem;
+      color: #444
+    }
+
+    @keyframes tick {
+      0% {
+        transform: translateX(0)
+      }
+
+      100% {
+        transform: translateX(-50%)
+      }
+    }
+
+    /* ── SECTIONS ── */
+    section {
+      padding: 1rem .5rem
+    }
+
+    .sec-over {
+      font-size: 10px;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: .6rem;
+      display: flex;
+      align-items: center;
+      gap: 10px
+    }
+
+    .sec-over::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--amber)
+    }
+
+    .sec-h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      letter-spacing: 2px;
+      line-height: 1;
+      margin-bottom: .5rem;
+      color: var(--black)
+    }
+
+    .sec-sub {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 560px;
+      font-weight: 300;
+      margin-bottom: 3rem
+    }
+
+    /* ── PRODUCTS ── */
+    #products {
+      background: var(--bg)
+    }
+
+    .series-nav {
+      display: flex;
+      gap: 0;
+      margin-bottom: 3rem;
+      border: 1.5px solid var(--border);
+      overflow-x: auto;
+      width: 100%;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      border-radius: 4px;
+    }
+
+    .series-nav::-webkit-scrollbar {
+      height: 3px
+    }
+
+    .series-nav::-webkit-scrollbar-thumb {
+      background: var(--amber)
+    }
+
+    .sn-btn {
+      background: transparent;
+      color: var(--muted);
+      border: none;
+      border-right: 1px solid var(--border);
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .15s;
+      flex-shrink: 0;
+      font-family: 'Barlow', sans-serif
+    }
+
+    .sn-btn:last-child {
+      border-right: none
+    }
+
+    .sn-btn.active,
+    .sn-btn:hover {
+      background: var(--amber);
+      color: #fff
+    }
+
+    .series-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border)
+    }
+
+    .prod-card {
+      background: var(--white);
+      overflow: hidden;
+      cursor: default;
+      transition: background .2s;
+      position: relative
+    }
+
+    .prod-card:hover {
+      background: var(--card)
+    }
+
+    .product-gallery {
+      position: relative;
+      width: 100%;
+      height: 240px;
+      background: var(--off);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border)
+    }
+
+    .gallery-main {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .gallery-main-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      transition: transform .2s;
+      filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1));
+    }
+
+    .gallery-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.55);
+      color: white;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: all .2s;
+      backdrop-filter: blur(3px)
+    }
+
+    .gallery-arrow:hover {
+      background: var(--amber);
+      color: #fff;
+      transform: translateY(-50%) scale(1.05)
+    }
+
+    .arrow-left {
+      left: 10px
+    }
+
+    .arrow-right {
+      right: 10px
+    }
+
+    .gallery-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      z-index: 10
+    }
+
+    .gallery-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.5);
+      border: none;
+      cursor: pointer;
+      transition: all .2s;
+      padding: 0
+    }
+
+    .gallery-dot.active {
+      background: var(--amber);
+      transform: scale(1.3);
+      box-shadow: 0 0 0 1px white
+    }
+
+    .pc-body {
+      padding: 1.4rem
+    }
+
+    .pc-series {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: .4rem
+    }
+
+    .pc-name {
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 1px;
+      margin-bottom: .5rem;
+      color: var(--black)
+    }
+
+    .pc-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1rem
+    }
+
+    .pc-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px
+    }
+
+    .spec-item {
+      background: var(--off);
+      padding: 7px 10px;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    .spec-k {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--muted2)
+    }
+
+    .spec-v {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 2px
+    }
+
+    .pc-env {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      z-index: 12;
+      border-radius: 20px;
+      font-weight: 600
+    }
+
+    .env-indoor {
+      color: var(--blue);
+      background: rgba(26, 86, 219, .12);
+      border: 1px solid rgba(26, 86, 219, .3)
+    }
+
+    .env-outdoor {
+      color: var(--green);
+      background: rgba(0, 166, 81, .12);
+      border: 1px solid rgba(0, 166, 81, .3)
+    }
+
+    .env-both {
+      color: var(--amber);
+      background: var(--amber-light);
+      border: 1px solid rgba(61, 196, 225, .4)
+    }
+
+    .pc-cta {
+      width: 100%;
+      background: transparent;
+      border: 1.5px solid var(--border2);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 11px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: all .15s;
+      font-family: 'Barlow', sans-serif;
+      border-radius: 2px;
+    }
+
+    .pc-cta:hover {
+      background: var(--amber);
+      color: #fff;
+      border-color: var(--amber)
+    }
+
+    .series-panel {
+      display: none
+    }
+
+    .series-panel.active {
+      display: block
+    }
+
+    /* ── TECH SPECS (NEW) ── */
+    #tech-specs {
+      background: var(--off);
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .tech-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 2rem;
+      border-radius: 4px;
+    }
+
+    .tech-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      color: var(--amber);
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    .tech-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .pitch-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .pitch-table th,
+    .pitch-table td {
+      text-align: left;
+      padding: 10px;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
+
+    .pitch-table th {
+      color: var(--black);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 11px;
+    }
+
+    .pitch-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .pitch-table td strong {
+      color: var(--black);
+    }
+
+    .cabinet-type {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cabinet-type:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+
+    .cabinet-icon {
+      font-size: 2rem;
+      width: 50px;
+      height: 50px;
+      background: var(--amber-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+      flex-shrink: 0;
+    }
+
+    .cabinet-info h4 {
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--black);
+      margin-bottom: 5px;
+    }
+
+    .cabinet-info p {
+      margin-bottom: 0;
+    }
+
+    /* ── USE CASES ── */
+    #usecases {
+      background: var(--bg)
+    }
+
+    .uc-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--border)
+    }
+
+    .uc-item {
+      background: var(--white);
+      padding: 2rem;
+      transition: background .2s
+    }
+
+    .uc-item:hover {
+      background: var(--card)
+    }
+
+    .uc-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block
+    }
+
+    .uc-title {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+      color: var(--black);
+    }
+
+    .uc-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65
+    }
+
+    /* ── HOW ── */
+    #how {
+      background: var(--off)
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 3rem
+    }
+
+    .step {
+      background: var(--white);
+      padding: 2rem 1.5rem;
+      position: relative
+    }
+
+    .step::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: transparent;
+      transition: background .2s
+    }
+
+    .step:hover::before {
+      background: var(--amber)
+    }
+
+    .step-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 4rem;
+      color: var(--border2);
+      line-height: 1;
+      margin-bottom: .5rem
+    }
+
+    .step-title {
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: .5rem;
+      color: var(--black);
+    }
+
+    .step-desc {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65
+    }
+
+    /* ── WHY ── */
+    #why {
+      background: var(--bg)
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin-top: 3rem
+    }
+
+    .why-item {
+      background: var(--white);
+      padding: 2rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start
+    }
+
+    .why-icon-box {
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      background: var(--amber-light);
+      border: 1px solid rgba(61, 196, 225, .3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      border-radius: 4px;
+    }
+
+    .why-text h4 {
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: .4rem;
+      color: var(--black);
+    }
+
+    .why-text p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.65
+    }
+
+    /* ── GALLERY ── */
+    #gallery {
+      background: #050505;
+      padding: 5rem 2.5rem
+    }
+
+    #gallery .sec-over {
+      color: var(--amber)
+    }
+
+    #gallery .sec-h2 {
+      color: #ffffff
+    }
+
+    #gallery .sec-sub {
+      color: #aaaaaa
+    }
+
+    .gallery-filter-bar {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2.5rem;
+      border: 1px solid #222;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+      border-radius: 4px;
+    }
+
+    .gallery-filter-bar::-webkit-scrollbar {
+      height: 3px
+    }
+
+    .gallery-filter-bar::-webkit-scrollbar-thumb {
+      background: var(--amber)
+    }
+
+    .gf-btn {
+      background: transparent;
+      color: #888;
+      border: none;
+      border-right: 1px solid #222;
+      padding: 10px 18px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all .15s;
+      flex-shrink: 0;
+      font-family: 'Barlow', sans-serif
+    }
+
+    .gf-btn:last-child {
+      border-right: none
+    }
+
+    .gf-btn.active,
+    .gf-btn:hover {
+      background: var(--amber);
+      color: #fff
+    }
+
+    .zorko-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 3px
+    }
+
+    .zg-item {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      background: #111;
+      aspect-ratio: 1/1;
+      border-radius: 2px;
+    }
+
+    .zg-item.wide {
+      grid-column: span 2
+    }
+
+    .zg-item.tall {
+      grid-row: span 2
+    }
+
+    .zg-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .4s ease, filter .4s ease;
+      filter: brightness(0.85)
+    }
+
+    .zg-item:hover img {
+      transform: scale(1.06);
+      filter: brightness(1)
+    }
+
+    .zg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 55%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.2rem;
+      opacity: 0;
+      transition: opacity .3s
+    }
+
+    .zg-item:hover .zg-overlay {
+      opacity: 1
+    }
+
+    .zg-label {
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--amber);
+      margin-bottom: 3px
+    }
+
+    .zg-name {
+      font-weight: 700;
+      font-size: 13px;
+      color: #fff;
+      letter-spacing: 1px
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: rgba(0, 0, 0, 0.95);
+      align-items: center;
+      justify-content: center
+    }
+
+    .lightbox.open {
+      display: flex
+    }
+
+    .lb-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh
+    }
+
+    .lb-inner img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      display: block;
+      border-radius: 4px;
+    }
+
+    .lb-close {
+      position: fixed;
+      top: 20px;
+      right: 24px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+      z-index: 10000;
+      line-height: 1;
+      opacity: .7;
+      transition: opacity .2s
+    }
+
+    .lb-close:hover {
+      opacity: 1
+    }
+
+    .lb-nav {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background .2s;
+      z-index: 10000;
+      backdrop-filter: blur(4px);
+      border-radius: 50%;
+    }
+
+    .lb-nav:hover {
+      background: var(--amber)
+    }
+
+    .lb-prev {
+      left: 16px
+    }
+
+    .lb-next {
+      right: 16px
+    }
+
+    .lb-caption {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: #ccc;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-align: center;
+      white-space: nowrap
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials {
+      background: var(--off);
+      padding: 5rem 2.5rem
+    }
+
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1px;
+      background: var(--border);
+      margin-top: 3rem
+    }
+
+    .testi-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      position: relative;
+      transition: background .2s
+    }
+
+    .testi-card:hover {
+      background: var(--card)
+    }
+
+    .testi-quote-mark {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: .8;
+      color: var(--amber-light);
+      position: absolute;
+      top: 1.2rem;
+      left: 1.5rem;
+      user-select: none;
+      pointer-events: none
+    }
+
+    .testi-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 1rem;
+      margin-top: .3rem
+    }
+
+    .testi-star {
+      color: var(--amber);
+      font-size: 14px
+    }
+
+    .testi-text {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.8rem;
+      font-style: italic;
+      position: relative;
+      z-index: 1
+    }
+
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px
+    }
+
+    .testi-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--amber-light);
+      border: 2px solid var(--amber);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--amber);
+      flex-shrink: 0;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
+      overflow: hidden
+    }
+
+    .testi-avatar img {
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .testi-info strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--black)
+    }
+
+    .testi-info span {
+      font-size: 11px;
+      color: var(--muted2);
+      letter-spacing: 1px;
+      text-transform: uppercase
+    }
+
+    .testi-tag {
+      display: inline-block;
+      margin-top: 1rem;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border: 1px solid var(--border2);
+      color: var(--muted2);
+      border-radius: 2px;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--bg)
+    }
+
+    .form-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 5rem;
+      align-items: start
+    }
+
+    .trust-items {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 12px
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--border);
+      background: var(--off);
+      border-radius: 4px;
+    }
+
+    .trust-dot {
+      width: 6px;
+      height: 6px;
+      min-width: 6px;
+      background: var(--amber);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px
+    }
+
+    .trust-text strong {
+      color: var(--black);
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 2px
+    }
+
+    .trust-text p {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.55
+    }
+
+    .ff {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px
+    }
+
+    .ff label {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 600
+    }
+
+    .ff input,
+    .ff select,
+    .ff textarea {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      color: var(--text);
+      padding: 12px 14px;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+      border-radius: 4px;
+      width: 100%;
+      font-family: 'Barlow', sans-serif;
+      -webkit-appearance: none;
+      appearance: none
+    }
+
+    .ff select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 36px
+    }
+
+    .ff input:focus,
+    .ff select:focus,
+    .ff textarea:focus {
+      border-color: var(--amber)
+    }
+
+    .ff textarea {
+      height: 110px;
+      resize: none
+    }
+
+    .ff-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px
+    }
+
+    .submit-btn {
+      background: var(--amber);
+      color: #fff;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 4px;
+      border: none;
+      padding: 18px;
+      cursor: pointer;
+      width: 100%;
+      transition: all .15s;
+      margin-top: 4px;
+      border-radius: 4px;
+    }
+
+    .submit-btn:hover {
+      background: var(--amber-d)
+    }
+
+    .form-success {
+      display: none;
+      background: rgba(0, 166, 81, 0.05);
+      border: 1.5px solid rgba(0, 166, 81, .2);
+      padding: 2.5rem;
+      text-align: center;
+      border-radius: 4px;
+    }
+
+    .form-success.show {
+      display: block
+    }
+
+    /* ── FAQ ── */
+    #faq {
+      padding: 80px 6vw;
+      background: var(--off);
+    }
+
+    .faq-list {
+      max-width: 860px;
+      margin: 2.5rem auto 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .faq-item {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--white);
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .faq-item[open] {
+      border-color: rgba(245, 166, 35, .5);
+    }
+
+    .faq-q {
+      padding: 1.1rem 1.4rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: .5px;
+      cursor: pointer;
+      list-style: none;
+      color: var(--black);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    .faq-q::-webkit-details-marker {
+      display: none;
+    }
+
+    .faq-q::after {
+      content: '+';
+      font-size: 1.3rem;
+      color: var(--amber);
+      flex-shrink: 0;
+      margin-left: 1rem;
+      transition: transform .25s;
+    }
+
+    .faq-item[open] .faq-q::after {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      padding: 0 1.4rem 1.2rem;
+      font-size: .92rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #050505;
+      padding: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      border-top: 1px solid #1a1a1a;
+      flex-direction: column;
+    }
+
+    .f-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      display: flex;
+      justify-content: center;
+      font-size: 1.6rem;
+      letter-spacing: 4px;
+      color: var(--amber)
+    }
+
+    .f-tagline {
+      font-size: 10px;
+      color: #777;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-top: 4px
+    }
+
+    .f-copy {
+      font-size: 11px;
+      color: #777;
+      letter-spacing: 1px;
+      text-align: right
+    }
+
+    .Zorko {
+      width: 110px;
+      height: auto;
+      display: block
+    }
+
+    .f-nav {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: .75rem 0;
+    }
+
+    .f-nav a {
+      color: #888;
+      text-decoration: none;
+      font-size: .82rem;
+      letter-spacing: .5px;
+      transition: color .2s;
+    }
+
+    .f-nav a:hover {
+      color: var(--amber);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--amber);
+      color: #000;
+      padding: 8px 16px;
+      z-index: 9999;
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: 1px;
+      transition: top .2s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* RESPONSIVE BREAKPOINTS */
+    @media(min-width:1400px) {
+      #nav {
+        padding: 0 4rem
+      }
+
+      section {
+        padding: 6rem 4rem
+      }
+
+      #gallery,
+      #testimonials,
+      #contact {
+        padding: 6rem 4rem
+      }
+
+      .hero-content {
+        padding: 3rem 4rem 0
+      }
+
+      footer {
+        padding: 2.5rem 4rem
+      }
+
+      .series-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .zorko-gallery-grid {
+        grid-template-columns: repeat(4, 1fr)
+      }
+
+      .testi-grid {
+        grid-template-columns: repeat(4, 1fr)
+      }
+    }
+
+    @media(min-width:1200px) and (max-width:1399px) {
+      .series-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .testi-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:1024px) {
+      .nav-links {
+        gap: 1.5rem
+      }
+
+      .zorko-gallery-grid {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .zg-item.tall {
+        grid-row: span 1
+      }
+
+      .tech-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media(max-width:900px) {
+      :root {
+        --nav-h: 64px
+      }
+
+      .nav-links {
+        display: none
+      }
+
+      .nav-hamburger {
+        display: flex
+      }
+
+      #nav {
+        padding: 0 1.5rem
+      }
+
+      .hero-content {
+        padding: 2rem 1.5rem 0
+      }
+
+      .hero-actions .btn-ghost {
+        display: none
+      }
+
+      .hero-metrics {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .form-layout {
+        grid-template-columns: 1fr;
+        gap: 3rem
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr
+      }
+
+      section,
+      #gallery,
+      #testimonials,
+      #contact {
+        padding: 4rem 1.5rem
+      }
+
+      .zorko-gallery-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .zg-item.wide {
+        grid-column: span 2
+      }
+
+      .zg-item.tall {
+        grid-row: span 1
+      }
+
+      .testi-grid {
+        grid-template-columns: 1fr
+      }
+
+      .steps {
+        grid-template-columns: repeat(3, 1fr)
+      }
+
+      .uc-grid {
+        grid-template-columns: repeat(2, 1fr)
+      }
+    }
+
+    @media(max-width:768px) {
+      .hero-h1 {
+        font-size: clamp(48px, 14vw, 80px)
+      }
+
+      .hero-sub {
+        font-size: 15px
+      }
+
+      .hero-bg {
+        opacity: 0.15;
+        background-position: 40% center
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr
+      }
+
+      .series-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))
+      }
+
+      .steps {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .ff-row {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .testi-grid {
+        grid-template-columns: 1fr
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem
+      }
+
+      .f-copy {
+        text-align: left
+      }
+    }
+
+    @media(max-width:600px) {
+      :root {
+        --nav-h: 58px
+      }
+
+      #nav {
+        height: var(--nav-h);
+        padding: 0 1.2rem
+      }
+
+      .nav-drawer {
+        top: var(--nav-h)
+      }
+
+      .Zorko {
+        width: 90px
+      }
+
+      .nav-cta {
+        padding: 8px 14px;
+        font-size: 12px;
+        letter-spacing: 1px
+      }
+
+      .hero-content {
+        padding: 1.5rem 1.2rem 0
+      }
+
+      .hero-h1 {
+        font-size: clamp(44px, 15vw, 72px);
+        line-height: .92
+      }
+
+      .hero-sub {
+        font-size: 14px;
+        line-height: 1.7
+      }
+
+      .hero-actions {
+        gap: 10px;
+        margin-bottom: 2rem
+      }
+
+      .btn-primary {
+        font-size: 13px;
+        letter-spacing: 2px;
+        padding: 14px 24px
+      }
+
+      .hero-metrics {
+        grid-template-columns: repeat(2, 1fr)
+      }
+
+      .hm {
+        padding: 1.2rem 1rem
+      }
+
+      .hm-num {
+        font-size: 1.8rem
+      }
+
+      .hm-label {
+        font-size: 9px
+      }
+
+      section,
+      #gallery,
+      #testimonials,
+      #contact {
+        padding: 3rem 1.2rem
+      }
+
+      .sec-h2 {
+        font-size: clamp(1.8rem, 9vw, 2.5rem)
+      }
+
+      .sec-sub {
+        font-size: 13px
+      }
+
+      .series-nav {
+        margin-bottom: 2rem
+      }
+
+      .sn-btn {
+        padding: 10px 14px;
+        font-size: 11px
+      }
+
+      .series-grid {
+        grid-template-columns: 1fr
+      }
+
+      .product-gallery {
+        height: 200px
+      }
+
+      .gallery-arrow {
+        width: 28px;
+        height: 28px;
+        font-size: 15px
+      }
+
+      .uc-grid {
+        grid-template-columns: 1fr
+      }
+
+      .uc-item {
+        padding: 1.5rem
+      }
+
+      .steps {
+        grid-template-columns: 1fr 1fr
+      }
+
+      .step {
+        padding: 1.5rem 1.2rem
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr
+      }
+
+      .why-item {
+        padding: 1.5rem
+      }
+
+      .zorko-gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2px
+      }
+
+      .zg-item.wide {
+        grid-column: span 2
+      }
+
+      .zg-item.tall {
+        grid-row: span 1
+      }
+
+      .lb-nav {
+        display: none
+      }
+
+      .lb-caption {
+        font-size: 10px;
+        bottom: 14px;
+        width: 90%;
+        white-space: normal;
+        text-align: center
+      }
+
+      .testi-grid {
+        grid-template-columns: 1fr
+      }
+
+      .testi-card {
+        padding: 2rem 1.5rem
+      }
+
+      .testi-text {
+        font-size: 13px
+      }
+
+      .form-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem
+      }
+
+      .ff-row {
+        grid-template-columns: 1fr
+      }
+
+      .submit-btn {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+        padding: 16px
+      }
+
+      footer {
+        padding: 2rem 1.2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.2rem
+      }
+
+      .f-copy {
+        text-align: left
+      }
+    }
+
+    @media(max-width:380px) {
+      .hero-overline {
+        display: none;
+      }
+
+      .hero-h1 {
+        font-size: 21px
+      }
+
+      .nav-cta {
+        padding: 7px 12px;
+        font-size: 11px
+      }
+
+      .steps {
+        grid-template-columns: 1fr
+      }
+
+      .zorko-gallery-grid {
+        grid-template-columns: 1fr
+      }
+
+      .zg-item.wide {
+        grid-column: span 1
+      }
+
+      .hm {
+        padding: 1rem .8rem
+      }
+
+      .series-grid {
+        grid-template-columns: 1fr
+      }
+
+      .hero-sub {
+        margin-bottom: .5rem
+      }
+    }
+
+    @media(hover:none) {
+      .zg-overlay {
+        opacity: 1;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 60%)
+      }
+
+      .prod-card:hover {
+        background: var(--white)
+      }
+
+      .uc-item:hover {
+        background: var(--white)
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    <img class="Zorko" src="./Zorko Logo-Photoroom.png" alt="Zorko Technologies" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <span style="display:none;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;color:var(--amber)">ZORKO</span>
-  </div>
-  <div class="nav-links">
-    <button class="nav-link" onclick="scrollToSection('products')">Products</button>
-    <button class="nav-link" onclick="scrollToSection('usecases')">Solutions</button>
-    <button class="nav-link" onclick="scrollToSection('gallery')">Gallery</button>
-    <button class="nav-link" onclick="scrollToSection('contact')">Contact</button>
-  </div>
-  <div style="display:flex;align-items:center;gap:12px">
-    <button class="nav-cta" onclick="scrollToSection('contact')">Get a Quote</button>
-    <button class="nav-hamburger" id="hamburger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
-  </div>
-</nav>
-<div class="nav-drawer" id="nav-drawer">
-  <button class="nav-link" onclick="scrollToSection('products');closeDrawer()">Products</button>
-  <button class="nav-link" onclick="scrollToSection('usecases');closeDrawer()">Solutions</button>
-  <button class="nav-link" onclick="scrollToSection('gallery');closeDrawer()">Gallery</button>
-  <button class="nav-link" onclick="scrollToSection('contact');closeDrawer()">Contact</button>
-  <button class="nav-cta" onclick="scrollToSection('contact');closeDrawer()">Get a Quote →</button>
-</div>
+  <a class="skip-link" href="#products">Skip to LED Display Products</a>
 
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <div class="hero-overline"><span class="live"><span class="live-dot"></span>Displays Live</span>&nbsp;·&nbsp; India's Full-Stack LED Manufacturer</div>
-    <h1 class="hero-h1">YOUR BRAND<br>DESERVES<br>EVERY <span class="hl">SCREEN.</span></h1>
-    <p class="hero-sub">We manufacture, deploy &amp; LED display systems across India. From fine-pitch indoor panels to world-first delivery bag displays — built in-house, zero middlemen, 100,000-hour lifespan guaranteed.</p>
-    <div class="hero-actions">
-      <button class="btn-primary" onclick="scrollToSection('contact')">Get Free Quote →</button>
-      <button class="btn-ghost" onclick="scrollToSection('products')">Browse All Products</button>
+  <nav id="nav" aria-label="Main navigation">
+    <div class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})" role="button"
+      aria-label="Zorko Technologies — back to top">
+      <img class="Zorko" src="./Zorko Logo-Photoroom.png" alt="Zorko Technologies LED Display Manufacturer India"
+        width="140" height="40" loading="eager"
+        onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <span
+        style="display:none;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:3px;color:var(--amber)">ZORKO</span>
     </div>
-  </div>
-  <div class="hero-metrics">
-    <div class="hm"><div class="hm-num">8+</div><div class="hm-label">Product Series</div></div>
-    <div class="hm"><div class="hm-num">100K</div><div class="hm-label">Hour Lifespan</div></div>
-    <div class="hm"><div class="hm-num">281T</div><div class="hm-label">Color Range</div></div>
-    <div class="hm"><div class="hm-num">360°</div><div class="hm-label">LED Solutions</div></div>
-  </div>
-</section>
-
-<!-- TICKER -->
-<div class="ticker-wrap"><div class="ticker-inner">
-  <span>MaxPanel Series</span><span>DuraPanel Pro 960</span><span>DuraMini Series</span><span>LatticeStrip</span><span>CrystalFilm</span><span>HoloMesh</span><span>AdBox</span><span>AdPack</span><span>T-X Car Top</span><span>GlassView</span><span>VersaPoster 640</span><span>StreetView</span>
-  <span>MaxPanel Series</span><span>DuraPanel Pro 960</span><span>DuraMini Series</span><span>LatticeStrip</span><span>CrystalFilm</span><span>HoloMesh</span><span>AdBox</span><span>AdPack</span><span>T-X Car Top</span><span>GlassView</span><span>VersaPoster 640</span><span>StreetView</span>
-</div></div>
-
-<!-- PRODUCTS -->
-<section id="products">
-  <div class="sec-over">Product Catalog</div>
-  <h2 class="sec-h2">FLAGSHIP &amp; INNOVATION</h2>
-  <p class="sec-sub">Explore our complete range including flagship die-cast cabinets, indoor/outdoor solutions, and mobile advertising displays — each with multiple image views.</p>
-  <div class="series-nav">
-    <button class="sn-btn active" onclick="showSeries('flagship',this)">⭐ FlagShip</button>
-    <button class="sn-btn" onclick="showSeries('indoor',this)">Indoor</button>
-    <button class="sn-btn" onclick="showSeries('outdoor',this)">Outdoor</button>
-    <button class="sn-btn" onclick="showSeries('transparent',this)">Transparent</button>
-    <button class="sn-btn" onclick="showSeries('mobile',this)">Mobile Ads</button>
-    <button class="sn-btn" onclick="showSeries('poster',this)">Posters</button>
-  </div>
-  <div class="series-panel active" id="sp-flagship"><div class="series-grid" id="flagshipGrid"></div></div>
-  <div class="series-panel" id="sp-indoor"><div class="series-grid" id="indoorGrid"></div></div>
-  <div class="series-panel" id="sp-outdoor"><div class="series-grid" id="outdoorGrid"></div></div>
-  <div class="series-panel" id="sp-transparent"><div class="series-grid" id="transparentGrid"></div></div>
-  <div class="series-panel" id="sp-mobile"><div class="series-grid" id="mobileGrid"></div></div>
-  <div class="series-panel" id="sp-poster"><div class="series-grid" id="posterGrid"></div></div>
-</section>
-
-<!-- USE CASES -->
-<section id="usecases">
-  <div class="sec-over">Solutions</div>
-  <h2 class="sec-h2">WHERE ZORKO SCREENS LIVE</h2>
-  <p class="sec-sub">Every industry. Every surface. Every environment. If it needs to be seen, we have a display for it.</p>
-  <div class="uc-grid">
-    <div class="uc-item"><span class="uc-icon">🏟️</span><div class="uc-title">Stadiums &amp; Arenas</div><div class="uc-desc">Scoreboards, perimeter displays, giant screens. DuraPanel Pro handles 5500+ nits.</div></div>
-    <div class="uc-item"><span class="uc-icon">🏢</span><div class="uc-title">Corporate Offices</div><div class="uc-desc">Lobbies, boardrooms, reception areas. MaxPanel indoor series with 3840Hz refresh.</div></div>
-    <div class="uc-item"><span class="uc-icon">🛍️</span><div class="uc-title">Retail &amp; Malls</div><div class="uc-desc">GlassView and CrystalFilm for storefront glass displays.</div></div>
-    <div class="uc-item"><span class="uc-icon">🎪</span><div class="uc-title">Events &amp; Concerts</div><div class="uc-desc">Stage backdrops, sponsor screens.</div></div>
-    <div class="uc-item"><span class="uc-icon">🏗️</span><div class="uc-title">Building Facades</div><div class="uc-desc">HoloMesh transparent displays for architectural LED installations.</div></div>
-    <div class="uc-item"><span class="uc-icon">🚗</span><div class="uc-title">Mobile Advertising</div><div class="uc-desc">AdPack, AdBox, T-X Car Top. Your ad moves with the city.</div></div>
-    <div class="uc-item"><span class="uc-icon">🛣️</span><div class="uc-title">Roads &amp; Highways</div><div class="uc-desc">StreetView outdoor posters and DuraMini fine-pitch panels.</div></div>
-  </div>
-</section>
-
-<!-- HOW -->
-<section id="how">
-  <div class="sec-over">Process</div>
-  <h2 class="sec-h2">FROM ENQUIRY TO INSTALLATION</h2>
-  <p class="sec-sub">We run the entire project. You don't manage multiple vendors — you talk to one team.</p>
-  <div class="steps">
-    <div class="step"><div class="step-num">01</div><div class="step-title">Consultation</div><div class="step-desc">Tell us location, size, budget, and purpose.</div></div>
-    <div class="step"><div class="step-num">02</div><div class="step-title">Custom Design</div><div class="step-desc">We engineer to your exact dimensions.</div></div>
-    <div class="step"><div class="step-num">03</div><div class="step-title">Manufacturing</div><div class="step-desc">Built in-house. No third-party suppliers.</div></div>
-    <div class="step"><div class="step-num">04</div><div class="step-title">Installation</div><div class="step-desc">Our team deploys on-site.</div></div>
-    <div class="step"><div class="step-num">05</div><div class="step-title">After-Sales</div><div class="step-desc">Ongoing support, maintenance, content help.</div></div>
-  </div>
-</section>
-
-<!-- WHY -->
-<section id="why">
-  <div class="sec-over">Why Us</div>
-  <h2 class="sec-h2">NO MIDDLEMEN. NO EXCUSES.</h2>
-  <p class="sec-sub">We manufacture, we deploy, we support. The whole chain under one roof.</p>
-  <div class="why-grid">
-    <div class="why-item"><div class="why-icon-box">🏭</div><div class="why-text"><h4>In-House Manufacturing</h4><p>We build every screen ourselves. Direct control over quality.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">🎯</div><div class="why-text"><h4>Custom Any Size</h4><p>Standard dimensions or fully custom. No off-the-shelf limitations.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">⚡</div><div class="why-text"><h4>Zero Middlemen</h4><p>You talk directly to the manufacturer. Competitive pricing.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">🔧</div><div class="why-text"><h4>End-to-End Service</h4><p>Consultation → Design → Manufacturing → Installation → Support.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">📡</div><div class="why-text"><h4>Remote Management</h4><p>4G GPS enabled mobile units. Update content from anywhere.</p></div></div>
-    <div class="why-item"><div class="why-icon-box">⏱️</div><div class="why-text"><h4>100,000-Hour Lifespan</h4><p>11+ years of continuous operation.</p></div></div>
-  </div>
-</section>
-
-<!-- GALLERY -->
-<section id="gallery">
-  <div class="sec-over">Zorko Gallery</div>
-  <h2 class="sec-h2">SCREENS IN THE <span style="color:var(--amber)">REAL WORLD.</span></h2>
-  <p class="sec-sub">See how Zorko LED displays look deployed across stadiums, retail spaces, mobile units, building facades, and live events.</p>
-  <div class="gallery-filter-bar">
-    <button class="gf-btn active" onclick="filterGallery('all',this)">All</button>
-    <button class="gf-btn" onclick="filterGallery('indoor',this)">Indoor</button>
-    <button class="gf-btn" onclick="filterGallery('outdoor',this)">Outdoor</button>
-    <button class="gf-btn" onclick="filterGallery('mobile',this)">Mobile</button>
-    <button class="gf-btn" onclick="filterGallery('transparent',this)">Transparent</button>
-  </div>
-  <div class="zorko-gallery-grid" id="zorkoGalleryGrid"></div>
-</section>
-
-<!-- LIGHTBOX -->
-<div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
-  <button class="lb-close" onclick="closeLb()">×</button>
-  <button class="lb-nav lb-prev" onclick="lbNav(-1);event.stopPropagation()">‹</button>
-  <div class="lb-inner"><img id="lb-img" src="" alt=""></div>
-  <button class="lb-nav lb-next" onclick="lbNav(1);event.stopPropagation()">›</button>
-  <div class="lb-caption" id="lb-caption"></div>
-</div>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="sec-over">Customer Stories</div>
-  <h2 class="sec-h2">WHAT OUR CLIENTS SAY</h2>
-  <p class="sec-sub">Real feedback from brands, businesses, and event organizers who chose Zorko for their display needs.</p>
-  <div class="testi-grid">
-    <div class="testi-card">
-      <div class="testi-quote-mark">"</div>
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">We installed Zorko's DuraPanel Pro across our stadium perimeter. The 5500+ nit brightness is visible even on the harshest afternoon sun. Zero flicker, zero downtime in 14 months of operation. This is what professional-grade looks like.</p>
-      <div class="testi-author">
-        <div class="testi-avatar"><img src="https://res.cloudinary.com/deb6oiddj/image/upload/v1778487181/1756804027459_o3xhwu.jpg" alt="Sachin Bajaj"></div>
-        <div class="testi-info"><strong>Sachin Bajaj</strong><span>Operations Head · Sports Venue, Ahmedabad</span></div>
-      </div>
-      <span class="testi-tag">DuraPanel Pro 960 · Outdoor Stadium</span>
+    <div class="nav-links">
+      <button class="nav-link" onclick="scrollToSection('products')">Products</button>
+      <button class="nav-link" onclick="scrollToSection('tech-specs')">Tech Guide</button>
+      <button class="nav-link" onclick="scrollToSection('usecases')">Solutions</button>
+      <button class="nav-link" onclick="scrollToSection('gallery')">Gallery</button>
+      <button class="nav-link" onclick="scrollToSection('contact')">Contact</button>
     </div>
-    <div class="testi-card">
-      <div class="testi-quote-mark">"</div>
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">We used Zorko's CrystalFilm on our flagship store's glass facade in Mumbai. Customers stop and stare. The transparency is unreal — you still see the products inside while the display runs brand content. Sales conversion went up noticeably in the first quarter.</p>
-      <div class="testi-author">
-        <div class="testi-avatar"><img src="https://res.cloudinary.com/deb6oiddj/image/upload/v1778487392/Nandani_wjdg3n.jpg" alt="Nandani Gupta"></div>
-        <div class="testi-info"><strong>Nandani Gupta</strong><span>Marketing Director · Luxury Retail Brand</span></div>
-      </div>
-      <span class="testi-tag">CrystalFilm Series · Retail Storefront</span>
+    <div style="display:flex;align-items:center;gap:12px">
+      <button id="theme-toggle" class="theme-toggle" aria-label="Toggle Dark/Light Mode">🌓</button>
+
+      <button class="nav-cta" onclick="scrollToSection('contact')">Get a Quote</button>
+      <button class="nav-hamburger" id="hamburger"
+        onclick="toggleDrawer()"><span></span><span></span><span></span></button>
     </div>
-    <div class="testi-card">
-      <div class="testi-quote-mark">"</div>
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">The AdPack delivery bag displays were a game-changer for our hyperlocal advertising campaigns. Real-time content updates via 4G, GPS tracking, and a visibility that no static hoarding can match. The ROI compared to traditional OOH is incomparable.</p>
-      <div class="testi-author">
-        <div class="testi-avatar"><img src="https://res.cloudinary.com/deb6oiddj/image/upload/v1778487563/Yawan_ih8xdj.jpg" alt="Yawan Bagada"></div>
-        <div class="testi-info"><strong>Yawan Bagada</strong><span>Founder · Digital OOH Agency, Delhi</span></div>
-      </div>
-      <span class="testi-tag">AdPack Series · Mobile Advertising</span>
+  </nav>
+
+  <div class="nav-drawer" id="nav-drawer">
+    <button class="nav-link" onclick="scrollToSection('products');closeDrawer()">Products</button>
+    <button class="nav-link" onclick="scrollToSection('tech-specs');closeDrawer()">Tech Guide</button>
+    <button class="nav-link" onclick="scrollToSection('usecases');closeDrawer()">Solutions</button>
+    <button class="nav-link" onclick="scrollToSection('gallery');closeDrawer()">Gallery</button>
+    <button class="nav-link" onclick="scrollToSection('contact');closeDrawer()">Contact</button>
+    <button class="nav-cta" onclick="scrollToSection('contact');closeDrawer()">Get a Quote →</button>
+  </div>
+
+  <section id="hero" aria-label="Zorko Technologies — LED Display Manufacturer India">
+    <!-- Video Background -->
+    <div class="hero-bg">
+      <video autoplay loop muted playsinline preload="auto" aria-hidden="true"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+        <source src="https://res.cloudinary.com/deb6oiddj/video/upload/v1783153563/ux8h6ajciv5vjwx22ii4.mp4"
+          type="video/mp4">
+        <!-- Fallback image if video doesn't load -->
+      </video>
     </div>
-    <div class="testi-card">
-      <div class="testi-quote-mark">"</div>
-      <div class="testi-stars">★★★★★</div>
-      <p class="testi-text">Zorko handled our 3-day product launch event end-to-end. From the stage backdrop to the entrance display — flawless setup, flawless performance. Their team was on-site the whole time. When other vendors fail you at events, Zorko delivers. Simple as that.</p>
-      <div class="testi-author">
-        <div class="testi-avatar"><img src="https://img.magnific.com/free-photo/content-indian-ceo-standing-smiling-portrait-successful-pensive-bearded-businessman-glasses-posing-office-room-business-expression-management-concept_74855-11642.jpg?semt=ais_hybrid&w=740&q=80" alt="Nishant Desai"></div>
-        <div class="testi-info"><strong>Nishant Desai</strong><span>Brand Manager · FMCG Company, Bangalore</span></div>
+
+    <!-- Dark overlay for text readability -->
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <!-- Hero Content -->
+    <div class="hero-content">
+      <h1 class="hero-h1">
+        INDIA'S DIRECT<br>
+        LED DISPLAY<br>
+        <span class="hl">MANUFACTURER.</span>
+      </h1>
+      <p class="hero-sub">
+        We manufacture and deploy <strong>LED display screens</strong> across India — <strong>indoor LED
+          panels</strong>, <strong>outdoor LED screens</strong>, transparent LED film, and mobile advertising displays.
+        Built in-house. Zero middlemen. <strong>100,000-hour lifespan</strong> guaranteed. Get your brand on every
+        screen.
+      </p>
+
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="scrollToSection('contact')"
+          aria-label="Get a free LED display quote from Zorko Technologies">Get Free Quote →</button>
+        <button class="btn-ghost" onclick="scrollToSection('products')"
+          aria-label="Browse all Zorko LED display products">Browse LED Products</button>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="form-layout">
-    <div class="form-left">
-      <div class="sec-over">Contact</div>
-      <h2 class="sec-h2">LET'S TALK<br><span style="color:var(--amber)">SCREENS.</span></h2>
-      <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-top:.5rem">Tell us your requirement. A Zorko specialist responds within 24 hours with a transparent quote.</p>
-      <div class="trust-items">
-        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text"><strong>Free Consultation</strong><p>No obligation. We suggest the right product honestly.</p></div></div>
-        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text"><strong>Direct Manufacturer Pricing</strong><p>No broker markups. Negotiate directly with the people who built the product.</p></div></div>
-        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text"><strong>Response Within 24 Hours</strong><p>A real human will contact you.</p></div></div>
-        <div class="trust-item"><div class="trust-dot"></div><div class="trust-text"><strong>Custom Sizing Available</strong><p>Any dimension. Any environment.</p></div></div>
+    <div class="hero-metrics" aria-label="Zorko Technologies key statistics">
+      <div class="hm">
+        <div class="hm-num">8+</div>
+        <div class="hm-label">LED Product Series</div>
+      </div>
+      <div class="hm">
+        <div class="hm-num">100K</div>
+        <div class="hm-label">Hour LED Lifespan</div>
+      </div>
+      <div class="hm">
+        <div class="hm-num">281T</div>
+        <div class="hm-label">Color Range</div>
+      </div>
+      <div class="hm">
+        <div class="hm-num">360°</div>
+        <div class="hm-label">LED Solutions India</div>
       </div>
     </div>
-    <div class="form-right">
-      <div id="form-container">
-        <div id="zorko-form">
-          <div class="ff-row">
-            <div class="ff"><label>Full Name *</label><input type="text" id="f-name" placeholder="Rahul Sharma"></div>
-            <div class="ff"><label>Company / Brand</label><input type="text" id="f-company" placeholder="Your Company"></div>
+  </section>
+
+  <div class="ticker-wrap" aria-label="Zorko LED display product range">
+    <div class="ticker-inner">
+      <span>MaxPanel Indoor LED</span><span>DuraPanel Pro 960 Outdoor</span><span>DuraMini LED
+        Series</span><span>LatticeStrip LED</span><span>CrystalFilm Transparent LED</span><span>HoloMesh Transparent LED
+        Mesh</span><span>AdBox Mobile LED</span><span>AdPack Delivery Bag LED</span><span>T-X Car Top LED
+        Display</span><span>GlassView LED</span><span>VersaPoster 640 LED Poster</span><span>StreetView Outdoor LED
+        Billboard</span><span>LED Rental Cabinet</span>
+      <span>MaxPanel Indoor LED</span><span>DuraPanel Pro 960 Outdoor</span><span>DuraMini LED
+        Series</span><span>LatticeStrip LED</span><span>CrystalFilm Transparent LED</span><span>HoloMesh Transparent LED
+        Mesh</span><span>AdBox Mobile LED</span><span>AdPack Delivery Bag LED</span><span>T-X Car Top LED
+        Display</span><span>GlassView LED</span><span>VersaPoster 640 LED Poster</span><span>StreetView Outdoor LED
+        Billboard</span><span>LED Rental Cabinet</span>
+    </div>
+  </div>
+
+  <section id="products" aria-labelledby="products-heading">
+    <div class="sec-over">LED Display Product Catalog</div>
+    <h2 class="sec-h2" id="products-heading">LED DISPLAY PRODUCTS &amp; FLAGSHIP SERIES</h2>
+    <p class="sec-sub">
+      Explore Zorko's complete range of <strong>LED display solutions</strong> — from <strong>fine-pitch indoor LED
+        panels</strong> and <strong>high-brightness outdoor LED screens</strong> to <strong>transparent LED film
+        displays</strong>, <strong>mobile LED advertising units</strong>, and <strong>LED rental cabinets</strong> for
+      events and stage production. Every product is manufactured in-house with die-cast aluminum cabinets and available
+      in custom sizes.
+    </p>
+
+    <div class="series-nav" role="tablist" aria-label="LED display product categories">
+      <button class="sn-btn active" onclick="showSeries('flagship',this)" role="tab" aria-selected="true"
+        aria-controls="sp-flagship">⭐ FlagShip Die-Cast</button>
+      <button class="sn-btn" onclick="showSeries('indoor',this)" role="tab" aria-selected="false"
+        aria-controls="sp-indoor">Indoor LED Panels</button>
+      <button class="sn-btn" onclick="showSeries('outdoor',this)" role="tab" aria-selected="false"
+        aria-controls="sp-outdoor">Outdoor LED Screens</button>
+      <button class="sn-btn" onclick="showSeries('transparent',this)" role="tab" aria-selected="false"
+        aria-controls="sp-transparent">Transparent LED</button>
+      <button class="sn-btn" onclick="showSeries('mobile',this)" role="tab" aria-selected="false"
+        aria-controls="sp-mobile">Mobile LED Advertising</button>
+      <button class="sn-btn" onclick="showSeries('poster',this)" role="tab" aria-selected="false"
+        aria-controls="sp-poster">LED Poster Displays</button>
+    </div>
+
+    <div class="series-panel active" id="sp-flagship" role="tabpanel" aria-label="Flagship die-cast LED display series">
+      <div class="series-grid" id="flagshipGrid"></div>
+    </div>
+    <div class="series-panel" id="sp-indoor" role="tabpanel" aria-label="Indoor LED panel series">
+      <div class="series-grid" id="indoorGrid"></div>
+    </div>
+    <div class="series-panel" id="sp-outdoor" role="tabpanel" aria-label="Outdoor LED screen series">
+      <div class="series-grid" id="outdoorGrid"></div>
+    </div>
+    <div class="series-panel" id="sp-transparent" role="tabpanel" aria-label="Transparent LED display series">
+      <div class="series-grid" id="transparentGrid"></div>
+    </div>
+    <div class="series-panel" id="sp-mobile" role="tabpanel" aria-label="Mobile LED advertising unit series">
+      <div class="series-grid" id="mobileGrid"></div>
+    </div>
+    <div class="series-panel" id="sp-poster" role="tabpanel" aria-label="LED poster display series">
+      <div class="series-grid" id="posterGrid"></div>
+    </div>
+  </section>
+
+  <section id="tech-specs" aria-labelledby="tech-specs-heading">
+    <div class="sec-over">Technical Reference Guide</div>
+    <h2 class="sec-h2" id="tech-specs-heading">DECODING PIXEL PITCH &amp; CABINETS</h2>
+    <p class="sec-sub">
+      Selecting the correct specifications is crucial for maximizing visual clarity and ensuring industrial-grade
+      weatherproofing for harsh retail and outdoor environments.
+    </p>
+
+    <div class="tech-grid">
+      <div class="tech-card">
+        <h3>Pixel Pitch (P) Specifications</h3>
+        <p>Pixel Pitch refers to the distance (in millimeters) between the center of two adjacent LED pixels. A smaller
+          number means higher pixel density, sharper resolution, and a closer ideal viewing distance.</p>
+
+        <table class="pitch-table">
+          <thead>
+            <tr>
+              <th>Pitch (mm)</th>
+              <th>Application & Best Environment</th>
+              <th>Ideal Viewing Distance</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>P0.5 – P1.5</strong></td>
+              <td><strong>Ultra-Fine Pitch / COB:</strong> TV Studios, Command & Control Rooms, High-end Corporate
+                Boardrooms.</td>
+              <td>&lt; 1 to 1.5 meters</td>
+            </tr>
+            <tr>
+              <td><strong>P2.5, P3</strong></td>
+              <td><strong>Standard Fine Pitch:</strong> Indoor Retail Fronts, Shopping Malls, Indoor Event Stages,
+                Lobbies.</td>
+              <td>2.5 meters to 3 meters</td>
+            </tr>
+            <tr>
+              <td><strong>P4, P5</strong></td>
+              <td><strong>Transition Pitch:</strong> Large Indoor Atriums, Premium Outdoor Retail Facades, Close-up
+                Outdoor Screens.</td>
+              <td>4 meters to 5 meters</td>
+            </tr>
+            <tr>
+              <td><strong>P6, P7</strong></td>
+              <td><strong>Standard Outdoor:</strong> Street-level Advertising, Outdoor Stage Rentals, Mobile LED Vans.
+              </td>
+              <td>6 meters to 7 meters</td>
+            </tr>
+            <tr>
+              <td><strong>P8, P9, P10</strong></td>
+              <td><strong>Heavy-Duty Outdoor:</strong> Massive Highway Billboards, Stadium Screens, High-rise Building
+                Facades.</td>
+              <td>8+ meters</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tech-card">
+        <h3>LED Cabinet Engineering</h3>
+        <p>The cabinet forms the structural backbone of your LED display. Choosing the right material ensures longevity,
+          precise alignment, and protection against extreme elements.</p>
+
+        <div class="cabinet-type">
+          <div class="cabinet-icon">🏗️</div>
+          <div class="cabinet-info">
+            <h4>Die-Cast Aluminum Cabinet</h4>
+            <p class="sec-sub" style="margin-bottom:0;">Ultra-lightweight, high-precision cabinets created using molds.
+              They offer <strong>seamless splicing (zero visible gaps)</strong> and exceptional heat dissipation without
+              needing cooling fans. Perfect for high-end fine-pitch indoor retail displays, premium outdoor screens, and
+              rapid-assembly stage rental setups.</p>
           </div>
-          <div class="ff-row">
-            <div class="ff"><label>Phone Number *</label><input type="tel" id="f-phone" placeholder="+91 98765 43210"></div>
-            <div class="ff"><label>Email Address</label><input type="email" id="f-email" placeholder="you@company.com"></div>
-          </div>
-          <div class="ff"><label>I'm Interested In *</label>
-            <select id="f-interest">
-              <option value="">Select a product or service...</option>
-              <option>FlagShip Die-Cast Series</option>
-              <option>Indoor MaxPanel / VersaPoster</option>
-              <option>Outdoor DuraPanel / StreetView</option>
-              <option>Transparent CrystalFilm / HoloMesh</option>
-              <option>Mobile Ads (AdPack, AdBox, Car Top)</option>
-              <option>LED Screen</option>
-              <option>Custom Consultation</option>
-            </select>
-          </div>
-          <div class="ff-row">
-            <div class="ff"><label>Budget Range</label>
-              <select id="f-budget">
-                <option value="">Select a range...</option>
-                <option>Below ₹1 Lakh</option>
-                <option>₹1 – 5 Lakh</option>
-                <option>₹5 – 20 Lakh</option>
-                <option>₹20 – 50 Lakh</option>
-                <option>Above ₹50 Lakh</option>
-              </select>
-            </div>
-            <div class="ff"><label>Timeline</label>
-              <select id="f-timeline">
-                <option value="">When do you need it?</option>
-                <option>Within 2 weeks</option>
-                <option>Within 1 month</option>
-                <option>1 – 3 months</option>
-                <option>3+ months</option>
-              </select>
-            </div>
-          </div>
-          <div class="ff"><label>Message / Screen Size</label><textarea id="f-msg" placeholder="Tell us about your project, required dimensions, location..."></textarea></div>
-          <button class="submit-btn" onclick="submitZorko()">SUBMIT ENQUIRY →</button>
-          <div style="font-size:11px;color:var(--muted2);margin-top:10px;letter-spacing:1px">No spam. A Zorko specialist will reach out within 24 hours.</div>
         </div>
-        <div class="form-success" id="form-success">
-          <div style="font-size:2.5rem;margin-bottom:1rem">✅</div>
-          <div style="font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:3px;margin-bottom:.5rem">ENQUIRY RECEIVED.</div>
-          <div style="font-size:14px;color:var(--muted)">A Zorko specialist will contact you within 24 hours.</div>
+
+        <div class="cabinet-type">
+          <div class="cabinet-icon">🛡️</div>
+          <div class="cabinet-info">
+            <h4>Iron (Steel) Cabinet</h4>
+            <p class="sec-sub" style="margin-bottom:0;">Heavy-duty, robust structure designed specifically for
+              <strong>permanent, fixed outdoor installations</strong>. When equipped with industrial-grade
+              weatherproofing treatments (IP65+), Iron cabinets provide the ultimate cost-effective, durable solution
+              for massive outdoor highway billboards fighting severe sun, rain, and wind.</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  <div>
-    <div class="f-logo">ZORKO TECHNOLOGIES</div>
-    <div class="f-tagline">Attention Infrastructure for Brands</div>
-  </div>
-  <div class="f-copy">
-    <div>© 2026 Zorko Technologies. All rights reserved.</div>
-    <div>Manufacturing · End-to-End LED Solutions</div>
-  </div>
-</footer>
+  <section id="usecases" aria-labelledby="usecases-heading">
+    <div class="sec-over">LED Display Applications &amp; Solutions</div>
+    <h2 class="sec-h2" id="usecases-heading">WHERE ZORKO LED SCREENS ARE DEPLOYED</h2>
+    <p class="sec-sub">
+      From <strong>stadium LED screens</strong> and <strong>retail store LED displays</strong> to <strong>building
+        facade LED mesh</strong> and <strong>mobile advertising LED vans</strong> — Zorko supplies LED display solutions
+      for every industry and environment across India.
+    </p>
 
-<script>
-/* ── SCROLL ── */
-function scrollToSection(id){
-  const el=document.getElementById(id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-/* ── NAV DRAWER ── */
-function toggleDrawer(){
-  document.getElementById('nav-drawer').classList.toggle('open');
-  document.getElementById('hamburger').classList.toggle('open');
-}
-function closeDrawer(){
-  document.getElementById('nav-drawer').classList.remove('open');
-  document.getElementById('hamburger').classList.remove('open');
-}
-document.addEventListener('click',function(e){
-  const drawer=document.getElementById('nav-drawer');
-  const burger=document.getElementById('hamburger');
-  if(drawer&&drawer.classList.contains('open')&&!drawer.contains(e.target)&&!burger.contains(e.target)) closeDrawer();
-});
-
-/* ── PRODUCTS DATA ── */
-const productDB = {
-  flagship:[
-    {name:"DIE-CASTING Cabinet LED Display Screen",series:"FLAGSHIP DIE-CAST",desc:"All-in-one indoor LED poster with die-cast aluminum cabinet. Plug-and-play, rear service, ultra-slim bezel.",env:"indoor",images:["./DIE-CASTING Cabinet LED Display Screen.webp","https://res.cloudinary.com/deb6oiddj/image/upload/v1778486940/ChatGPT_Image_May_11_2026_01_38_49_PM_vk2ubv.png"],specs:[["Pixel Pitch","3.8 – 4.8 mm"],["Display","576×576 mm"],["Design","Plug & Play"],["Life Span","100,000 hrs"]]},
-    {name:"640x640mm Indoor Die Cast Cabinet",series:"FLAGSHIP DIE-CAST",desc:"Premium die-cast cabinet for seamless indoor video walls. Ultra-high refresh rate, flicker-free performance.",env:"indoor",images:["./640x640mm Indoor Die Cast LED Cabinet.webp","https://5.imimg.com/data5/YZ/MA/VM/SELLER-72742084/p3-91-p3-p4-10ft-x-12ft-500x500.jpg"],specs:[["Pixel Pitch","2.5 – 6 mm"],["Brightness","5500"],["Cabinet","640×640 mm"],["Service","Rear/Front"]]},
-    {name:"960x960 mm Outdoor Die Cast Cabinet",series:"FLAGSHIP OUTDOOR",desc:"Rugged outdoor die-cast cabinet, IP65 rated. Exceptional heat dissipation and all-weather reliability.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1779340986/image-Photoroom_tab77a.png","./960x960 mm LED video wall Die Cast Cabinets.webp"],specs:[["Pixel Pitch","2.5 – 6 mm"],["Brightness","≥5500 nits"],["IP Rating","IP65"],["Cabinet","960×960 mm"]]},
-    {name:"Outdoor P4.44 4K LED Display",
-    series:"ULTRA BRIGHT",
-    desc:"8000 nits, IP67, 16-bit color depth. Sunlight readable, perfect for high-impact outdoor advertising.",
-    env:"outdoor",
-    images:["./Outdoor Fixed Installation P4.44 4K LED Display 5500-8000nits High Brightness IP66 Waterproof 16-Bit Color Sunlight Readable.avif",
-    "https://tiimg.tistatic.com/fp/1/002/451/outdoor-p6-25-led-display-screen-die-casting-cabinet-879.jpg"],
-    specs:[["Pixel Pitch","4.4 - 6.6 mm"],
-    ["Brightness","≥7000 nits"],
-    ["IP Rating","IP67"],
-    ["Color","16-bit"]]
-    },
-
-    {name:"960x960 mm Iron Cabinet",
-    series:"FLAGSHIP OUTDOOR",
-    desc:"8000 nits, IP67, 16-bit color depth. Sunlight readable, perfect for high-impact outdoor advertising.",
-    env:"outdoor",
-    images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1779340158/Iron_Cabinet_zsjulo.webp",
-    "https://res.cloudinary.com/deb6oiddj/image/upload/v1779340462/Irno-2_wxaxop.webp"],
-    specs:[["Pixel Pitch","2.4 - 6 mm"],
-    ["Brightness","≥5500 nits"],
-    ["IP Rating","IP65"],
-    ["Cabinet","960×960 mm"]]
-    }
-  ],
-  indoor:[
-    {name:"MaxPanel Series",series:"HX-IFMP",desc:"Ideal for large indoor screens. Die-cast aluminum cabinet, rear service, 3840Hz refresh.",env:"indoor",images:["./MAXPANEL SERIES.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778485784/ChatGPT_Image_May_11_2026_01_19_33_PM_nwagbl.png"],specs:[["Pixel Pitch","2.66 – 4 mm"],["Refresh","≥3840 Hz"],["Brightness","≥800 nits"],["Life","100K hrs"]]},
-    {name:"LatticeStrip Series",series:"HX-TPLS",desc:"Cost-effective transparent strip display. Perfect for retail facades.",env:"both",images:["./LATTICESTRIP.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778480643/ChatGPT_Image_May_11_2026_11_53_46_AM_thvbdn.png"],specs:[["Pixel Pitch","3.91 mm"],["Brightness","2000-4500"],["Cabinet","1000×1000 mm"],["Refresh","1920 Hz"]]},
-    {name:"VersaPoster 640",series:"ALL-IN-ONE",desc:"Plug-and-play indoor LED poster. Control via phone/PC, solo or video wall.",env:"indoor",images:["./VersaPoster 640 & 600.png","https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg"],specs:[["Pixel Pitch","1.86 – 2.5 mm"],["Display","640×1920 mm"],["Brightness","≥600 nits"],["Control","Wireless"]]}
-  ],
-  outdoor:[
-    {name:"DuraPanel Pro 960",series:"HX-OFDP",desc:"Premium fan-less outdoor display, IP66, 5500+ nits. Built for billboards & stadiums.",env:"outdoor",images:["./DuraPanel.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778481918/ChatGPT_Image_May_11_2026_12_11_33_PM_mc0oph.png"],specs:[["Pixel Pitch","5 – 10 mm"],["Brightness","≥5500 nits"],["IP","IP66"],["Cabinet","960×960 mm"]]},
-    {name:"DuraMini Series",series:"FLIP CHIP",desc:"Ultra-fine pitch outdoor display using Flip Chip LED technology. 160° viewing angle.",env:"outdoor",images:["./DuraMini Series.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778483553/ChatGPT_Image_May_11_2026_12_42_18_PM_mtigpo.png"],specs:[["Pixel Pitch","1.25 – 1.92 mm"],["Brightness","≥3000 nits"],["IP","IP65"],["LED","Flip Chip"]]},
-    {name:"StreetView Series",series:"OUTDOOR POSTER",desc:"Fine-pitch outdoor LED poster. Superior to LCD in brightness & color.",env:"outdoor",images:["./StreetView.png","https://www.staietech.com/wp-content/uploads/2024/11/Digital-Standee-on-Rent-1-1024x1024.jpg"],specs:[["Pixel Pitch","1.38 – 3.12 mm"],["Brightness","≥4000 nits"],["Refresh Rate","3840/7680 Hz"],["Size","800×1500 mm"]]}
-  ],
-  transparent:[
-    {name:"CrystalFilm Series",series:"GLASS FILM",desc:"Applied directly onto glass. Chip-on-board, ultra-low power ≤45W/m².",env:"both",images:["./CrystalFilm Series.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778482276/ChatGPT_Image_May_11_2026_12_21_06_PM_1_lxydgo.png"],specs:[["Pitch","3.75 – 10 mm"],["Power","≤45 W/m²"],["Refresh","3840 Hz"],["LED","Flip Chip"]]},
-    {name:"HoloMesh Series",series:"3D TRANSPARENT",desc:"95% transparency, stunning 3D visual effects. 7000+ nits brightness.",env:"both",images:["./HoloMesh Series.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778481298/Screenshot_2026-05-11_120445_nwqkfw.png"],specs:[["Pitch","3.91 – 10 mm"],["Transparency",">95%"],["Brightness","≥7000 nits"],["Effect","3D Visual"]]},
-    {name:"GlassView Series",series:"GLASS SCREEN",desc:"Transparent glass screen with 8GB storage + 4G connectivity.",env:"both",images:["./Glassview.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778484228/ChatGPT_Image_May_11_2026_12_53_00_PM_bxc6iu.png"],specs:[["Pitch","3.91 – 6.25 mm"],["Brightness","≥4000 nits"],["Storage","8GB + 4G"],["Size","750×1175 mm"]]}
-  ],
-  mobile:[
-    {name:"AdPack Series",series:"DELIVERY BAG",desc:"World's first full-color delivery bag LED display. 4G GPS + Bluetooth.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778484785/ChatGPT_Image_May_11_2026_01_02_53_PM_xknuiq.png","./AdPack.png"],specs:[["Pitch","2.5 – 4.17 mm"],["Brightness",">6000 nits"],["Network","4G GPS"],["IP","IP65"]]},
-    {name:"AdBox Series",series:"3-SIDED BOX",desc:"Three-sided delivery box display. Remote content management.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778484421/Screenshot_2026-05-11_125653_akk6ie.png","./AdBox.png"],specs:[["Pitch","2.5 – 4.17 mm"],["Brightness",">6000 nits"],["Network","4G GPS"],["Contrast","5000:1"]]},
-    {name:"T-X Car Top Series",series:"CAR TOP",desc:"World's first fine-pitch car top LED display. Double-sided, 170° view.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778485231/ChatGPT_Image_May_11_2026_01_10_20_PM_lirzg3.png","./T-X Car Top Series.png"],specs:[["Pitch","1.81 – 3.07 mm"],["Brightness","≥4000 nits"],["Connectivity","WiFi+4G"],["View","170°"]]}
-  ],
-  poster:[
-    {name:"VersaPoster 640",series:"INDOOR POSTER",desc:"Plug-and-play LED poster, iron cabinet, rear service.",env:"indoor",images:["./VersaPoster 640 & 600.png","https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg"],specs:[["Pitch","1.86 – 2.5 mm"],["Display","640×1920 mm"],["Design","Plug & Play"],["Life","100K hrs"]]},
-    {name:"StreetView Series",series:"OUTDOOR POSTER",desc:"All-weather outdoor LED poster, IP65 rated, 4000 nits.",env:"outdoor",images:["./StreetView.png","https://www.staietech.com/wp-content/uploads/2024/11/Digital-Standee-on-Rent-1-1024x1024.jpg"],specs:[["Pitch","1.38 – 3.12 mm"],["Brightness","≥4000 nits"],["IP","IP65"],["Size","800×1500 mm"]]}
-  ]
-};
-
-function buildGalleryCard(product,idx,categoryId){
-  const envClass=product.env==='indoor'?'env-indoor':(product.env==='outdoor'?'env-outdoor':'env-both');
-  const envLabel=product.env==='indoor'?'Indoor':(product.env==='outdoor'?'Outdoor':'Indoor / Outdoor');
-  const images=product.images||["./MAXPANEL SERIES.png"];
-  let specsHtml='';
-  product.specs.forEach(s=>{specsHtml+=`<div class="spec-item"><div class="spec-k">${s[0]}</div><div class="spec-v">${s[1]}</div></div>`;});
-  const cardId=`prod_${categoryId}_${idx}`;
-  return `<div class="prod-card" data-cardid="${cardId}">
-    <span class="pc-env ${envClass}">${envLabel}</span>
-    <div class="product-gallery" id="gallery-${cardId}">
-      <button class="gallery-arrow arrow-left" data-gallery="${cardId}">‹</button>
-      <div class="gallery-main"><img class="gallery-main-img" src="${images[0]}" alt="${product.name}" loading="lazy"></div>
-      <button class="gallery-arrow arrow-right" data-gallery="${cardId}">›</button>
-      <div class="gallery-dots" id="dots-${cardId}"></div>
-    </div>
-    <div class="pc-body">
-      <div class="pc-series">${product.series}</div>
-      <div class="pc-name">${product.name}</div>
-      <div class="pc-desc">${product.desc}</div>
-      <div class="pc-specs">${specsHtml}</div>
-      <button class="pc-cta" onclick="scrollToSection('contact')">Enquire Now</button>
-    </div>
-  </div>`;
-}
-
-function renderCategory(containerId,productsArray,categoryId){
-  const container=document.getElementById(containerId);
-  if(!container)return;
-  let html='';
-  productsArray.forEach((prod,idx)=>{html+=buildGalleryCard(prod,idx,categoryId);});
-  container.innerHTML=html;
-  productsArray.forEach((prod,idx)=>{
-    const cardId=`prod_${categoryId}_${idx}`;
-    const images=prod.images||[];
-    if(images.length<=1)return;
-    const galleryDiv=document.getElementById(`gallery-${cardId}`);
-    if(!galleryDiv)return;
-    const mainImg=galleryDiv.querySelector('.gallery-main-img');
-    const leftBtn=galleryDiv.querySelector('.arrow-left');
-    const rightBtn=galleryDiv.querySelector('.arrow-right');
-    const dotsContainer=document.getElementById(`dots-${cardId}`);
-    if(!mainImg||!leftBtn||!rightBtn)return;
-    let currentIndex=0;
-    if(dotsContainer){
-      dotsContainer.innerHTML='';
-      for(let i=0;i<images.length;i++){
-        const dot=document.createElement('button');
-        dot.classList.add('gallery-dot');
-        if(i===0)dot.classList.add('active');
-        dot.addEventListener('click',(e)=>{e.stopPropagation();currentIndex=i;mainImg.src=images[currentIndex];updateDotsActive(dotsContainer,currentIndex);});
-        dotsContainer.appendChild(dot);
-      }
-    }
-    const updateDotsActive=(c,a)=>{c.querySelectorAll('.gallery-dot').forEach((d,i)=>{if(i===a)d.classList.add('active');else d.classList.remove('active');});};
-    leftBtn.addEventListener('click',(e)=>{e.stopPropagation();currentIndex=(currentIndex-1+images.length)%images.length;mainImg.src=images[currentIndex];if(dotsContainer)updateDotsActive(dotsContainer,currentIndex);});
-    rightBtn.addEventListener('click',(e)=>{e.stopPropagation();currentIndex=(currentIndex+1)%images.length;mainImg.src=images[currentIndex];if(dotsContainer)updateDotsActive(dotsContainer,currentIndex);});
-    /* Touch swipe support */
-    let touchStartX=0;
-    galleryDiv.addEventListener('touchstart',(e)=>{touchStartX=e.touches[0].clientX;},{passive:true});
-    galleryDiv.addEventListener('touchend',(e)=>{
-      const diff=touchStartX-e.changedTouches[0].clientX;
-      if(Math.abs(diff)>40){
-        currentIndex=diff>0?(currentIndex+1)%images.length:(currentIndex-1+images.length)%images.length;
-        mainImg.src=images[currentIndex];
-        if(dotsContainer)updateDotsActive(dotsContainer,currentIndex);
-      }
-    },{passive:true});
-  });
-}
-
-function initAllProducts(){
-  renderCategory('flagshipGrid',productDB.flagship,'flagship');
-  renderCategory('indoorGrid',productDB.indoor,'indoor');
-  renderCategory('outdoorGrid',productDB.outdoor,'outdoor');
-  renderCategory('transparentGrid',productDB.transparent,'transparent');
-  renderCategory('mobileGrid',productDB.mobile,'mobile');
-  renderCategory('posterGrid',productDB.poster,'poster');
-}
-
-function showSeries(id,btn){
-  document.querySelectorAll('.series-panel').forEach(p=>p.classList.remove('active'));
-  document.querySelectorAll('.sn-btn').forEach(b=>b.classList.remove('active'));
-  document.getElementById('sp-'+id).classList.add('active');
-  btn.classList.add('active');
-}
-
-/* ── ZORKO GALLERY ── */
-const galleryItems=[
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778480129/ZorkoGallery_ymnaiw.png",cat:"indoor",label:"Indoor · Die-Cast",name:"Die-Cast Cabinet Series",wide:true},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482572/ChatGPT_Image_May_11_2026_12_25_56_PM_ccqzc6.png",cat:"outdoor",label:"Outdoor · Stadium",name:"960×960 Die-Cast"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778481298/Screenshot_2026-05-11_120445_nwqkfw.png",cat:"transparent",label:"Transparent · Facade",name:"HoloMesh 3D"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482276/ChatGPT_Image_May_11_2026_12_21_06_PM_1_lxydgo.png",cat:"transparent",label:"Transparent · Glass",name:"CrystalFilm",wide:true},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778481235/Screenshot_2026-05-11_120345_advqru.png",cat:"mobile",label:"Mobile · Delivery",name:"AdPack Delivery Bag"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482388/ChatGPT_Image_May_11_2026_12_22_57_PM_adlyta.png",cat:"mobile",label:"Mobile · Car Top",name:"T-X Car Top"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778481918/ChatGPT_Image_May_11_2026_12_11_33_PM_mc0oph.png",cat:"outdoor",label:"Outdoor · Billboard",name:"DuraPanel Pro 960",wide:true},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482098/ChatGPT_Image_May_11_2026_12_18_01_PM_sqktbv.png",cat:"mobile",label:"Mobile · Box",name:"AdBox 3-Sided"},
-  {src:"https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg",cat:"indoor",label:"Indoor · Poster",name:"VersaPoster 640"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778483553/ChatGPT_Image_May_11_2026_12_42_18_PM_mtigpo.png",cat:"outdoor",label:"Outdoor · Fine-Pitch",name:"DuraMini Series"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778480643/ChatGPT_Image_May_11_2026_11_53_46_AM_thvbdn.png",cat:"indoor",label:"Indoor · Strip",name:"LatticeStrip Series"}
-];
-
-let lbCurrent=0,lbFiltered=[];
-
-function buildGalleryGrid(filter='all'){
-  const grid=document.getElementById('zorkoGalleryGrid');
-  lbFiltered=filter==='all'?galleryItems:galleryItems.filter(i=>i.cat===filter);
-  /* On mobile, don't do wide spans – single grid */
-  const isMobile=window.innerWidth<=600;
-  let html='';
-  lbFiltered.forEach((item,idx)=>{
-    const wideCls=(!isMobile&&item.wide)?' wide':'';
-    const tallCls=(!isMobile&&item.tall)?' tall':'';
-    html+=`<div class="zg-item${wideCls}${tallCls}" onclick="openLb(${idx})">
-      <img src="${item.src}" alt="${item.name}" loading="lazy">
-      <div class="zg-overlay">
-        <div class="zg-label">${item.label}</div>
-        <div class="zg-name">${item.name}</div>
+    <div class="uc-grid" role="list">
+      <div class="uc-item" role="listitem">
+        <span class="uc-icon" aria-hidden="true">🏟️</span>
+        <div class="uc-title">Stadiums &amp; Arenas</div>
+        <div class="uc-desc">High-brightness LED scoreboards, perimeter advertising screens, and giant stadium LED
+          displays. DuraPanel Pro 960 delivers 5500+ nits — fully visible in direct sunlight.</div>
       </div>
-    </div>`;
-  });
-  grid.innerHTML=html;
-}
+      <div class="uc-item" role="listitem">
+        <span class="uc-icon" aria-hidden="true">🏢</span>
+        <div class="uc-title">Corporate Office</div>
+        <div class="uc-desc">Fine-pitch indoor LED video walls for corporate lobbies, boardrooms, and reception areas.
+          MaxPanel Series with 3840Hz refresh rate — flicker-free on camera.</div>
+      </div>
+      <div class="uc-item" role="listitem">
+        <span class="uc-icon" aria-hidden="true">🛍️</span>
+        <div class="uc-title">Retail &amp; Mall</div>
+        <div class="uc-desc">GlassView and CrystalFilm transparent LED displays for retail storefront glass facades.
+          See-through LED advertising that converts foot traffic without blocking the view inside.</div>
+      </div>
+      <div class="uc-item" role="listitem">
+        <span class="uc-icon" aria-hidden="true">🎪</span>
+        <div class="uc-title">Event &amp; Concert</div>
+        <div class="uc-desc">Modular <strong>LED rental cabinets</strong> for stage backdrops, sponsor screens, and
+          event LED walls. Lightweight, quick-lock design built for repeated assembly.</div>
+      </div>
+      <div class="uc-item" role="listitem">
+        <span class="uc-icon" aria-hidden="true">🏗️</span>
+        <div class="uc-title">Building Facade</div>
+        <div class="uc-desc">HoloMesh transparent LED mesh displays for architectural building facade installations.
+          Turn glass exteriors into living billboards while maintaining natural light.</div>
+      </div>
+      <div class="uc-item" role="listitem">
+        <span class="uc-icon" aria-hidden="true">🚗</span>
+        <div class="uc-title">Mobile Advertising</div>
+        <div class="uc-desc">AdPack delivery-bag LED displays, AdBox units, and T-X Car Top LED screens. GPS-tracked,
+          4G-connected mobile advertising that reaches customers across the city.</div>
+      </div>
+    </div>
+  </section>
 
-function filterGallery(cat,btn){
-  document.querySelectorAll('.gf-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  buildGalleryGrid(cat);
-}
+  <section id="how" aria-labelledby="how-heading">
+    <div class="sec-over">Our Process</div>
+    <h2 class="sec-h2" id="how-heading">HOW TO BUY AN LED DISPLAY FROM ZORKO</h2>
+    <p class="sec-sub">
+      Buying an <strong>LED screen directly from an Indian manufacturer</strong> shouldn't involve multiple vendors. At
+      Zorko, one team handles everything — from consultation to on-site installation and after-sales support.
+    </p>
+    <div class="steps" role="list">
+      <div class="step" role="listitem">
+        <div class="step-num" aria-hidden="true">01</div>
+        <div class="step-title">Free Consultation</div>
+        <div class="step-desc">Tell us your location, required screen size, environment, and budget. Our team recommends
+          the right LED product.</div>
+      </div>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-hidden="true">02</div>
+        <div class="step-title">Custom Design</div>
+        <div class="step-desc">We engineer LED display cabinets to your exact dimensions. Non-standard sizes and curved
+          screens handled in-house.</div>
+      </div>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-hidden="true">03</div>
+        <div class="step-title">In-House Manufacturing</div>
+        <div class="step-desc">Every LED panel is assembled at our own facility. Direct quality control from chip to
+          cabinet.</div>
+      </div>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-hidden="true">04</div>
+        <div class="step-title">Professional Installation</div>
+        <div class="step-desc">Our trained installation team deploys on-site across India. Structural mounting, wiring,
+          and commissioning.</div>
+      </div>
+      <div class="step" role="listitem">
+        <div class="step-num" aria-hidden="true">05</div>
+        <div class="step-title">After-Sales Support</div>
+        <div class="step-desc">Ongoing LED screen maintenance, firmware updates, and replacement parts — direct from the
+          manufacturer.</div>
+      </div>
+    </div>
+  </section>
 
-function openLb(idx){
-  lbCurrent=idx;
-  document.getElementById('lb-img').src=lbFiltered[idx].src;
-  document.getElementById('lb-caption').textContent=lbFiltered[idx].name+' · '+lbFiltered[idx].label;
-  document.getElementById('lightbox').classList.add('open');
-  document.body.style.overflow='hidden';
-}
+  <!-- <section id="why" aria-labelledby="why-heading">
+  <div class="sec-over">Why Choose Zorko Technologies</div>
+  <h2 class="sec-h2" id="why-heading">WHY BUY DIRECT FROM THE MANUFACTURER</h2>
+  <p class="sec-sub">
+    Most <strong>LED screen suppliers in India</strong> are middlemen. Zorko is the actual manufacturer. That means lower prices, higher quality control, and a single point of responsibility.
+  </p>
+  <div class="why-grid" role="list">
+    <div class="why-item" role="listitem">
+      <div class="why-icon-box" aria-hidden="true">🏭</div>
+      <div class="why-text">
+        <h4>In-House Manufacturing</h4>
+        <p>Every LED panel, cabinet, and module is built at our own facility. Full quality control. No third-party risk.</p>
+      </div>
+    </div>
+    <div class="why-item" role="listitem">
+      <div class="why-icon-box" aria-hidden="true">🎯</div>
+      <div class="why-text">
+        <h4>Custom LED Screen Sizes</h4>
+        <p>Standard cabinet sizes or fully custom LED displays. Non-standard aspect ratios engineered in-house.</p>
+      </div>
+    </div>
+    <div class="why-item" role="listitem">
+      <div class="why-icon-box" aria-hidden="true">⚡</div>
+      <div class="why-text">
+        <h4>Zero Middlemen — Direct Pricing</h4>
+        <p>No broker markups. You negotiate directly with the manufacturer, saving 20–40% compared to dealer pricing.</p>
+      </div>
+    </div>
+    <div class="why-item" role="listitem">
+      <div class="why-icon-box" aria-hidden="true">🔧</div>
+      <div class="why-text">
+        <h4>End-to-End Service</h4>
+        <p>Consultation → Custom design → Manufacturing → Installation → Support. One vendor. Complete accountability.</p>
+      </div>
+    </div>
+  </div>
+</section> -->
 
-function closeLb(){
-  document.getElementById('lightbox').classList.remove('open');
-  document.body.style.overflow='';
-}
+  <section id="gallery" aria-labelledby="gallery-heading">
+    <div class="sec-over">Zorko LED Display Installation Gallery</div>
+    <h2 class="sec-h2" id="gallery-heading">LED SCREENS IN THE <span style="color:var(--amber)">REAL WORLD.</span></h2>
+    <p class="sec-sub">
+      See how <strong>Zorko LED displays</strong> look when deployed across stadiums, retail stores, mobile advertising
+      units, building facades, and live events in India.
+    </p>
+    <div class="gallery-filter-bar" role="group" aria-label="Filter LED display gallery by category">
+      <button class="gf-btn active" onclick="filterGallery('all',this)" aria-pressed="true">All LED Displays</button>
+      <button class="gf-btn" onclick="filterGallery('indoor',this)" aria-pressed="false">Indoor LED</button>
+      <button class="gf-btn" onclick="filterGallery('outdoor',this)" aria-pressed="false">Outdoor LED</button>
+      <button class="gf-btn" onclick="filterGallery('mobile',this)" aria-pressed="false">Mobile LED</button>
+      <button class="gf-btn" onclick="filterGallery('transparent',this)" aria-pressed="false">Transparent LED</button>
+    </div>
+    <div class="zorko-gallery-grid" id="zorkoGalleryGrid" aria-label="Zorko LED display installation photos"></div>
+  </section>
 
-function closeLightbox(e){
-  if(e.target===document.getElementById('lightbox')) closeLb();
-}
+  <div class="lightbox" id="lightbox" onclick="closeLightbox(event)" role="dialog" aria-modal="true"
+    aria-label="LED display image viewer">
+    <button class="lb-close" onclick="closeLb()" aria-label="Close image viewer">×</button>
+    <button class="lb-nav lb-prev" onclick="lbNav(-1);event.stopPropagation()"
+      aria-label="Previous LED display image">‹</button>
+    <div class="lb-inner"><img id="lb-img" src="" alt="Zorko LED display installation"></div>
+    <button class="lb-nav lb-next" onclick="lbNav(1);event.stopPropagation()"
+      aria-label="Next LED display image">›</button>
+    <div class="lb-caption" id="lb-caption"></div>
+  </div>
 
-function lbNav(dir){
-  lbCurrent=(lbCurrent+dir+lbFiltered.length)%lbFiltered.length;
-  document.getElementById('lb-img').src=lbFiltered[lbCurrent].src;
-  document.getElementById('lb-caption').textContent=lbFiltered[lbCurrent].name+' · '+lbFiltered[lbCurrent].label;
-}
+  <section id="testimonials" aria-labelledby="testimonials-heading">
+    <div class="sec-over">Customer Reviews &amp; Case Studies</div>
+    <h2 class="sec-h2" id="testimonials-heading">WHAT CLIENTS SAY ABOUT ZORKO</h2>
+    <p class="sec-sub">
+      Real reviews from stadiums, retail brands, advertising agencies, and event managers who chose Zorko for their
+      <strong>LED display requirements in India</strong>.
+    </p>
+    <div class="testi-grid" itemscope itemtype="https://schema.org/ItemList">
+      <div class="testi-card" itemscope itemprop="itemListElement" itemtype="https://schema.org/Review">
+        <div class="testi-quote-mark" aria-hidden="true">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text" itemprop="reviewBody">We installed Zorko's DuraPanel Pro outdoor LED screen across our
+          stadium perimeter. The 5500+ nit brightness is fully visible even in harsh afternoon sun. Zero flicker, zero
+          downtime in 14 months.</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img
+              src="https://res.cloudinary.com/deb6oiddj/image/upload/v1778487181/1756804027459_o3xhwu.jpg"
+              alt="Sachin Bajaj" loading="lazy"></div>
+          <div class="testi-info"><strong>Sachin Bajaj</strong><span>Operations Head · Sports Venue</span></div>
+        </div>
+      </div>
+      <div class="testi-card" itemscope itemprop="itemListElement" itemtype="https://schema.org/Review">
+        <div class="testi-quote-mark" aria-hidden="true">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text" itemprop="reviewBody">We used Zorko's CrystalFilm transparent LED display on our flagship
+          store's glass facade in Mumbai. Customers stop and stare. The transparency is unreal — you still see products
+          inside while the LED runs brand content.</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img
+              src="https://res.cloudinary.com/deb6oiddj/image/upload/v1778487392/Nandani_wjdg3n.jpg" alt="Nandani Gupta"
+              loading="lazy"></div>
+          <div class="testi-info"><strong>Nandani Gupta</strong><span>Marketing Director · Retail Brand</span></div>
+        </div>
+      </div>
+      <div class="testi-card" itemscope itemprop="itemListElement" itemtype="https://schema.org/Review">
+        <div class="testi-quote-mark" aria-hidden="true">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text" itemprop="reviewBody">The AdPack delivery bag LED displays were a game-changer for our
+          hyperlocal advertising. Real-time content updates via 4G, GPS tracking, and visibility that no static hoarding
+          can match.</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img
+              src="https://res.cloudinary.com/deb6oiddj/image/upload/v1778487563/Yawan_ih8xdj.jpg" alt="Yawan Bagada"
+              loading="lazy"></div>
+          <div class="testi-info"><strong>Yawan Bagada</strong><span>Founder · Digital OOH Agency</span></div>
+        </div>
+      </div>
+      <div class="testi-card" itemscope itemprop="itemListElement" itemtype="https://schema.org/Review">
+        <div class="testi-quote-mark" aria-hidden="true">"</div>
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text" itemprop="reviewBody">Zorko handled our 3-day product launch event end-to-end — from the
+          stage LED backdrop to the entrance display — flawless setup, flawless performance. Their team was on-site the
+          entire time.</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img
+              src="https://img.magnific.com/free-photo/content-indian-ceo-standing-smiling-portrait-successful-pensive-bearded-businessman-glasses-posing-office-room-business-expression-management-concept_74855-11642.jpg?semt=ais_hybrid&w=740&q=80"
+              alt="Nishant Desai" loading="lazy"></div>
+          <div class="testi-info"><strong>Nishant Desai</strong><span>Brand Manager · FMCG Company</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* Lightbox swipe */
-let lbTouchX=0;
-document.getElementById('lightbox').addEventListener('touchstart',e=>{lbTouchX=e.touches[0].clientX;},{passive:true});
-document.getElementById('lightbox').addEventListener('touchend',e=>{
-  const diff=lbTouchX-e.changedTouches[0].clientX;
-  if(Math.abs(diff)>50) lbNav(diff>0?1:-1);
-},{passive:true});
+  <section id="faq" aria-labelledby="faq-heading">
+    <div class="sec-over">Frequently Asked Questions</div>
+    <h2 class="sec-h2" id="faq-heading">LED DISPLAY QUESTIONS — ANSWERED</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">What is the price of an LED display screen in India?</summary>
+        <div class="faq-a">
+          <p>LED display prices in India range from ₹50,000 for small indoor poster-style panels to several crores for
+            large outdoor stadium screens. The main cost factors are: pixel pitch (finer pitch = higher cost), cabinet
+            type (die-cast vs iron), brightness requirement (indoor vs outdoor), and total screen area. Zorko eliminates
+            the middleman markup.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">How long does an LED display screen last?</summary>
+        <div class="faq-a">
+          <p>A quality LED display is rated for 100,000 hours of use — equivalent to over 11 years of 24/7 continuous
+            operation. In practice, most displays run 12–16 hours per day, making the usable life 15–20+ years. Zorko
+            LED screens are rated for 100,000 hours.</p>
+        </div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">What is the difference between indoor and outdoor LED displays?</summary>
+        <div class="faq-a">
+          <p>Indoor LED displays use finer pixel pitch for close-up viewing and lower brightness (800–2000 nits).
+            Outdoor LED screens require 4000–8000+ nits brightness to be visible in direct sunlight, plus
+            weatherproofing (IP65+ rating) to withstand rain and dust.</p>
+        </div>
+      </details>
+    </div>
+  </section>
 
-document.addEventListener('keydown',function(e){
-  const lb=document.getElementById('lightbox');
-  if(!lb.classList.contains('open'))return;
-  if(e.key==='Escape') closeLb();
-  if(e.key==='ArrowRight') lbNav(1);
-  if(e.key==='ArrowLeft') lbNav(-1);
-});
+  <section id="contact" aria-labelledby="contact-heading">
+    <div class="form-layout">
+      <div class="form-left">
+        <div class="sec-over">Get LED Display Quote</div>
+        <h2 class="sec-h2" id="contact-heading">GET A FREE<br><span style="color:var(--amber)">LED QUOTE.</span></h2>
+        <p style="font-size:14px;color:var(--muted);line-height:1.8;margin-top:.5rem">
+          Tell us your <strong>LED screen requirement</strong>. A Zorko LED specialist responds within 24 hours with a
+          transparent, no-middleman quote for your exact location and screen size.
+        </p>
+        <div class="trust-items">
+          <div class="trust-item">
+            <div class="trust-dot"></div>
+            <div class="trust-text"><strong>Free LED Display Consultation</strong>
+              <p>No obligation. We recommend the right LED product honestly.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-dot"></div>
+            <div class="trust-text"><strong>Direct Manufacturer Pricing</strong>
+              <p>No broker markups. Negotiate directly with the manufacturer.</p>
+            </div>
+          </div>
+          <div class="trust-item">
+            <div class="trust-dot"></div>
+            <div class="trust-text"><strong>Custom LED Screen Sizing</strong>
+              <p>Any dimension. Any environment. Indoor, outdoor, transparent, or mobile.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-right">
+        <div id="form-container">
+          <div id="zorko-form" role="form" aria-label="LED display enquiry form">
+            <div class="ff-row">
+              <div class="ff"><label for="f-name">Full Name *</label><input type="text" id="f-name"
+                  placeholder="Rahul Sharma" required></div>
+              <div class="ff"><label for="f-company">Company / Brand</label><input type="text" id="f-company"
+                  placeholder="Your Company"></div>
+            </div>
+            <div class="ff-row">
+              <div class="ff"><label for="f-phone">Phone Number *</label><input type="tel" id="f-phone"
+                  placeholder="+91 98765 43210" required></div>
+              <div class="ff"><label for="f-email">Email Address</label><input type="email" id="f-email"
+                  placeholder="you@company.com"></div>
+            </div>
+            <div class="ff">
+              <label for="f-interest">LED Display Type Needed *</label>
+              <select id="f-interest" required>
+                <option value="">Select LED display type...</option>
+                <option value="flagship">FlagShip Die-Cast LED Series</option>
+                <option value="indoor">Indoor LED Panel</option>
+                <option value="outdoor">Outdoor LED Screen</option>
+                <option value="transparent">Transparent LED</option>
+                <option value="mobile">Mobile LED Advertising</option>
+                <option value="rental-cabinet">LED Rental Cabinet — Stage &amp; Event</option>
+              </select>
+            </div>
+            <div class="ff">
+              <label for="f-msg">LED Screen Size &amp; Project Details</label>
+              <textarea id="f-msg"
+                placeholder="Tell us about your project — required screen size, location, and requirements..."></textarea>
+            </div>
+            <button class="submit-btn" onclick="submitZorko()" type="button">SUBMIT LED ENQUIRY →</button>
+            <div style="font-size:11px;color:var(--muted2);margin-top:10px;">No spam. A Zorko LED specialist will reach
+              out within 24 hours.</div>
+          </div>
+          <div class="form-success" id="form-success">
+            <div style="font-size:2.5rem;margin-bottom:1rem">✅</div>
+            <div style="font-family:'Bebas Neue';font-size:1.8rem;letter-spacing:3px;margin-bottom:.5rem">ENQUIRY
+              RECEIVED.</div>
+            <div style="font-size:14px;color:var(--muted)">A Zorko LED specialist will contact you within 24 hours with
+              your custom LED display quote.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-/* Rebuild gallery on resize to fix wide spans on mobile */
-let resizeTimer;
-window.addEventListener('resize',()=>{
-  clearTimeout(resizeTimer);
-  resizeTimer=setTimeout(()=>{
-    const activeFilter=document.querySelector('.gf-btn.active');
-    if(activeFilter) buildGalleryGrid(activeFilter.textContent.toLowerCase().trim()==='all'?'all':activeFilter.dataset.cat||'all');
-  },200);
-});
+  <footer role="contentinfo">
+    <div>
+      <div class="f-logo">ZORKO TECHNOLOGIES</div>
+    </div>
+    <nav class="f-nav">
+      <a href="/Blog.html">Blogs</a>
+      <a href="#products">LED Products</a>
+      <a href="#tech-specs">Tech Guide</a>
+      <a href="#usecases">LED Solutions</a>
+      <a href="#gallery">Installation Gallery</a>
+      <a href="#contact">Get Quote</a>
+    </nav>
+    <div class="f-copy">
+      <div>© 2026 Zorko Technologies. All rights reserved.</div>
+      <div>In-House Manufacturing · India</div>
+    </div>
+  </footer>
+  <script src="Zorko.js"></script>
 
-/* ── FORM ── */
-function submitZorko(){
-  const name=document.getElementById('f-name').value.trim();
-  const phone=document.getElementById('f-phone').value.trim();
-  const interest=document.getElementById('f-interest').value;
-  if(!name){alert('Please enter your name.');return;}
-  if(!phone){alert('Please enter your phone number.');return;}
-  if(!interest){alert("Please select what you're interested in.");return;}
-  document.getElementById('zorko-form').style.display='none';
-  document.getElementById('form-success').classList.add('show');
-}
+  <a class="skip-link" href="#products">Skip to LED Display Products</a>
 
-/* ── INIT ── */
-window.addEventListener('DOMContentLoaded',()=>{
-  initAllProducts();
-  buildGalleryGrid('all');
-});
-</script>
-<script>
-(function() {
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxSKXydfCh4Svy3nOulLv8rynBwlGoWJZOb5AygvOx9IH0lwtJHRPs9DIeWLJEPIR-X/exec"
-
-    window.submitZorko = async function() {
-        // Get form field values
-        const name = document.getElementById('f-name')?.value.trim() || '';
-        const company = document.getElementById('f-company')?.value.trim() || '';
-        const phone = document.getElementById('f-phone')?.value.trim() || '';
-        const email = document.getElementById('f-email')?.value.trim() || '';
-        const interest = document.getElementById('f-interest')?.value || '';
-        const budget = document.getElementById('f-budget')?.value || '';
-        const timeline = document.getElementById('f-timeline')?.value || '';
-        const message = document.getElementById('f-msg')?.value.trim() || '';
-        
-        // Validation
-        if (!name) {
-            alert('Please enter your name.');
-            return false;
-        }
-        if (!phone) {
-            alert('Please enter your phone number.');
-            return false;
-        }
-        if (!interest || interest === '') {
-            alert("Please select what you're interested in.");
-            return false;
-        }
-        
-        // Prepare data object
-        const formData = {
-            timestamp: new Date().toISOString(),
-            name: name,
-            company: company,
-            phone: phone,
-            email: email,
-            interest: interest,
-            budget: budget,
-            timeline: timeline,
-            message: message,
-            source: 'Zorko Website Contact Form',
-            status: 'New Enquiry'
-        };
-        
-        // Show loading state
-        const submitBtn = document.querySelector('.submit-btn');
-        const originalBtnText = submitBtn?.innerHTML || 'SUBMIT ENQUIRY →';
-        if (submitBtn) {
-            submitBtn.innerHTML = 'SUBMITTING...';
-            submitBtn.disabled = true;
-        }
-        
-        // Send data to Google Sheets using JSONP-style fetch with timeout
-        try {
-            // Use fetch with timeout to prevent hanging
-            const controller = new AbortController();
-            const timeoutId = setTimeout(() => controller.abort(), 5000); // 5 second timeout
-            
-            const response = await fetch(GOOGLE_SCRIPT_URL, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-                signal: controller.signal
-            });
-            
-            clearTimeout(timeoutId);
-            
-            if (response.ok) {
-                console.log('Form submitted successfully to Google Sheets');
-            } else {
-                throw new Error('Server responded with error');
-            }
-        } catch (error) {
-            console.error('Error submitting form:', error);
-            // Still show success to user even if background save fails
-            // Data is already in the form, you can email it manually
-        }
-        
-        // Show success message immediately (don't wait for server)
-        const zorkoForm = document.getElementById('zorko-form');
-        const successDiv = document.getElementById('form-success');
-        
-        if (zorkoForm) zorkoForm.style.display = 'none';
-        if (successDiv) successDiv.classList.add('show');
-        
-        // Reset button state
-        if (submitBtn) {
-            submitBtn.innerHTML = originalBtnText;
-            submitBtn.disabled = false;
-        }
-        
-        return true;
-    };
-    
-    console.log('Form handler loaded. Ready to submit to Google Sheets.');
-})();
-</script>
 </body>
+
 </html>

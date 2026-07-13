@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LED Screen vs LED Display: Buyer's Guide &amp; Blog</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #FFFFFF;
+      --surface: #F5F7FA;
+      --surface-2: #EEF1F5;
+      --ink: #0F1620;
+      --ink-dim: #5B6672;
+      --line: #E3E7EC;
+      --blue: #0B5FFF;
+      --blue-dim: #EAF1FF;
+      --amber: #FF8A1E;
+    }
+
+    body {
+      font-family: -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.65;
+    }
+
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blue-dim);
+    }
+
+    .wrap {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* LAYOUT: main + sidebar */
+    .blog-layout {
+      display: flex;
+      gap: 40px;
+      align-items: flex-start;
+      padding: 24px 0 48px;
+    }
+
+    .main-content {
+      flex: 1;
+      min-width: 0;
+    }
+
+    /* SIDEBAR (right) */
+    .sidebar-right {
+      width: 240px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 24px;
+      align-self: flex-start;
+    }
+
+    /* LEFT TOPICS */
+    .topics-left {
+      width: 220px;
+      flex-shrink: 0;
+      align-self: flex-start;
+      position: sticky;
+      top: 24px;
+    }
+
+    .topics-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 20px 16px;
+    }
+
+    .topics-box h4 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--ink-dim);
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+      font-weight: 800;
+    }
+
+    .topic-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .topic-list li {
+      padding: 10px 0 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .topic-list li:last-child {
+      border-bottom: none;
+    }
+
+    .topic-list a {
+      border-bottom: none;
+      font-weight: 600;
+      color: var(--ink);
+      display: block;
+      transition: color 0.1s;
+    }
+
+    .topic-list a:hover {
+      color: var(--blue);
+    }
+
+    .topic-list .tag {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      background: var(--blue-dim);
+      color: var(--blue);
+      padding: 2px 8px;
+      border-radius: 12px;
+      margin-top: 4px;
+    }
+
+    /* TOP BAR */
+    .topbar {
+      border-bottom: 1px solid var(--line);
+      padding: 16px 0;
+    }
+    .topbar .row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      font-weight: 900;
+      letter-spacing: .02em;
+      font-size: 18px;
+      color: var(--ink);
+    }
+    .brand span {
+      color: var(--blue);
+    }
+    .nav {
+      display: flex;
+      gap: 22px;
+      font-size: 13.5px;
+      color: var(--ink-dim);
+      font-weight: 600;
+    }
+    .nav a {
+      border-bottom: none;
+      color: var(--ink-dim);
+    }
+    .quote-btn {
+      background: var(--ink);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 16px;
+      border-radius: 6px;
+      border-bottom: none;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 40px 0 32px;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      font-weight: 800;
+      padding: 6px 12px;
+      border: 1px solid var(--blue-dim);
+      border-radius: 20px;
+      background: var(--blue-dim);
+    }
+    h1 {
+      font-size: 38px;
+      line-height: 1.1;
+      letter-spacing: -.01em;
+      margin: 20px 0 16px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+    h1 em {
+      font-style: normal;
+      color: var(--blue);
+    }
+    .dek {
+      font-size: 18px;
+      color: var(--ink-dim);
+      max-width: 620px;
+      margin: 0 0 26px;
+    }
+    .stat-row {
+      display: flex;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .stat {
+      flex: 1;
+      padding: 16px 18px;
+      border-right: 1px solid var(--line);
+    }
+    .stat:last-child {
+      border-right: none;
+    }
+    .stat b {
+      display: block;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--ink);
+    }
+    .stat span {
+      font-size: 12px;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+    }
+
+    /* ARTICLE */
+    article {
+      padding: 12px 0 24px;
+    }
+    h2 {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -.01em;
+      margin: 50px 0 16px;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      border-radius: 5px;
+      flex: none;
+      background: var(--blue);
+    }
+    h3 {
+      font-size: 18px;
+      font-weight: 800;
+      margin: 26px 0 10px;
+      color: var(--ink);
+    }
+    p {
+      font-size: 16.5px;
+      color: #333B45;
+      margin: 0 0 16px;
+    }
+    ul {
+      margin: 0 0 18px;
+      padding-left: 0;
+      list-style: none;
+    }
+    li {
+      font-size: 16px;
+      color: #333B45;
+      padding: 11px 0 11px 26px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+    }
+    li:last-child {
+      border-bottom: none;
+    }
+    li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 19px;
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+    .spec-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0 28px;
+      font-size: 14.5px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .spec-table th {
+      text-align: left;
+      padding: 12px 14px;
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 12px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--line);
+      font-weight: 800;
+    }
+    .spec-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      color: #333B45;
+    }
+    .spec-table tr:last-child td {
+      border-bottom: none;
+    }
+    .screen-frame {
+      margin: 32px 0;
+      border-radius: 12px;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      padding: 14px;
+    }
+    .screen-inner {
+      position: relative;
+      aspect-ratio: 16/8;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #F0F3F7, #E6EBF1 50%, #F0F3F7);
+      border: 1px dashed #C9D1DB;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .screen-inner .ph-icon {
+      text-align: center;
+      color: #9AA5B1;
+    }
+    .screen-inner .ph-icon svg {
+      width: 42px;
+      height: 42px;
+      opacity: .6;
+      margin-bottom: 8px;
+    }
+    .screen-inner .ph-icon span {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .screen-frame .cap {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 4px 2px;
+      font-size: 12px;
+      color: var(--ink-dim);
+    }
+    .pitch-box {
+      margin: 34px 0;
+      padding: 0;
+      border-radius: 10px;
+      border: 1px solid var(--line);
+      overflow: hidden;
+    }
+    .pitch-box .head {
+      background: var(--ink);
+      color: #fff;
+      padding: 14px 18px;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 800;
+    }
+    .pitch-box table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14.5px;
+    }
+    .pitch-box th {
+      text-align: left;
+      padding: 12px 18px;
+      background: var(--surface);
+      font-size: 12px;
+      color: var(--ink-dim);
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      border-bottom: 1px solid var(--line);
+    }
+    .pitch-box td {
+      padding: 12px 18px;
+      border-bottom: 1px solid var(--line);
+      color: #333B45;
+    }
+    .pitch-box tr:last-child td {
+      border-bottom: none;
+    }
+    .pitch-box td b {
+      color: var(--ink);
+    }
+    .steps {
+      margin: 24px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .step {
+      display: flex;
+      gap: 16px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .step:last-child {
+      border-bottom: none;
+    }
+    .step .num {
+      flex: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--blue-dim);
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .step .body b {
+      display: block;
+      font-size: 15.5px;
+      color: var(--ink);
+      margin-bottom: 2px;
+    }
+    .step .body span {
+      font-size: 14.5px;
+      color: var(--ink-dim);
+    }
+    .cta {
+      margin: 56px 0 20px;
+      padding: 34px;
+      border-radius: 12px;
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--line);
+    }
+    .cta h3 {
+      margin: 0 0 8px;
+      font-size: 22px;
+    }
+    .cta p {
+      max-width: 520px;
+      margin: 0 auto 20px;
+      color: var(--ink-dim);
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 13px 26px;
+      border-radius: 6px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 800;
+      font-size: 14px;
+      border-bottom: none;
+    }
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 60px;
+      font-size: 13px;
+      color: var(--ink-dim);
+    }
+
+    @media(max-width: 900px) {
+      .blog-layout {
+        flex-direction: column;
+      }
+      .topics-left,
+      .sidebar-right {
+        width: 100%;
+        position: static;
+      }
+      .topics-box {
+        width: 100%;
+      }
+    }
+
+    @media(max-width: 560px) {
+      h1 {
+        font-size: 31px;
+      }
+      .hero {
+        padding: 32px 0 24px;
+      }
+      .nav {
+        display: none;
+      }
+      .stat-row {
+        flex-wrap: wrap;
+      }
+      .stat {
+        flex: 1 1 50%;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="topbar wrap">
+  <div class="row">
+    <div class="brand">ZOR<span>KO</span></div>
+    <div class="nav">
+      <a href="#">Products</a><a href="#">Tech Guide</a><a href="#">Solutions</a><a href="#">Gallery</a>
+    </div>
+    <a href="index.html#contact" class="quote-btn">Get a Quote</a>
+  </div>
+</div>
+
+<section class="hero wrap">
+  <span class="eyebrow">Buyer's Guide · 2026</span>
+  <h1>LED Screen vs LED Display: What Actually Separates Them</h1>
+  <p class="dek">A straight guide to LED screens, LED displays, video walls, and rentals — indoor, outdoor, and everything in between.</p>
+  <div class="stat-row">
+    <div class="stat"><b>100,000 hrs</b><span>Rated lifespan</span></div>
+    <div class="stat"><b>8,000+ nits</b><span>Outdoor brightness</span></div>
+    <div class="stat"><b>IP65+</b><span>Weatherproof rating</span></div>
+    <div class="stat"><b>P0.5–P10</b><span>Pitch range</span></div>
+  </div>
+</section>
+
+<!-- BLOG LAYOUT: left topics + main + right sidebar -->
+<div class="wrap blog-layout">
+
+  
+  <!-- LEFT TOPICS -->
+  <aside class="topics-left">
+    <div class="topics-box">
+      <h4>📄 More topics</h4>
+      <ul class="topic-list">
+          <a href="#">Pixel Pitch explained simply</a>
+          <span class="tag">Tech deep-dive</span>
+       
+          <a href="#">Indoor vs Outdoor LED: full comparison</a>
+          <span class="tag">Buyer's guide</span>
+        
+          <a href="#">COB vs SMD: which is better?</a>
+          <span class="tag">Manufacturing</span>
+      
+          <a href="#">LED screen rental: costs &amp; tips</a>
+          <span class="tag">Events</span>
+
+          <a href="#">Digital signage software guide</a>
+          <span class="tag">Software</span>
+
+          <a href="#">Transparent LED: retail use cases</a>
+          <span class="tag">Retail</span>
+
+          <a href="#">Video wall installation checklist</a>
+          <span class="tag">Installation</span>
+  
+          <a href="#">Outdoor LED durability: IP ratings</a>
+          <span class="tag">Specs</span>
+      </ul>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+    <article>
+
+      <p>Stand in an airport terminal or a stadium concourse and the room is doing the talking through a wall of light. Somewhere in the buying process, someone picked between a <b>led screen</b> and a <b>led display</b>, indoor or outdoor, rented for a weekend or installed for a decade. Get that call wrong and it costs you. This guide walks through the terms in plain language, spec by spec.</p>
+
+      <div class="screen-frame">
+        <div class="screen-inner">
+          <div class="ph-icon">
+            <img src="https://res.cloudinary.com/deb6oiddj/image/upload/v1783675745/jmulrzgxd3w0oj9dsckm.png" alt="Indoor LED display" />
+          </div>
+        </div>
+        <div class="cap"><span>Fig. 1 — Indoor LED display, die-cast cabinet</span></div>
+      </div>
+
+      <h2>LED Screen vs LED Display: Same Family, Different Jobs</h2>
+      <p>People use "<b>led screen</b>" and "<b>led display</b>" interchangeably, and most of the time that's fine. But once you're comparing quotes, the difference matters. A led screen usually means the viewer-facing surface, the part an audience looks at. A led display is the wider engineering term: panel, driver boards, power supply, and control system working together behind it. Know which one you're pricing, or you'll compare a bare panel against a fully installed system and wonder why the numbers don't match.</p>
+
+      <p>This is also where <b>digital signage</b> enters the conversation. Not every led screen counts as signage. A stage backdrop isn't selling anything. But any retail or transit installation running rotating content, pricing, or ads is. If the goal is messaging that changes daily, the purchase isn't just hardware. It's a digital signage platform with content management running on top of it.</p>
+
+      <h2>Indoor LED Display vs Outdoor</h2>
+      <p>An <b>indoor led display</b> is built for close viewing distances and controlled lighting, typically running 800 to 2,000 nits, fine enough for boardrooms and retail counters where people stand a few feet away. Outdoor units trade some of that pixel density for brightness that fights direct sunlight, often 4,000 to 8,000+ nits, sealed to an IP65 or higher rating against rain and dust. Buyers who mix the two up are the ones calling for repairs a year later.</p>
+
+      <div class="pitch-box">
+        <div class="head">Pixel Pitch Reference</div>
+        <table>
+          <tr><th>Pitch</th><th>Best environment</th><th>Viewing distance</th></tr>
+          <tr><td><b>P0.5 – P1.5 (COB)</b></td><td>TV studios, control rooms, boardrooms</td><td>Under 1.5m</td></tr>
+          <tr><td><b>P2.5 – P3</b></td><td>Retail fronts, lobbies, indoor stages</td><td>2.5m – 3m</td></tr>
+          <tr><td><b>P4 – P5</b></td><td>Atriums, premium outdoor facades</td><td>4m – 5m</td></tr>
+          <tr><td><b>P6 – P7</b></td><td>Street-level ads, mobile LED vans</td><td>6m – 7m</td></tr>
+          <tr><td><b>P8 – P10</b></td><td>Highway billboards, stadium screens</td><td>8m+</td></tr>
+        </table>
+      </div>
+
+      <p>That bottom row is what you'd spec for a roadside <b>led billboard</b>. Those get viewed from 30 metres or more, so a wider pitch reads sharper from a moving car than indoor-grade resolution nobody's close enough to notice, and it costs less per panel too.</p>
+
+      <h2>Video Wall or Single Screen?</h2>
+      <p>A <b>video wall</b> is several LED cabinets tiled together to run as one seamless canvas. It's the answer when a single panel can't cover the wall, or when the format needs to scale with the room: a lobby feature, a trading floor, a broadcast set. Against projection, a modular video wall holds brightness and contrast with the lights on, which is why it's replaced projectors in most commercial builds over the last five years.</p>
+
+      <div class="screen-frame">
+        <div class="screen-inner">
+          <div class="ph-icon">
+            <img src="https://res.cloudinary.com/deb6oiddj/image/upload/v1783675745/k9wc9ffshtt8vljs7ht5.png" >
+          </div>
+        </div>
+        <div class="cap"><span>Fig. 2 — Modular tiled video wall, lobby install</span></div>
+      </div>
+
+      <h3>Shapes worth knowing</h3>
+      <ul>
+        <li><b>Curved led display</b> — cabinets with a built-in or adjustable bow, used for stage backdrops and architectural wraps where a flat wall would break the effect.</li>
+        <li><b>Flexible led display</b> — a bendable panel that wraps columns and irregular structures. Common in retail installs and experiential booths.</li>
+        <li><b>Transparent led display</b> — a see-through mesh mounted on glass storefronts. Daylight and window shopping continue while the panel runs content over it.</li>
+      </ul>
+
+      <h2>Renting vs Owning: LED Screen Rental</h2>
+      <p>Not every project needs a permanent install. <b>Led screen rental</b> exists for product launches, weddings, concerts, and trade show booths that need broadcast-quality visuals for a weekend, not a decade. Rental-grade panels use quick-lock cabinets and road cases, because they get rigged and struck dozens of times a year. Durability under repeated setup matters as much as image quality here.</p>
+
+      <p>If your event calendar repeats, ask your <b>led display manufacturer</b> whether they run a rental fleet alongside their permanent product line. A manufacturer building both understands the wear difference between a screen installed once and one loaded into a truck every month.</p>
+
+      <table class="spec-table">
+        <tr><th>Use case</th><th>Best fit</th><th>Cabinet</th></tr>
+        <tr><td>Retail storefront</td><td>Transparent led display</td><td>Die-cast aluminum</td></tr>
+        <tr><td>Concert / stage backdrop</td><td>Curved led display, rental grade</td><td>Die-cast aluminum</td></tr>
+        <tr><td>Corporate lobby</td><td>Video wall, fine pitch indoor</td><td>Die-cast aluminum</td></tr>
+        <tr><td>Highway advertising</td><td>Led billboard, wide pitch outdoor</td><td>Iron / steel, IP65+</td></tr>
+        <tr><td>Weekend trade show</td><td>Led screen rental, quick-lock</td><td>Die-cast aluminum</td></tr>
+      </table>
+
+      <h2>What to Ask Your LED Display Manufacturer</h2>
+      <p>Price per panel is the easiest number to compare and the least useful one on its own. A serious <b>led display manufacturer</b> should walk you through brightness, refresh rate, IP rating for outdoor units, and how spare parts and service get handled after install. Cheap <b>led signage</b> that can't be serviced locally turns into an expensive wall ornament the day a driver board fails.</p>
+
+      <ul>
+        <li>What's the warranty on the panel versus the power supply and control system?</li>
+        <li>Can individual modules be swapped without dismantling the whole led screen?</li>
+        <li>Do they support both fixed installs and led screen rental configurations?</li>
+        <li>Is content management software included, or is that a separate digital signage license?</li>
+      </ul>
+
+      <div class="screen-frame">
+        <div class="screen-inner">
+          <div class="ph-icon">
+            <img src="https://res.cloudinary.com/deb6oiddj/image/upload/v1783675749/f9rokpca8iyj8cs490wj.png" alt="COB LED module" />
+          </div>
+        </div>
+        <div class="cap"><span>Fig. 3 — COB LED module, close-up</span></div>
+      </div>
+
+      <h3>A quick note on COB</h3>
+      <p>Newer <b>cob led display</b> modules embed the diodes directly into the circuit board instead of surface-mounting them individually. That improves durability and viewing angle at fine pixel pitches. It costs more up front, but for a fixed <b>indoor led display</b> expected to run for a decade, it often works out cheaper across the full lifespan once you account for repairs.</p>
+
+      <h2>How to Buy: Five Steps</h2>
+      <div class="steps">
+        <div class="step"><div class="num">1</div><div class="body"><b>Free consultation</b><span>Share location, screen size, environment, and budget. Get a product recommendation back.</span></div></div>
+        <div class="step"><div class="num">2</div><div class="body"><b>Custom design</b><span>Cabinets engineered to your exact dimensions, including curved and non-standard sizes.</span></div></div>
+        <div class="step"><div class="num">3</div><div class="body"><b>In-house manufacturing</b><span>Every panel assembled at the same facility, with direct quality control from chip to cabinet.</span></div></div>
+        <div class="step"><div class="num">4</div><div class="body"><b>Professional installation</b><span>Structural mounting, wiring, and commissioning handled on-site.</span></div></div>
+        <div class="step"><div class="num">5</div><div class="body"><b>After-sales support</b><span>Maintenance, firmware updates, and replacement parts, direct from the manufacturer.</span></div></div>
+      </div>
+
+      <h2>Bringing It Together</h2>
+      <p>Whether you land on a compact <b>led poster</b> for a retail counter, a full <b>video wall</b> for a lobby, or a rugged led billboard beside the highway, the decision tree stays the same. Define the viewing distance, define the environment, and let pixel pitch and IP rating follow from those two answers. Get that order right and the rest of the spec sheet takes care of itself.</p>
+
+      <div class="cta">
+        <h3>Ready to spec your project?</h3>
+        <p>Talk to our team about pixel pitch, indoor vs outdoor housings, and led screen rental options for your next install.</p>
+        <a href="index.html#contact" class="cta-btn">Get a Quote →</a>
+      </div>
+
+    </article>
+  </div>
+
+</div>
+
+<footer class="wrap">
+  <div style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+    <span>© 2026 Zorko Technologies. All rights reserved.</span>
+    <span>LED display manufacturer — indoor, outdoor, transparent, mobile.</span>
+  </div>
+</footer>
+
+</body>
+</html>
