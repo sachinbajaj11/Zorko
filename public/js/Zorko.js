@@ -2,7 +2,7 @@ const themeToggle = document.getElementById('theme-toggle');
 const htmlEl = document.documentElement;
 
 // Check localStorage for saved theme, default to light
-const savedTheme = localStorage.getItem('zorko-theme') || 'dark';
+const savedTheme = localStorage.getItem('zorko-theme') || 'white';
 htmlEl.setAttribute('data-theme', savedTheme);
 
 if(themeToggle) {
