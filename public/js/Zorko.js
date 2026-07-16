@@ -189,9 +189,9 @@ function showSeries(id,btn){
 
 /* ── ZORKO GALLERY ── */
 const galleryItems=[
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778480129/ZorkoGallery_ymnaiw.png",cat:"indoor",label:"Indoor · Die-Cast",name:"Die-Cast Cabinet Series",wide:true},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482572/ChatGPT_Image_May_11_2026_12_25_56_PM_ccqzc6.png",cat:"outdoor",label:"Outdoor · Stadium",name:"960×960 Die-Cast"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778481298/Screenshot_2026-05-11_120445_nwqkfw.png",cat:"transparent",label:"Transparent · Facade",name:"HoloMesh 3D"},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1784196161/b239wlligi3vebttoqyo.jpg",cat:"Outdoor",label:"Outdoor · DOOH",name:"Die-Cast Cabinet Series",wide:true},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1784196326/sjelfpugyv3nzhzjpeta.jpg",cat:"outdoor",label:"Outdoor · DOOH",name:"960×960 Die-Cast"},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1784196388/aww9tviijlzprum3c2rw.jpg",cat:"outdoor",label:"outdoor · Cafe",name:"HoloMesh 3D"},
   {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482276/ChatGPT_Image_May_11_2026_12_21_06_PM_1_lxydgo.png",cat:"transparent",label:"Transparent · Glass",name:"CrystalFilm",wide:true},
   {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778481235/Screenshot_2026-05-11_120345_advqru.png",cat:"mobile",label:"Mobile · Delivery",name:"AdPack Delivery Bag"},
   {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482388/ChatGPT_Image_May_11_2026_12_22_57_PM_adlyta.png",cat:"mobile",label:"Mobile · Car Top",name:"T-X Car Top"},
