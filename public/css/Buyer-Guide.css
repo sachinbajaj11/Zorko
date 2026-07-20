@@ -50,7 +50,7 @@
 
     /* SIDEBAR (right) */
     .sidebar-right {
-      width: 240px;
+      width: 260px;
       flex-shrink: 0;
       position: sticky;
       top: 24px;
@@ -85,7 +85,6 @@
     }
 
     .topic-list {
-      list-style: none;
       padding: 0;
       margin: 0;
     }
@@ -104,8 +103,8 @@
     .topic-list a {
       border-bottom: none;
       font-weight: 600;
+      display: inline;
       color: var(--ink);
-      display: block;
       transition: color 0.1s;
     }
 
@@ -124,6 +123,11 @@
       padding: 2px 8px;
       border-radius: 12px;
       margin-top: 4px;
+    }
+
+    .topic-list li::before {
+        display: none;
+        content: none;
     }
 
     /* TOP BAR */
