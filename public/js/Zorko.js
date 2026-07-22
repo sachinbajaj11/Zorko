@@ -35,9 +35,12 @@ document.addEventListener('click',function(e){
 });
 
 // --- Product Database ---
+// Product "name" fields double as the visible card title AND the <img alt> text,
+// so each name carries real target keywords (LED display, LED screen, video wall,
+// transparent LED, mobile LED advertising, pixel pitch) instead of a bare model code.
 const productDB = {
   flagship:[
-    {name:"DIE-CASTING Cabinet LED Display Screen",series:"FLAGSHIP DIE-CAST",desc:"All-in-one indoor LED poster with die-cast aluminum cabinet. Plug-and-play, rear service, ultra-slim bezel.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558313/DIE-CASTING_Cabinet_LED_Display_Screen_zagwpg.webp","https://res.cloudinary.com/deb6oiddj/image/upload/v1778486940/ChatGPT_Image_May_11_2026_01_38_49_PM_vk2ubv.png"],
+    {name:"Die-Cast Cabinet LED Display Screen — Indoor LED Video Wall Panel",series:"FLAGSHIP DIE-CAST",desc:"All-in-one indoor LED display panel with die-cast aluminum cabinet, built for seamless LED video wall installations. Plug-and-play, rear service, ultra-slim bezel.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558313/DIE-CASTING_Cabinet_LED_Display_Screen_zagwpg.webp","https://res.cloudinary.com/deb6oiddj/image/upload/v1778486940/ChatGPT_Image_May_11_2026_01_38_49_PM_vk2ubv.png"],
     specs:[
 ["Cabinet Material","Die-Cast Aluminum"],
 ["Cabinet Size","576 × 576 mm"],
@@ -46,7 +49,7 @@ const productDB = {
 ]
     
     },
-    {name:"640x640mm Indoor Die Cast Cabinet",series:"FLAGSHIP DIE-CAST",desc:"Premium die-cast cabinet for seamless indoor video walls. Ultra-high refresh rate, flicker-free performance.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780557987/640x640mm_Indoor_Die_Cast_LED_Cabinet_spgvlv.webp","https://5.imimg.com/data5/YZ/MA/VM/SELLER-72742084/p3-91-p3-p4-10ft-x-12ft-500x500.jpg"],
+    {name:"640x640mm Indoor LED Video Wall Die-Cast Cabinet",series:"FLAGSHIP DIE-CAST",desc:"Premium die-cast cabinet for seamless indoor LED video walls. Ultra-high refresh rate, flicker-free performance — P2.5 to P6 pixel pitch.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780557987/640x640mm_Indoor_Die_Cast_LED_Cabinet_spgvlv.webp","https://5.imimg.com/data5/YZ/MA/VM/SELLER-72742084/p3-91-p3-p4-10ft-x-12ft-500x500.jpg"],
     specs:[
 ["Cabinet Material","Die-Cast Aluminum"],
 ["Cabinet Size","640 × 640 mm"],
@@ -54,7 +57,7 @@ const productDB = {
 ["Maintenance","Front & Rear Service"],
 ]
     },
-    {name:"960x960 mm Outdoor Die Cast Cabinet",series:"FLAGSHIP OUTDOOR",desc:"Rugged outdoor die-cast cabinet, IP65 rated. Exceptional heat dissipation and all-weather reliability.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558088/960x960_mm_LED_video_wall_Die_Cast_Cabinets_zufppq.webp","https://s.alicdn.com/@sc04/kf/H2c41a16ce2a54f359dd749434cd1938aa/Factory-Wholesale-Price-of-Die-cast-Magnesium-Alloy-960-960-Led-Display-Cabinet-for-P1.8-P2-P2.5-P3-P4-P5-P6-P8-P10-Led-Module.jpg_300x300.jpg"],
+    {name:"960x960mm Outdoor LED Display Die-Cast Cabinet",series:"FLAGSHIP OUTDOOR",desc:"Rugged outdoor LED display die-cast cabinet, IP65 rated. Exceptional heat dissipation and all-weather reliability for outdoor LED screens.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558088/960x960_mm_LED_video_wall_Die_Cast_Cabinets_zufppq.webp","https://s.alicdn.com/@sc04/kf/H2c41a16ce2a54f359dd749434cd1938aa/Factory-Wholesale-Price-of-Die-cast-Magnesium-Alloy-960-960-Led-Display-Cabinet-for-P1.8-P2-P2.5-P3-P4-P5-P6-P8-P10-Led-Module.jpg_300x300.jpg"],
   specs:[
 ["Cabinet Material","Die-Cast Aluminum"],
 ["Cabinet Size","960 × 960 mm"],
@@ -62,7 +65,7 @@ const productDB = {
 ["Maintenance","Rear Service"],
 ]
 },
-    {name:"Outdoor P4.44 4K LED Display",series:"ULTRA BRIGHT",desc:"8000 nits, IP67, 16-bit color depth. Sunlight readable, perfect for high-impact outdoor advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558596/Outdoor_Fixed_Installation_P4.44_4K_LED_Display_5500-8000nits_High_Brightness_IP66_Waterproof_16-Bit_Color_Sunlight_Readable_tcv14w.avif","https://tiimg.tistatic.com/fp/1/002/451/outdoor-p6-25-led-display-screen-die-casting-cabinet-879.jpg"],
+    {name:"Outdoor P4.44 4K LED Display Screen — High Brightness",series:"ULTRA BRIGHT",desc:"8000 nits, IP67, 16-bit color depth. Sunlight-readable outdoor LED display screen, perfect for high-impact outdoor advertising and billboards.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558596/Outdoor_Fixed_Installation_P4.44_4K_LED_Display_5500-8000nits_High_Brightness_IP66_Waterproof_16-Bit_Color_Sunlight_Readable_tcv14w.avif","https://tiimg.tistatic.com/fp/1/002/451/outdoor-p6-25-led-display-screen-die-casting-cabinet-879.jpg"],
     specs:[
 ["Pixel Pitch","P4.44"],
 ["Cabinet Material","Die-Cast Aluminum"],
@@ -72,31 +75,31 @@ const productDB = {
 ["Life Span","100,000 hrs"]
 ]
   },
-    {name:"960x960 mm Iron Cabinet",series:"FLAGSHIP OUTDOOR",desc:"Rugged outdoor iron cabinet built for heavy-duty billboard and stadium deployments.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1779340158/Iron_Cabinet_zsjulo.webp","https://res.cloudinary.com/deb6oiddj/image/upload/v1779340462/Irno-2_wxaxop.webp"],specs:[["Pixel Pitch","P2.5 / P3 / P4 / P6.67 / P8 / P10"],["Brightness","≥5500 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"], ["Cabinet Material","Iron"]]}
+    {name:"960x960mm Outdoor Iron Cabinet LED Display for Stadiums & Billboards",series:"FLAGSHIP OUTDOOR",desc:"Rugged outdoor iron cabinet LED display built for heavy-duty stadium LED screen and billboard deployments.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1779340158/Iron_Cabinet_zsjulo.webp","https://res.cloudinary.com/deb6oiddj/image/upload/v1779340462/Irno-2_wxaxop.webp"],specs:[["Pixel Pitch","P2.5 / P3 / P4 / P6.67 / P8 / P10"],["Brightness","≥5500 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"], ["Cabinet Material","Iron"]]}
   ],
   indoor:[
-    {name:"MaxPanel Series",series:"HX-IFMP",desc:"Ideal for large indoor screens. Die-cast aluminum cabinet, rear service, 3840Hz refresh.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558564/MAXPANEL_SERIES_ha8wbs.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778485784/ChatGPT_Image_May_11_2026_01_19_33_PM_nwagbl.png"],specs:[["Pixel Pitch","P2.5 / P3 / P4"],["Brightness","≥800 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"LatticeStrip Series",series:"HX-TPLS",desc:"Cost-effective transparent strip display. Perfect for retail facades.",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558528/LATTICESTRIP_uvaswb.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778480643/ChatGPT_Image_May_11_2026_11_53_46_AM_thvbdn.png"],specs:[["Pixel Pitch","P3.91 / P7.82 / P10.4 / P15.6"],["Brightness","2000–4500 nits"],["Refresh Rate","≥1920 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"VersaPoster 640",series:"ALL-IN-ONE",desc:"Plug-and-play indoor LED poster. Control via phone/PC, solo or video wall.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558722/VersaPoster_640_600_zqffrd.png","https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg"],specs:[["Pixel Pitch","P1.86 / P2 / P2.5"],["Brightness","≥600 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
+    {name:"MaxPanel Series — Indoor LED Video Wall Panel",series:"HX-IFMP",desc:"Ideal for large indoor LED video walls. Die-cast aluminum cabinet, rear service, 3840Hz refresh rate for flicker-free corporate and retail displays.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558564/MAXPANEL_SERIES_ha8wbs.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778485784/ChatGPT_Image_May_11_2026_01_19_33_PM_nwagbl.png"],specs:[["Pixel Pitch","P2.5 / P3 / P4"],["Brightness","≥800 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"LatticeStrip Series — Transparent LED Strip Display",series:"HX-TPLS",desc:"Cost-effective transparent LED strip display. Perfect for retail glass facades and indoor architectural installations.",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558528/LATTICESTRIP_uvaswb.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778480643/ChatGPT_Image_May_11_2026_11_53_46_AM_thvbdn.png"],specs:[["Pixel Pitch","P3.91 / P7.82 / P10.4 / P15.6"],["Brightness","2000–4500 nits"],["Refresh Rate","≥1920 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"VersaPoster 640 — Indoor LED Poster Display",series:"ALL-IN-ONE",desc:"Plug-and-play indoor LED poster display. Control via phone/PC, standalone or as part of a larger LED video wall.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558722/VersaPoster_640_600_zqffrd.png","https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg"],specs:[["Pixel Pitch","P1.86 / P2 / P2.5"],["Brightness","≥600 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
   ],
   outdoor:[
-    {name:"DuraPanel Pro 960 outdoor LED display screen",series:"HX-OFDP",desc:"Premium fan-less outdoor display, IP66, 5500+ nits. Built for billboards & stadiums.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558465/DuraPanel_q2ezuj.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778481918/ChatGPT_Image_May_11_2026_12_11_33_PM_mc0oph.png"],specs:[["Pixel Pitch","P3 / P4 / P5 / P6 / P8 / P10"],["Brightness","≥5500 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"DuraMini Series",series:"FLIP CHIP",desc:"Ultra-fine pitch outdoor display using Flip Chip LED technology. 160° viewing angle.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558417/DuraMini_Series_sedxmn.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778483553/ChatGPT_Image_May_11_2026_12_42_18_PM_mtigpo.png"],specs:[["Pixel Pitch","P1.25 / P1.56 / P1.87"],["Brightness","≥3000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"StreetView Series",series:"OUTDOOR POSTER",desc:"Fine-pitch outdoor LED poster. Superior to LCD in brightness & color.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png","https://www.staietech.com/wp-content/uploads/2024/11/Digital-Standee-on-Rent-1-1024x1024.jpg"],specs:[["Pixel Pitch","P1.38 / P1.56 / P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
+    {name:"DuraPanel Pro 960 Outdoor LED Display Screen",series:"HX-OFDP",desc:"Premium fan-less outdoor LED display screen, IP66, 5500+ nits. Built for LED billboards & stadium screens.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558465/DuraPanel_q2ezuj.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778481918/ChatGPT_Image_May_11_2026_12_11_33_PM_mc0oph.png"],specs:[["Pixel Pitch","P3 / P4 / P5 / P6 / P8 / P10"],["Brightness","≥5500 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"DuraMini Series — Outdoor Fine Pitch LED Display",series:"FLIP CHIP",desc:"Ultra-fine pitch outdoor LED display using Flip Chip LED technology. 160° viewing angle for close-up outdoor advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558417/DuraMini_Series_sedxmn.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778483553/ChatGPT_Image_May_11_2026_12_42_18_PM_mtigpo.png"],specs:[["Pixel Pitch","P1.25 / P1.56 / P1.87"],["Brightness","≥3000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"StreetView Series — Outdoor LED Poster & Billboard Display",series:"OUTDOOR POSTER",desc:"Fine-pitch outdoor LED poster display. Superior to LCD in brightness & color for street-level LED advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png","https://www.staietech.com/wp-content/uploads/2024/11/Digital-Standee-on-Rent-1-1024x1024.jpg"],specs:[["Pixel Pitch","P1.38 / P1.56 / P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
   ],
   transparent:[
-    {name:"CrystalFilm transparent LED display for glass facades",series:"GLASS FILM",desc:"Applied directly onto glass. Chip-on-board, ultra-low power ≤45W/m².",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558259/CrystalFilm_Series_mmezuv.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778482276/ChatGPT_Image_May_11_2026_12_21_06_PM_1_lxydgo.png"],specs:[["Pixel Pitch","P3.75 / P5 / P6.25 / P10"],["Brightness","≥3000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"HoloMesh Series",series:"3D TRANSPARENT",desc:"95% transparency, stunning 3D visual effects. 7000+ nits brightness.",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780559198/HoloMesh_Series_dabsyw.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778481298/Screenshot_2026-05-11_120445_nwqkfw.png"],specs:[["Pixel Pitch","P3.91 / P7.82 / P10.4 / P15.6"],["Brightness","≥7000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"GlassView Series",series:"GLASS SCREEN",desc:"Transparent glass screen with 8GB storage + 4G connectivity.",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558500/Glassview_xr7es7.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778484228/ChatGPT_Image_May_11_2026_12_53_00_PM_bxc6iu.png"],specs:[["Pixel Pitch","P3.91 / P6.25"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
+    {name:"CrystalFilm Transparent LED Display for Glass Facades",series:"GLASS FILM",desc:"Transparent LED film display applied directly onto glass facades. Chip-on-board, ultra-low power ≤45W/m².",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558259/CrystalFilm_Series_mmezuv.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778482276/ChatGPT_Image_May_11_2026_12_21_06_PM_1_lxydgo.png"],specs:[["Pixel Pitch","P3.75 / P5 / P6.25 / P10"],["Brightness","≥3000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"HoloMesh Series — 3D Transparent LED Mesh Display",series:"3D TRANSPARENT",desc:"95% transparency, stunning 3D visual effects on a transparent LED mesh display. 7000+ nits brightness for building facades.",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780559198/HoloMesh_Series_dabsyw.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778481298/Screenshot_2026-05-11_120445_nwqkfw.png"],specs:[["Pixel Pitch","P3.91 / P7.82 / P10.4 / P15.6"],["Brightness","≥7000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"GlassView Series — Transparent Glass LED Screen",series:"GLASS SCREEN",desc:"Transparent glass LED screen display with 8GB storage + 4G connectivity, ideal for retail storefronts.",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558500/Glassview_xr7es7.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778484228/ChatGPT_Image_May_11_2026_12_53_00_PM_bxc6iu.png"],specs:[["Pixel Pitch","P3.91 / P6.25"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
   ],
   mobile:[
-    {name:"AdPack Series",series:"DELIVERY BAG",desc:"World's first full-color delivery bag LED display. 4G GPS + Bluetooth.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778484785/ChatGPT_Image_May_11_2026_01_02_53_PM_xknuiq.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1780558194/AdPack_lqpyhk.png"],specs:[["Pixel Pitch","P2.5 / P4 / P4.17"],["Brightness","≥6000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"AdBox Series",series:"3-SIDED BOX",desc:"Three-sided delivery box display. Remote content management.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778484421/Screenshot_2026-05-11_125653_akk6ie.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1780558158/AdBox_sg7s0q.png"],specs:[["Pixel Pitch","P2.5 / P4 / P4.17"],["Brightness","≥6000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"T-X Car Top Series",series:"CAR TOP",desc:"World's first fine-pitch car top LED display. Double-sided, 170° view.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778485231/ChatGPT_Image_May_11_2026_01_10_20_PM_lirzg3.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png"],specs:[["Pixel Pitch","P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
+    {name:"AdPack Series — Mobile LED Advertising Delivery Bag Display",series:"DELIVERY BAG",desc:"World's first full-color mobile LED advertising delivery bag display. 4G GPS + Bluetooth tracking for hyperlocal advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778484785/ChatGPT_Image_May_11_2026_01_02_53_PM_xknuiq.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1780558194/AdPack_lqpyhk.png"],specs:[["Pixel Pitch","P2.5 / P4 / P4.17"],["Brightness","≥6000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"AdBox Series — Mobile LED Advertising Display Box",series:"3-SIDED BOX",desc:"Three-sided mobile LED advertising display box. Remote content management for delivery fleets.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778484421/Screenshot_2026-05-11_125653_akk6ie.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1780558158/AdBox_sg7s0q.png"],specs:[["Pixel Pitch","P2.5 / P4 / P4.17"],["Brightness","≥6000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"T-X Car Top Series — Mobile LED Advertising Display",series:"CAR TOP",desc:"World's first fine-pitch car top LED advertising display. Double-sided, 170° view for mobile LED van advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778485231/ChatGPT_Image_May_11_2026_01_10_20_PM_lirzg3.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png"],specs:[["Pixel Pitch","P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
   ],
   poster:[
-    {name:"VersaPoster 640",series:"INDOOR POSTER",desc:"Plug-and-play LED poster, iron cabinet, rear service.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558722/VersaPoster_640_600_zqffrd.png","https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg"],specs:[["Pixel Pitch","P1.86 / P2 / P2.5"],["Brightness","≥600 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"StreetView Series",series:"OUTDOOR POSTER",desc:"All-weather outdoor LED poster, IP65 rated, 4000 nits.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png","https://www.staietech.com/wp-content/uploads/2024/11/Digital-Standee-on-Rent-1-1024x1024.jpg"],specs:[["Pixel Pitch","P1.38 / P1.56 / P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
+    {name:"VersaPoster 640 — Indoor LED Poster Display",series:"INDOOR POSTER",desc:"Plug-and-play indoor LED poster display, iron cabinet, rear service.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558722/VersaPoster_640_600_zqffrd.png","https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg"],specs:[["Pixel Pitch","P1.86 / P2 / P2.5"],["Brightness","≥600 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"StreetView Series — Outdoor LED Poster Display",series:"OUTDOOR POSTER",desc:"All-weather outdoor LED poster display, IP65 rated, 4000 nits, built for street-level LED advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png","https://www.staietech.com/wp-content/uploads/2024/11/Digital-Standee-on-Rent-1-1024x1024.jpg"],specs:[["Pixel Pitch","P1.38 / P1.56 / P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
   ]
 };
 
@@ -111,15 +114,15 @@ function buildGalleryCard(product,idx,categoryId){
   return `<div class="prod-card" data-cardid="${cardId}">
     <span class="pc-env ${envClass}">${envLabel}</span>
     <div class="product-gallery" id="gallery-${cardId}">
-      <button class="gallery-arrow arrow-left" data-gallery="${cardId}">‹</button>
+      <button class="gallery-arrow arrow-left" data-gallery="${cardId}" aria-label="Previous image">‹</button>
       <div class="gallery-main"><img class="gallery-main-img" src="${images[0]}" alt="${product.name}" loading="lazy"></div>
-      <button class="gallery-arrow arrow-right" data-gallery="${cardId}">›</button>
+      <button class="gallery-arrow arrow-right" data-gallery="${cardId}" aria-label="Next image">›</button>
       <div class="gallery-dots" id="dots-${cardId}"></div>
     </div>
     <div class="pc-body">
       <div class="pc-series">${product.series}</div>
-      <div class="pc-name">${product.name}</div>
-      <div class="pc-desc">${product.desc}</div>
+      <h3 class="pc-name" style="margin:0;font:inherit;font-weight:inherit">${product.name}</h3>
+      <p class="pc-desc" style="margin:0">${product.desc}</p>
       <div class="pc-specs">${specsHtml}</div>
       <button class="pc-cta" onclick="scrollToSection('contact')">Enquire Now</button>
     </div>
@@ -149,6 +152,7 @@ function renderCategory(containerId,productsArray,categoryId){
       for(let i=0;i<images.length;i++){
         const dot=document.createElement('button');
         dot.classList.add('gallery-dot');
+        dot.setAttribute('aria-label',`Show image ${i+1} of ${images.length}`);
         if(i===0)dot.classList.add('active');
         dot.addEventListener('click',(e)=>{e.stopPropagation();currentIndex=i;mainImg.src=images[currentIndex];updateDotsActive(dotsContainer,currentIndex);});
         dotsContainer.appendChild(dot);
@@ -187,19 +191,21 @@ function showSeries(id,btn){
   btn.classList.add('active');
 }
 
-/* ── ZORKO GALLERY ── */
+/* ── ZORKO GALLERY ──
+   "name" doubles as the visible caption AND the <img alt> text, so each one
+   carries a real keyword phrase instead of a bare product code. */
 const galleryItems=[
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1784196161/b239wlligi3vebttoqyo.jpg",cat:"Outdoor",label:"Outdoor · DOOH",name:"Die-Cast Cabinet Series",wide:true},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1784196326/sjelfpugyv3nzhzjpeta.jpg",cat:"outdoor",label:"Outdoor · DOOH",name:"960×960 Die-Cast"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1784196388/aww9tviijlzprum3c2rw.jpg",cat:"outdoor",label:"outdoor · Cafe",name:"HoloMesh 3D"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482276/ChatGPT_Image_May_11_2026_12_21_06_PM_1_lxydgo.png",cat:"transparent",label:"Transparent · Glass",name:"CrystalFilm",wide:true},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778481235/Screenshot_2026-05-11_120345_advqru.png",cat:"mobile",label:"Mobile · Delivery",name:"AdPack Delivery Bag"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482388/ChatGPT_Image_May_11_2026_12_22_57_PM_adlyta.png",cat:"mobile",label:"Mobile · Car Top",name:"T-X Car Top"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778481918/ChatGPT_Image_May_11_2026_12_11_33_PM_mc0oph.png",cat:"outdoor",label:"Outdoor · Billboard",name:"DuraPanel Pro 960 outdoor LED display screen for billboards",wide:true},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482098/ChatGPT_Image_May_11_2026_12_18_01_PM_sqktbv.png",cat:"mobile",label:"Mobile · Box",name:"AdBox 3-Sided"},
-  {src:"https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg",cat:"indoor",label:"Indoor · Poster",name:"VersaPoster 640"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778483553/ChatGPT_Image_May_11_2026_12_42_18_PM_mtigpo.png",cat:"outdoor",label:"Outdoor · Fine-Pitch",name:"DuraMini Series"},
-  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778480643/ChatGPT_Image_May_11_2026_11_53_46_AM_thvbdn.png",cat:"indoor",label:"Indoor · Strip",name:"LatticeStrip Series"}
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1784196161/b239wlligi3vebttoqyo.jpg",cat:"Outdoor",label:"Outdoor · DOOH",name:"Die-Cast Cabinet Outdoor LED Display",wide:true},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1784196326/sjelfpugyv3nzhzjpeta.jpg",cat:"outdoor",label:"Outdoor · DOOH",name:"960×960 Die-Cast LED Video Wall Cabinet"},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1784196388/aww9tviijlzprum3c2rw.jpg",cat:"outdoor",label:"outdoor · Cafe",name:"HoloMesh 3D Transparent LED Display"},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482276/ChatGPT_Image_May_11_2026_12_21_06_PM_1_lxydgo.png",cat:"transparent",label:"Transparent · Glass",name:"CrystalFilm Transparent LED Display",wide:true},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778481235/Screenshot_2026-05-11_120345_advqru.png",cat:"mobile",label:"Mobile · Delivery",name:"AdPack Mobile LED Advertising Delivery Bag"},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482388/ChatGPT_Image_May_11_2026_12_22_57_PM_adlyta.png",cat:"mobile",label:"Mobile · Car Top",name:"T-X Car Top LED Advertising Display"},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778481918/ChatGPT_Image_May_11_2026_12_11_33_PM_mc0oph.png",cat:"outdoor",label:"Outdoor · Billboard",name:"DuraPanel Pro 960 Outdoor LED Display Screen for Billboards",wide:true},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778482098/ChatGPT_Image_May_11_2026_12_18_01_PM_sqktbv.png",cat:"mobile",label:"Mobile · Box",name:"AdBox 3-Sided Mobile LED Display"},
+  {src:"https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg",cat:"indoor",label:"Indoor · Poster",name:"VersaPoster 640 Indoor LED Poster Display"},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778483553/ChatGPT_Image_May_11_2026_12_42_18_PM_mtigpo.png",cat:"outdoor",label:"Outdoor · Fine-Pitch",name:"DuraMini Outdoor Fine Pitch LED Display"},
+  {src:"https://res.cloudinary.com/deb6oiddj/image/upload/v1778480643/ChatGPT_Image_May_11_2026_11_53_46_AM_thvbdn.png",cat:"indoor",label:"Indoor · Strip",name:"LatticeStrip Transparent LED Strip Display"}
 ];
 
 let lbCurrent=0,lbFiltered=[];
