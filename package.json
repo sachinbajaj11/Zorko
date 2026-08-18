@@ -1,0 +1,10 @@
+{
+  "name": "zorko-led-display-systems",
+  "version": "1.0.0",
+  "description": "Premium commercial LED display systems and digital signage website for Zorko.",
+  "scripts": {
+    "dev": "npx -y http-server . -p 3000",
+    "start": "npx -y http-server . -p 3000"
+  },
+  "dependencies": {}
+}
