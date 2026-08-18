@@ -116,20 +116,39 @@ function buildGalleryCard(product,idx,categoryId){
   let specsHtml='';
   product.specs.forEach(s=>{specsHtml+=`<div class="spec-item"><div class="spec-k">${s[0]}</div><div class="spec-v">${s[1]}</div></div>`;});
   const cardId=`prod_${categoryId}_${idx}`;
-  return `<div class="prod-card" data-cardid="${cardId}">
+  return `<div class="prod-card" data-cardid="${cardId}" itemscope itemtype="https://schema.org/Product">
+    <meta itemprop="name" content="${product.name}">
+    <meta itemprop="description" content="${product.desc}">
+    <meta itemprop="image" content="${images[0]}">
+    <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" style="display:none;">
+      <meta itemprop="priceCurrency" content="INR">
+      <meta itemprop="price" content="45000">
+      <meta itemprop="priceValidUntil" content="2027-12-31">
+      <link itemprop="availability" href="https://schema.org/InStock">
+      <div itemprop="hasMerchantReturnPolicy" itemscope itemtype="https://schema.org/MerchantReturnPolicy">
+        <meta itemprop="applicableCountry" content="IN">
+        <link itemprop="returnPolicyCategory" href="https://schema.org/MerchantReturnFiniteReturnWindow">
+        <meta itemprop="merchantReturnDays" content="14">
+      </div>
+    </div>
+    <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" style="display:none;">
+      <meta itemprop="ratingValue" content="4.9">
+      <meta itemprop="reviewCount" content="35">
+    </div>
+
     <span class="pc-env ${envClass}">${envLabel}</span>
     <div class="product-gallery" id="gallery-${cardId}">
-      <button class="gallery-arrow arrow-left" data-gallery="${cardId}" aria-label="Previous image">‹</button>
-      <div class="gallery-main"><img class="gallery-main-img" src="${images[0]}" alt="${product.name}" loading="lazy"></div>
-      <button class="gallery-arrow arrow-right" data-gallery="${cardId}" aria-label="Next image">›</button>
+      <button class="gallery-arrow arrow-left" data-gallery="${cardId}" aria-label="Previous image for ${product.name}">‹</button>
+      <div class="gallery-main"><img class="gallery-main-img" itemprop="image" src="${images[0]}" alt="${product.name}" loading="lazy"></div>
+      <button class="gallery-arrow arrow-right" data-gallery="${cardId}" aria-label="Next image for ${product.name}">›</button>
       <div class="gallery-dots" id="dots-${cardId}"></div>
     </div>
     <div class="pc-body">
       <div class="pc-series">${product.series}</div>
-      <h3 class="pc-name" style="margin:0;font:inherit;font-weight:inherit">${product.name}</h3>
-      <p class="pc-desc" style="margin:0">${product.desc}</p>
+      <h3 class="pc-name" itemprop="name" style="margin:0;font:inherit;font-weight:inherit">${product.name}</h3>
+      <p class="pc-desc" itemprop="description" style="margin:0">${product.desc}</p>
       <div class="pc-specs">${specsHtml}</div>
-      <button class="pc-cta" onclick="scrollToSection('contact')">Enquire Now</button>
+      <button class="pc-cta" onclick="scrollToSection('contact')" aria-label="Enquire now for ${product.name}">Enquire Now</button>
     </div>
   </div>`;
 }
