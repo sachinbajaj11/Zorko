@@ -1,0 +1,16 @@
+{
+  "name": "Zorko Technologies — LED Display Manufacturer India",
+  "short_name": "Zorko",
+  "description": "India's direct LED display & LED screen manufacturer — video walls, digital signage, outdoor screens, transparent LED & rental cabinets.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#F5A623",
+  "icons": [
+    {
+      "src": "/public/images/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    }
+  ]
+}

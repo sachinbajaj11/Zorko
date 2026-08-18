@@ -1,0 +1,518 @@
+/* ============================================================
+   policy.css — FULLY SELF-CONTAINED
+   Zorko Technologies · Privacy / About / Terms pages
+   Theme: #23aff5 (primary) · #ffffff (surface) · #0d1117 (dark bg)
+   ============================================================ */
+
+/* ---------- Reset & base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1a1f2e;
+  background: #f8fafc;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+/* ---------- Tokens ---------- */
+:root {
+  --blue:        #23aff5;
+  --blue-dark:   #0f8fd1;
+  --blue-deeper: #0a6fa6;
+  --blue-tint:   rgba(35, 175, 245, 0.08);
+  --blue-tint2:  rgba(35, 175, 245, 0.16);
+  --white:       #ffffff;
+  --bg:          #d1d1d1;
+  --surface:     #ffffff;
+  --border:      #000000;
+  --text:        #1a1f2e;
+  --text-2:      #4a5568;
+  --text-3:      #718096;
+  --radius:      10px;
+}
+
+/* ---------- Layout container ---------- */
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar {
+  background: #0d1117;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.brand {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--blue);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+}
+
+.navbar-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+
+.navbar-links a {
+  color: rgba(255,255,255,0.75);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.navbar-links a:hover {
+  color: #fff;
+  background: rgba(255,255,255,0.08);
+}
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+main > .container {
+  padding-top: 40px;
+  padding-bottom: 72px;
+}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-3);
+  margin-bottom: 36px;
+}
+
+.breadcrumb a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Hero ---------- */
+.policy-hero {
+  margin-bottom: 36px;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--blue);
+  background: var(--blue-tint);
+  border: 1px solid var(--blue-tint2);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 16px;
+}
+
+.policy-hero h1 {
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--text-2);
+  max-width: 58ch;
+}
+
+/* ---------- Quick nav ---------- */
+.quicknav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 48px;
+  padding: 16px 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.quicknav-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-3);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+
+.quicknav a {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  transition: border-color 0.18s, color 0.18s, background 0.18s;
+  white-space: nowrap;
+}
+
+.quicknav a:hover {
+  border-color: var(--blue);
+  color: var(--blue-dark);
+  background: var(--blue-tint);
+}
+
+/* ============================================================
+   POLICY SECTIONS
+   ============================================================ */
+.policy-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.policy-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px 36px;
+  margin-bottom: 16px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.policy-section:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section:hover {
+  border-color: rgba(35, 175, 245, 0.35);
+  box-shadow: 0 4px 24px rgba(35, 175, 245, 0.07);
+}
+
+.policy-section h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.policy-section h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: var(--blue);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.policy-section p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-2);
+  margin-bottom: 12px;
+}
+
+.policy-section p:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+}
+
+.policy-section ul:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-2);
+  margin-bottom: 8px;
+}
+
+.policy-section li:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue);
+  flex-shrink: 0;
+}
+
+.policy-section li strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.policy-section a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.18s;
+}
+
+.policy-section a:hover {
+  border-bottom-color: var(--blue);
+}
+
+/* ---------- CTA section ---------- */
+.policy-cta {
+  background: linear-gradient(135deg, #e8f7fe 0%, var(--surface) 100%);
+  border-color: var(--blue-tint2);
+  margin-top: 8px;
+}
+
+.policy-cta:hover {
+  border-color: var(--blue);
+  box-shadow: 0 6px 32px rgba(35, 175, 245, 0.12);
+}
+
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.cta-text h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+}
+
+.cta-text h2::before {
+  display: none;
+}
+
+.cta-text p {
+  max-width: 44ch;
+  margin: 0;
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 13px 28px;
+  background: var(--blue);
+  color: var(--white);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-radius: 8px;
+  border: none;
+  flex-shrink: 0;
+  transition: background 0.2s, transform 0.18s, box-shadow 0.18s;
+}
+
+.cta-btn:hover {
+  background: var(--blue-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(35, 175, 245, 0.3);
+  border-bottom: none;
+}
+
+.cta-btn:active {
+  transform: translateY(0);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: #0d1117;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 40px 0;
+  margin-top: auto;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.footer-left .brand {
+  font-size: 1.2rem;
+  margin-bottom: 2px;
+}
+
+.footer-left p {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+  max-width: 34ch;
+  line-height: 1.5;
+}
+
+.footer-copy {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.3);
+  margin-top: 4px;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 4px;
+}
+
+.footer-links a {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.55);
+  text-decoration: none;
+  transition: color 0.18s;
+}
+
+.footer-links a:hover {
+  color: var(--blue);
+}
+
+/* ============================================================
+   FOCUS & ACCESSIBILITY
+   ============================================================ */
+:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 720px) {
+  .policy-section {
+    padding: 24px 20px;
+  }
+
+  .cta-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cta-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .footer-links {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+  }
+
+  .quicknav {
+    padding: 12px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-links a {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .policy-hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .quicknav-label {
+    width: 100%;
+  }
+}
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

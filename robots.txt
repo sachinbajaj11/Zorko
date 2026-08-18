@@ -1,0 +1,31 @@
+# Zorko Technologies — LED Display Manufacturer India
+# https://zorkotechnologies.com
+
+User-agent: *
+Allow: /
+
+# Allow AI search crawlers for GEO/AEO visibility
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+# Block system directories only
+User-agent: *
+Disallow: /.git/
+Disallow: /.vscode/
+
+Sitemap: https://zorkotechnologies.com/sitemap.xml
