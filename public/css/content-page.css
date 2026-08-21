@@ -1,0 +1,339 @@
+/* ============================================================
+   ZORKO CONTENT-PAGE STYLESHEET
+   Used by: about.html, privacy-policy.html, terms.html
+   Reskinned to match the homepage's dark/teal design system.
+   Reuses the original policy.css / terms.css class names
+   (.policy-hero, .quicknav, .policy-section, .cta-btn, .footer …)
+   so page markup didn't need to be rewritten — only restyled.
+   ============================================================ */
+
+/* ---------- Reset ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+img, video { max-width: 100%; height: auto; }
+
+body {
+  font-family: 'Barlow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--site-text, #111);
+  background: var(--site-off, #F7F6F3);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1; }
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+main > .container {
+  padding-top: 40px;
+  padding-bottom: 72px;
+}
+
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .85rem;
+  color: var(--site-muted, #666);
+  margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.breadcrumb a { color: var(--site-amber, #3dc4e1); text-decoration: none; font-weight: 500; }
+.breadcrumb a:hover { text-decoration: underline; }
+
+/* ---------- Hero ---------- */
+.policy-hero { margin-bottom: 36px; }
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--site-amber-d, #0799b9);
+  background: rgba(61, 196, 225, .1);
+  border: 1px solid rgba(61, 196, 225, .3);
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 18px;
+}
+
+.policy-hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-weight: 400;
+  color: #0A0A0A;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--site-muted, #666);
+  max-width: 60ch;
+}
+
+/* ---------- Quick nav ---------- */
+.quicknav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 48px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid var(--site-border, #E8E5DF);
+  border-radius: 10px;
+}
+.quicknav-label {
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--site-muted, #666);
+  margin-right: 4px;
+  white-space: nowrap;
+}
+.quicknav a {
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--site-muted, #666);
+  text-decoration: none;
+  padding: 5px 12px;
+  border: 1px solid var(--site-border, #E8E5DF);
+  border-radius: 999px;
+  background: var(--site-off, #F7F6F3);
+  transition: border-color .18s, color .18s, background .18s;
+  white-space: nowrap;
+}
+.quicknav a:hover {
+  border-color: var(--site-amber, #3dc4e1);
+  color: var(--site-amber-d, #0799b9);
+  background: rgba(61, 196, 225, .08);
+}
+
+/* ---------- Sections ---------- */
+.policy-sections { display: flex; flex-direction: column; gap: 16px; }
+
+.policy-section {
+  background: #fff;
+  border: 1px solid var(--site-border, #E8E5DF);
+  border-radius: 10px;
+  padding: 32px 36px;
+  transition: border-color .2s, box-shadow .2s;
+}
+.policy-section:hover {
+  border-color: rgba(61, 196, 225, .4);
+  box-shadow: 0 4px 24px rgba(61, 196, 225, .08);
+}
+.policy-section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  letter-spacing: .5px;
+  font-size: 1.5rem;
+  color: #0A0A0A;
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--site-border, #E8E5DF);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.policy-section h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 18px;
+  background: var(--site-amber, #3dc4e1);
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+.policy-section p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 12px;
+}
+.policy-section p:last-child { margin-bottom: 0; }
+.policy-section ul { list-style: none; padding: 0; margin: 0 0 12px; }
+.policy-section ul:last-child { margin-bottom: 0; }
+.policy-section li {
+  position: relative;
+  padding-left: 22px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 8px;
+}
+.policy-section li:last-child { margin-bottom: 0; }
+.policy-section li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .72em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--site-amber, #3dc4e1);
+}
+.policy-section li strong { color: #0A0A0A; font-weight: 700; }
+.policy-section a {
+  color: var(--site-amber-d, #0799b9);
+  text-decoration: none;
+  font-weight: 600;
+  border-bottom: 1px solid transparent;
+  transition: border-color .18s;
+}
+.policy-section a:hover { border-bottom-color: var(--site-amber-d, #0799b9); }
+
+/* ---------- CTA ---------- */
+.policy-cta, .cta-section {
+  background: linear-gradient(135deg, rgba(61,196,225,.08) 0%, #fff 100%);
+  border-color: rgba(61, 196, 225, .3);
+  margin-top: 8px;
+  text-align: left;
+}
+.cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.cta-text h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 8px; }
+.cta-text h2::before { display: none; }
+.cta-text p { max-width: 44ch; margin: 0; }
+.cta-btn, .cta-button {
+  display: inline-block;
+  padding: 13px 28px;
+  background: var(--site-amber, #3dc4e1);
+  color: #fff;
+  font-weight: 700;
+  font-size: .95rem;
+  text-decoration: none;
+  border-radius: 4px;
+  border: none;
+  flex-shrink: 0;
+  transition: background .2s, transform .18s;
+  margin-top: 12px;
+}
+.cta-btn:hover, .cta-button:hover {
+  background: var(--site-amber-d, #0799b9);
+  transform: translateY(-2px);
+  border-bottom: none;
+}
+
+/* ---------- Footer ---------- */
+.footer, footer {
+  background: #0A0A0A;
+  border-top: 1px solid #222;
+  padding: 40px 0;
+  margin-top: auto;
+  color: #999;
+}
+.footer-inner {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.footer-left { display: flex; flex-direction: column; gap: 8px; }
+.footer-left .brand,
+footer .brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  color: var(--site-amber, #3dc4e1);
+  margin-bottom: 2px;
+}
+.footer-left p { font-size: .85rem; color: #777; max-width: 34ch; line-height: 1.5; }
+.footer-copy { font-size: .8rem; color: #555; margin-top: 4px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; padding-top: 4px; }
+.footer-links a, footer nav a {
+  font-size: .88rem;
+  color: #999 !important;
+  text-decoration: none;
+  transition: color .18s;
+}
+.footer-links a:hover, footer nav a:hover { color: var(--site-amber, #3dc4e1) !important; }
+
+/* Simple content pages (about.html) that use plain h1/h2/section instead of .policy-section cards */
+main h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  letter-spacing: 1px;
+  line-height: 1.05;
+  color: #0A0A0A;
+  margin: 8px 0 28px;
+}
+main section { margin-bottom: 36px; }
+main section h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: 400;
+  letter-spacing: .5px;
+  font-size: 1.6rem;
+  color: #0A0A0A;
+  margin-bottom: 14px;
+}
+main section p { font-size: 1rem; line-height: 1.75; color: #333; margin-bottom: 12px; }
+main section ul { margin: 0 0 12px; padding-left: 22px; }
+main section li { font-size: 1rem; line-height: 1.75; color: #333; margin-bottom: 8px; }
+main section a { color: var(--site-amber-d, #0799b9); font-weight: 600; }
+main .cta-section {
+  border: 1px solid rgba(61,196,225,.3);
+  border-radius: 10px;
+  padding: 32px 36px;
+  text-align: center;
+}
+main .cta-section h2 { margin-bottom: 8px; }
+
+/* about.html uses footer.wrap with inline-styled nav links */
+footer.wrap {
+  background: #0A0A0A;
+  color: #999;
+  padding: 28px 24px 40px;
+  margin-top: 40px;
+  max-width: none;
+}
+footer.wrap > div,
+footer.wrap nav {
+  max-width: 900px;
+  margin: 0 auto;
+}
+footer.wrap span { color: #999 !important; }
+footer.wrap nav a { color: #999 !important; }
+footer.wrap nav a:hover { color: var(--site-amber, #3dc4e1) !important; }
+
+/* ---------- Focus ---------- */
+:focus-visible { outline: 2px solid var(--site-amber, #3dc4e1); outline-offset: 3px; border-radius: 3px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 720px) {
+  .policy-section, main .cta-section { padding: 24px 20px; }
+  .cta-inner { flex-direction: column; align-items: flex-start; }
+  .cta-btn, .cta-button { width: 100%; text-align: center; }
+  .footer-inner { flex-direction: column; gap: 28px; }
+  .footer-links, footer nav { flex-direction: row; flex-wrap: wrap; gap: 12px 20px; }
+  .quicknav { padding: 12px 14px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
+}

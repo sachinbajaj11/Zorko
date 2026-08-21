@@ -85,12 +85,12 @@ const productDB = {
   indoor:[
     {name:"MaxPanel Series — Indoor LED Video Wall Panel",series:"HX-IFMP",desc:"Ideal for large indoor LED video walls. Die-cast aluminum cabinet, rear service, 3840Hz refresh rate for flicker-free corporate and retail displays.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558564/MAXPANEL_SERIES_ha8wbs.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778485784/ChatGPT_Image_May_11_2026_01_19_33_PM_nwagbl.png"],specs:[["Pixel Pitch","P2.5 / P3 / P4"],["Brightness","≥800 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
     {name:"LatticeStrip Series — Transparent LED Strip Display",series:"HX-TPLS",desc:"Cost-effective transparent LED strip display. Perfect for retail glass facades and indoor architectural installations.",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558528/LATTICESTRIP_uvaswb.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778480643/ChatGPT_Image_May_11_2026_11_53_46_AM_thvbdn.png"],specs:[["Pixel Pitch","P3.91 / P7.82 / P10.4 / P15.6"],["Brightness","2000–4500 nits"],["Refresh Rate","≥1920 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"VersaPoster 640 — Indoor LED Poster Display",series:"ALL-IN-ONE",desc:"Plug-and-play indoor LED poster display. Control via phone/PC, standalone or as part of a larger LED video wall.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558722/VersaPoster_640_600_zqffrd.png","https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg"],specs:[["Pixel Pitch","P1.86 / P2 / P2.5"],["Brightness","≥600 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
+    {name:"VersaPoster 640 — Indoor LED Poster Display",series:"ALL-IN-ONE",desc:"Plug-and-play indoor LED poster display. Control via phone/PC, standalone or as part of a larger LED video wall.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558722/VersaPoster_640_600_zqffrd.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1787311561/t9la61hq2lppnwdmfdu5.webp"],specs:[["Pixel Pitch","P1.86 / P2 / P2.5"],["Brightness","≥600 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
   ],
   outdoor:[
     {name:"DuraPanel Pro 960 Outdoor LED Display Screen",series:"HX-OFDP",desc:"Premium fan-less outdoor LED display screen, IP66, 5500+ nits. Built for LED billboards & stadium screens.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558465/DuraPanel_q2ezuj.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778481918/ChatGPT_Image_May_11_2026_12_11_33_PM_mc0oph.png"],specs:[["Pixel Pitch","P3 / P4 / P5 / P6 / P8 / P10"],["Brightness","≥5500 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
     {name:"DuraMini Series — Outdoor Fine Pitch LED Display",series:"FLIP CHIP",desc:"Ultra-fine pitch outdoor LED display using Flip Chip LED technology. 160° viewing angle for close-up outdoor advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558417/DuraMini_Series_sedxmn.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778483553/ChatGPT_Image_May_11_2026_12_42_18_PM_mtigpo.png"],specs:[["Pixel Pitch","P1.25 / P1.56 / P1.87"],["Brightness","≥3000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"StreetView Series — Outdoor LED Poster & Billboard Display",series:"OUTDOOR POSTER",desc:"Fine-pitch outdoor LED poster display. Superior to LCD in brightness & color for street-level LED advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png","https://www.staietech.com/wp-content/uploads/2024/11/Digital-Standee-on-Rent-1-1024x1024.jpg"],specs:[["Pixel Pitch","P1.38 / P1.56 / P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
+    {name:"StreetView Series — Outdoor LED Poster & Billboard Display",series:"OUTDOOR POSTER",desc:"Fine-pitch outdoor LED poster display. Superior to LCD in brightness & color for street-level LED advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1787311625/fkvv81siljqpxznxnndf.jpg"],specs:[["Pixel Pitch","P1.38 / P1.56 / P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
   ],
   transparent:[
     {name:"CrystalFilm Transparent LED Display for Glass Facades",series:"GLASS FILM",desc:"Transparent LED film display applied directly onto glass facades. Chip-on-board, ultra-low power ≤45W/m².",env:"both",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558259/CrystalFilm_Series_mmezuv.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1778482276/ChatGPT_Image_May_11_2026_12_21_06_PM_1_lxydgo.png"],specs:[["Pixel Pitch","P3.75 / P5 / P6.25 / P10"],["Brightness","≥3000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
@@ -103,8 +103,8 @@ const productDB = {
     {name:"T-X Car Top Series — Mobile LED Advertising Display",series:"CAR TOP",desc:"World's first fine-pitch car top LED advertising display. Double-sided, 170° view for mobile LED van advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1778485231/ChatGPT_Image_May_11_2026_01_10_20_PM_lirzg3.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png"],specs:[["Pixel Pitch","P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
   ],
   poster:[
-    {name:"VersaPoster 640 — Indoor LED Poster Display",series:"INDOOR POSTER",desc:"Plug-and-play indoor LED poster display, iron cabinet, rear service.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558722/VersaPoster_640_600_zqffrd.png","https://sightled.com/wp-content/uploads/2025/03/LED-poster-3.jpg"],specs:[["Pixel Pitch","P1.86 / P2 / P2.5"],["Brightness","≥600 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
-    {name:"StreetView Series — Outdoor LED Poster Display",series:"OUTDOOR POSTER",desc:"All-weather outdoor LED poster display, IP65 rated, 4000 nits, built for street-level LED advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png","https://www.staietech.com/wp-content/uploads/2024/11/Digital-Standee-on-Rent-1-1024x1024.jpg"],specs:[["Pixel Pitch","P1.38 / P1.56 / P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
+    {name:"VersaPoster 640 — Indoor LED Poster Display",series:"INDOOR POSTER",desc:"Plug-and-play indoor LED poster display, iron cabinet, rear service.",env:"indoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558722/VersaPoster_640_600_zqffrd.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1787311561/t9la61hq2lppnwdmfdu5.webp"],specs:[["Pixel Pitch","P1.86 / P2 / P2.5"],["Brightness","≥600 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]},
+    {name:"StreetView Series — Outdoor LED Poster Display",series:"OUTDOOR POSTER",desc:"All-weather outdoor LED poster display, IP65 rated, 4000 nits, built for street-level LED advertising.",env:"outdoor",images:["https://res.cloudinary.com/deb6oiddj/image/upload/v1780558649/StreetView_d6aqp7.png","https://res.cloudinary.com/deb6oiddj/image/upload/v1787311625/fkvv81siljqpxznxnndf.jpg"],specs:[["Pixel Pitch","P1.38 / P1.56 / P1.86 / P2.5 / P3.07"],["Brightness","≥4000 nits"],["Refresh Rate","≥3840 Hz"],["Life Span","100,000 hrs"]]}
   ]
 };
 
@@ -120,26 +120,12 @@ function buildGalleryCard(product,idx,categoryId){
     <meta itemprop="name" content="${product.name}">
     <meta itemprop="description" content="${product.desc}">
     <meta itemprop="image" content="${images[0]}">
-    <div itemprop="offers" itemscope itemtype="https://schema.org/Offer" style="display:none;">
-      <meta itemprop="priceCurrency" content="INR">
-      <meta itemprop="price" content="45000">
-      <meta itemprop="priceValidUntil" content="2027-12-31">
-      <link itemprop="availability" href="https://schema.org/InStock">
-      <div itemprop="hasMerchantReturnPolicy" itemscope itemtype="https://schema.org/MerchantReturnPolicy">
-        <meta itemprop="applicableCountry" content="IN">
-        <link itemprop="returnPolicyCategory" href="https://schema.org/MerchantReturnFiniteReturnWindow">
-        <meta itemprop="merchantReturnDays" content="14">
-      </div>
-    </div>
-    <div itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating" style="display:none;">
-      <meta itemprop="ratingValue" content="4.9">
-      <meta itemprop="reviewCount" content="35">
-    </div>
+    <meta itemprop="brand" content="Zorko Technologies">
 
     <span class="pc-env ${envClass}">${envLabel}</span>
     <div class="product-gallery" id="gallery-${cardId}">
       <button class="gallery-arrow arrow-left" data-gallery="${cardId}" aria-label="Previous image for ${product.name}">‹</button>
-      <div class="gallery-main"><img class="gallery-main-img" itemprop="image" src="${images[0]}" alt="${product.name}" loading="lazy"></div>
+      <div class="gallery-main"><img class="gallery-main-img" itemprop="image" src="${images[0]}" alt="${product.name}" width="640" height="480" loading="lazy"></div>
       <button class="gallery-arrow arrow-right" data-gallery="${cardId}" aria-label="Next image for ${product.name}">›</button>
       <div class="gallery-dots" id="dots-${cardId}"></div>
     </div>
@@ -307,7 +293,13 @@ document.addEventListener('keydown',function(e){
 //   },200);
 // });
 
-/* ── FORM ── */
+/* ── FORM ──
+   PLACEHOLDER Formspree endpoint below. Replace YOUR_FORM_ID with your real
+   Formspree form ID (formspree.io → new form → copy ID) before publishing,
+   or swap the endpoint for EmailJS/your own backend. Until replaced, this
+   will fail safely and show an error rather than silently pretending success. */
+const ZORKO_FORM_ENDPOINT = 'https://formspree.io/f/PLACEHOLDER_FORM_ID';
+
 function submitZorko(){
   const name=document.getElementById('f-name').value.trim();
   const phone=document.getElementById('f-phone').value.trim();
@@ -329,8 +321,46 @@ function submitZorko(){
   if(!name){showError('f-name','Please enter your name.');return;}
   if(!phone){showError('f-phone','Please enter your phone number.');return;}
   if(!interest){showError('f-interest',"Please select what you're interested in.");return;}
-  document.getElementById('zorko-form').style.display='none';
-  document.getElementById('form-success').classList.add('show');
+
+  const btn = document.querySelector('.submit-btn');
+  const originalText = btn.textContent;
+  btn.disabled = true;
+  btn.textContent = 'SENDING…';
+
+  const payload = {
+    name,
+    phone,
+    company: document.getElementById('f-company').value.trim(),
+    email: document.getElementById('f-email').value.trim(),
+    interest,
+    city: document.getElementById('f-city').value.trim(),
+    message: document.getElementById('f-msg').value.trim(),
+    _subject: `New LED enquiry from ${name} (${interest})`,
+  };
+
+  fetch(ZORKO_FORM_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload),
+  })
+    .then(res => {
+      if (!res.ok) throw new Error('Form endpoint returned ' + res.status);
+      document.getElementById('zorko-form').style.display='none';
+      document.getElementById('form-success').classList.add('show');
+    })
+    .catch(err => {
+      btn.disabled = false;
+      btn.textContent = originalText;
+      let msg = document.getElementById('zorko-form-error');
+      if (!msg) {
+        msg = document.createElement('div');
+        msg.id = 'zorko-form-error';
+        msg.setAttribute('role', 'alert');
+        msg.style.cssText = 'color:#e74c3c;font-size:13px;margin-top:12px;';
+        btn.insertAdjacentElement('afterend', msg);
+      }
+      msg.textContent = 'Could not send — please call or email us directly instead. (' + err.message + ')';
+    });
 }
 
 /* ── INIT ── */

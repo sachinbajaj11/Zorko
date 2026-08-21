@@ -1,0 +1,180 @@
+/* ============================================================
+   ZORKO SHARED SITE HEADER — used on every page except index.html
+   (index.html has its own copy of this in index.css already).
+   Keeps one consistent header/nav across the whole site, including
+   a working hamburger + mobile drawer at narrow widths — the inner
+   pages previously had NO mobile nav at all below 560px.
+   ============================================================ */
+
+:root {
+  --site-black: #0A0A0A;
+  --site-white: #ffffff;
+  --site-off: #F7F6F3;
+  --site-border: #E8E5DF;
+  --site-text: #111111;
+  --site-muted: #666666;
+  --site-amber: #3dc4e1;
+  --site-amber-d: #0799b9;
+  --site-nav-h: 64px;
+}
+
+#site-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  background: var(--site-white);
+  border-bottom: 1px solid var(--site-border);
+}
+
+#site-nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--site-nav-h);
+}
+
+.site-nav-logo {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: var(--site-black);
+  text-decoration: none;
+  border-bottom: none !important;
+}
+
+.site-nav-logo span {
+  color: var(--site-amber);
+}
+
+.site-nav-links {
+  display: flex;
+  gap: 2.2rem;
+  align-items: center;
+}
+
+.site-nav-link {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--site-muted);
+  cursor: pointer;
+  transition: color .15s;
+  text-decoration: none;
+  background: none;
+  border: none !important;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 500;
+  padding: 0;
+}
+
+.site-nav-link:hover,
+.site-nav-link.active {
+  color: var(--site-black);
+}
+
+.site-nav-cta {
+  background: var(--site-amber);
+  color: #fff !important;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: none !important;
+  cursor: pointer;
+  transition: background .15s;
+  white-space: nowrap;
+  font-family: 'Barlow', sans-serif;
+  border-radius: 2px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.site-nav-cta:hover {
+  background: var(--site-amber-d);
+}
+
+.site-nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+  flex-shrink: 0;
+}
+
+.site-nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--site-text);
+  transition: all .25s;
+}
+
+.site-nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.site-nav-hamburger.open span:nth-child(2) { opacity: 0; }
+.site-nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.site-nav-drawer {
+  display: none;
+  position: fixed;
+  top: var(--site-nav-h);
+  left: 0;
+  right: 0;
+  z-index: 998;
+  background: var(--site-white);
+  border-bottom: 2px solid var(--site-amber);
+  padding: 1.5rem 2rem 2rem;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 8px 32px rgba(0,0,0,.12);
+  max-height: calc(100vh - var(--site-nav-h));
+  overflow-y: auto;
+}
+
+.site-nav-drawer.open { display: flex; }
+
+.site-nav-drawer .site-nav-link {
+  font-size: 14px;
+  letter-spacing: 2px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--site-border) !important;
+  color: var(--site-text);
+  text-align: left;
+  width: 100%;
+}
+
+.site-nav-drawer .site-nav-link:last-of-type { border-bottom: none !important; }
+
+.site-nav-drawer .site-nav-cta {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 14px;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .site-nav-links { display: none; }
+  .site-nav-hamburger { display: flex; }
+  #site-nav { padding: 0 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  :root { --site-nav-h: 58px; }
+  .site-nav-logo { font-size: 1.3rem; }
+}

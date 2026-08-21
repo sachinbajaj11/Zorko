@@ -6,8 +6,11 @@
   <title>About Zorko Technologies | Direct LED Display Manufacturer India</title>
   <meta name="description" content="Learn about Zorko Technologies, India's premier direct manufacturer of LED displays. We produce indoor, outdoor, transparent, and mobile LED screens.">
   <link rel="canonical" href="https://zorkotechnologies.com/about.html">
-  <link rel="stylesheet" href="/public/css/index.css">
-  <link rel="stylesheet" href="/public/css/policy.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/public/css/site-header.css">
+  <link rel="stylesheet" href="/public/css/content-page.css">
   
   <meta property="og:title" content="About Zorko Technologies">
   <meta property="og:description" content="India's direct LED display manufacturer. High-quality LED screens, no middlemen, direct pricing.">
@@ -20,7 +23,7 @@
     "@type": "Organization",
     "name": "Zorko Technologies",
     "url": "https://zorkotechnologies.com",
-    "logo": "https://zorkotechnologies.com/public/images/logo.png",
+    "logo": "https://res.cloudinary.com/deb6oiddj/image/upload/v1780558313/DIE-CASTING_Cabinet_LED_Display_Screen_zagwpg.webp",
     "description": "India's direct LED display manufacturer providing high-quality indoor, outdoor, transparent, and rental LED screens.",
     "address": {
       "@type": "PostalAddress",
@@ -51,21 +54,33 @@
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center;">
-      <a href="/index.html" style="color:#F5A623; font-weight:bold; font-size:1.5rem; text-decoration:none;">ZORKO</a>
-      <nav style="display:flex; gap:20px;">
-        <a href="/index.html" style="color:white; text-decoration:none;">Home</a>
-        <a href="/about.html" style="color:#F5A623; text-decoration:none;">About</a>
-        <a href="/index.html#contact" style="color:white; text-decoration:none;">Contact</a>
-      </nav>
+  <header id="site-header">
+    <nav id="site-nav" aria-label="Main navigation">
+      <a href="/index.html" class="site-nav-logo" aria-label="Zorko Technologies — Home">ZOR<span>KO</span></a>
+      <div class="site-nav-links">
+        <a class="site-nav-link" href="/index.html">Home</a>
+        <a class="site-nav-link" href="/index.html#products">Products</a>
+        <a class="site-nav-link active" href="/about.html">About</a>
+        <a class="site-nav-link" href="/index.html#contact">Contact</a>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <a class="site-nav-cta" href="/index.html#contact">Get a Quote</a>
+        <button class="site-nav-hamburger" id="site-hamburger" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+    <div class="site-nav-drawer" id="site-nav-drawer">
+      <a class="site-nav-link" href="/index.html">Home</a>
+      <a class="site-nav-link" href="/index.html#products">Products</a>
+      <a class="site-nav-link" href="/about.html">About</a>
+      <a class="site-nav-link" href="/index.html#contact">Contact</a>
+      <a class="site-nav-cta" href="/index.html#contact">Get a Quote →</a>
     </div>
   </header>
 
-  <main class="wrap" style="padding-top:40px; padding-bottom:40px;">
+  <main class="wrap" style="max-width:900px;margin:0 auto;padding-top:40px; padding-bottom:40px;">
     
-    <nav class="breadcrumb" style="margin-bottom:20px; font-size:0.9rem; color:#888;">
-      <a href="/index.html" style="color:#F5A623; text-decoration:none;">Home</a> &gt; <span>About Us</span>
+    <nav class="breadcrumb" style="margin-bottom:20px;">
+      <a href="/index.html">Home</a> &gt; <span>About Us</span>
     </nav>
 
     <h1>About Zorko Technologies — India's Direct LED Display Manufacturer</h1>
@@ -86,12 +101,12 @@
       <h2>What We Manufacture</h2>
       <p>Our comprehensive product line covers every LED display requirement, serving diverse industries from retail and corporate to entertainment and advertising:</p>
       <ul>
-        <li><strong><a href="/indoor-led-display.html" style="color:var(--amber,#F5A623);">Indoor LED Displays</a>:</strong> High-resolution screens with fine pixel pitches (P1.2–P4), perfect for boardrooms, retail stores, television studios, and auditoriums where close viewing distance demands pristine image quality. Read our <a href="/Pixel-Pitch-Guide.html" style="color:var(--amber,#F5A623);">pixel pitch guide</a> to learn more.</li>
-        <li><strong><a href="/outdoor-led-display.html" style="color:var(--amber,#F5A623);">Outdoor LED Displays</a>:</strong> Ultra-bright (5500+ nits), weather-proof screens (IP65+ rated) designed to withstand the harsh Indian climate, ideal for digital billboards, sports stadiums, and outdoor advertising. See <a href="/3D-Billboard-Guide.html" style="color:var(--amber,#F5A623);">3D billboard guide</a>.</li>
-        <li><strong><a href="/transparent-led-display.html" style="color:var(--amber,#F5A623);">Transparent LED Screens</a>:</strong> Innovative displays offering up to 95% transparency, allowing natural light into buildings while displaying stunning visuals on glass facades and storefronts.</li>
+        <li><strong><a href="/indoor-led-display.html" >Indoor LED Displays</a>:</strong> High-resolution screens with fine pixel pitches (P1.2–P4), perfect for boardrooms, retail stores, television studios, and auditoriums where close viewing distance demands pristine image quality. Read our <a href="/Pixel-Pitch-Guide.html" >pixel pitch guide</a> to learn more.</li>
+        <li><strong><a href="/outdoor-led-display.html" >Outdoor LED Displays</a>:</strong> Ultra-bright (5500+ nits), weather-proof screens (IP65+ rated) designed to withstand the harsh Indian climate, ideal for digital billboards, sports stadiums, and outdoor advertising. See <a href="/3D-Billboard-Guide.html" >3D billboard guide</a>.</li>
+        <li><strong><a href="/transparent-led-display.html" >Transparent LED Screens</a>:</strong> Innovative displays offering up to 95% transparency, allowing natural light into buildings while displaying stunning visuals on glass facades and storefronts.</li>
         <li><strong>Rental LED Cabinets:</strong> Lightweight, modular die-cast aluminum cabinets built for live events, concerts, and stage production.</li>
-        <li><strong><a href="/led-video-wall.html" style="color:var(--amber,#F5A623);">Custom Video Walls</a>:</strong> Tailor-made, seamless LED video wall configurations for corporate lobbies and control rooms, complete with 3840Hz refresh rate.</li>
-        <li><strong>Mobile LED Displays:</strong> Truck, van, or delivery bag-mounted mobile LED advertising displays for fleet marketing. Check <a href="/led-screen-price-india.html" style="color:var(--amber,#F5A623);">LED screen pricing in India</a>.</li>
+        <li><strong><a href="/led-video-wall.html" >Custom Video Walls</a>:</strong> Tailor-made, seamless LED video wall configurations for corporate lobbies and control rooms, complete with 3840Hz refresh rate.</li>
+        <li><strong>Mobile LED Displays:</strong> Truck, van, or delivery bag-mounted mobile LED advertising displays for fleet marketing. Check <a href="/led-screen-price-india.html" >LED screen pricing in India</a>.</li>
       </ul>
     </section>
 
@@ -144,5 +159,6 @@
     </nav>
   </footer>
 
+  <script src="/public/js/site-nav.js" defer></script>
 </body>
 </html>
