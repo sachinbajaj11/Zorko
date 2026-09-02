@@ -1,6 +1,6 @@
 /* ============================================================
-   ZORKO SHARED SITE HEADER — used on every page except index.html
-   (index.html has its own copy of this in index.css already).
+   ZORKO SHARED SITE HEADER — used on every page except index
+   (index has its own copy of this in index.css already).
    Keeps one consistent header/nav across the whole site, including
    a working hamburger + mobile drawer at narrow widths — the inner
    pages previously had NO mobile nav at all below 560px.

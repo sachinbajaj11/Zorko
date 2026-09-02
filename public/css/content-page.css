@@ -1,6 +1,6 @@
 /* ============================================================
    ZORKO CONTENT-PAGE STYLESHEET
-   Used by: about.html, privacy-policy.html, terms.html
+   Used by: about, privacy-policy, terms
    Reskinned to match the homepage's dark/teal design system.
    Reuses the original policy.css / terms.css class names
    (.policy-hero, .quicknav, .policy-section, .cta-btn, .footer …)
@@ -273,7 +273,7 @@ footer .brand {
 }
 .footer-links a:hover, footer nav a:hover { color: var(--site-amber, #3dc4e1) !important; }
 
-/* Simple content pages (about.html) that use plain h1/h2/section instead of .policy-section cards */
+/* Simple content pages (about) that use plain h1/h2/section instead of .policy-section cards */
 main h1 {
   font-family: 'Bebas Neue', sans-serif;
   font-weight: 400;
@@ -304,7 +304,7 @@ main .cta-section {
 }
 main .cta-section h2 { margin-bottom: 8px; }
 
-/* about.html uses footer.wrap with inline-styled nav links */
+/* about uses footer.wrap with inline-styled nav links */
 footer.wrap {
   background: #0A0A0A;
   color: #999;
